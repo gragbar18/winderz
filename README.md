@@ -6,7 +6,7 @@ When a new session is registered you can put various informations like the spot,
 
 The second feature is to be able to register spots on a private and a public map, allowing users to share if they want, tips about some places.
 
-### User stories
+### User stories As a user format
 * Create/Login account
 * Have access on a map of all the existing spots and be able to see their details (Google map explicit intent)
 * Add a new spot to the map (private or public)
@@ -26,9 +26,3 @@ The second feature is to be able to register spots on a private and a public map
 * Details/Modify his profile
 * Emergency management (Emergency contact, ...)
 * Think about advertisings/subscriptions methods
-
-### Requirements specifications
-- [ ] Register/Authentification
-- [ ] 
-- [ ] 
-- [ ] 

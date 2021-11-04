@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Winderz Project</string>
+    <string name="home">Home</string>
+    <string name="favorite">Favorite</string>
+    <string name="add_button">add button</string>
+    <string name="profile">Profile</string>
+    <string name="map">Map</string>
 </resources>

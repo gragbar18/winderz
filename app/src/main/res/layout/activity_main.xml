@@ -39,6 +39,7 @@
 
         </com.google.android.material.bottomappbar.BottomAppBar>
 
+        <!-- How to implement it inside the bottom navigation bar because now it's beautiful but nothing append when we click on it-->
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

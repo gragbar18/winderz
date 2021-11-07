@@ -3,28 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/home"
+        android:id="@+id/homeFragment"
         android:title="@string/home"
         app:showAsAction="ifRoom"
         android:icon="@drawable/home"/>
     <item
-        android:id="@+id/map"
+        android:id="@+id/mapFragment"
         android:title="@string/map"
         app:showAsAction="ifRoom"
         android:icon="@drawable/map"/>
     <item
-        android:id="@+id/holder"
-        android:title=""
+        android:id="@+id/addSessionFragment"
+        android:title="@string/add_session"
         app:showAsAction="ifRoom"/>
     <item
-        android:id="@+id/favorite"
+        android:id="@+id/favoriteFragment"
         android:title="@string/favorite"
         app:showAsAction="ifRoom"
         android:icon="@drawable/favorite"/>
     <item
-        android:id="@+id/profile"
+        android:id="@+id/profileFragment"
         android:title="@string/profile"
         app:showAsAction="ifRoom"
         android:icon="@drawable/profile"/>
-
 </menu>

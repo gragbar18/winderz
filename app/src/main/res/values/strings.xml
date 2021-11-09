@@ -8,4 +8,26 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_session">Add Session</string>
     <string name="favorites">Favorites</string>
+    <string name="title_of_session">Title of session</string>
+    <string name="description_of_the_session">Description of the session</string>
+    <string name="wind_speed">Wind Speed :</string>
+    <string name="wave_size">Wave Size :</string>
+    <string name="in_meter">in meter</string>
+    <string name="in_kilometer_per_hour">in kilometer per hour</string>
+    <string name="wind_orientation">Wind Orientation :</string>
+    <string name="wave_frequency">Wave frequency :</string>
+    <string name="in_herz">in herz</string>
+    <string name="discard">DISCARD</string>
+    <string name="add">ADD</string>
+
+    <string-array name="windOrientation">
+        <item>North</item>
+        <item>Northeast</item>
+        <item>East</item>
+        <item>Southeast</item>
+        <item>South</item>
+        <item>Southwest</item>
+        <item>West</item>
+        <item>Northwest</item>
+    </string-array>
 </resources>

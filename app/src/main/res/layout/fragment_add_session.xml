@@ -5,16 +5,152 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".AddSessionFragment"
-    android:background="@color/white">
+    android:padding="16dp"
+    android:background="@drawable/backgroundsea">
+
+
+<EditText
+        android:id="@+id/titleEdit"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:inputType="textPersonName"
+        android:hint="@string/title_of_session"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:autofillHints="Title"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"/>
+
+    <EditText
+        android:id="@+id/descriptionEdit"
+        android:layout_width="match_parent"
+        android:layout_height="200sp"
+        android:inputType="textPersonName"
+        android:hint="@string/description_of_the_session"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="70dp"
+        android:textSize="16sp"
+        android:autofillHints="description"
+        android:background="@color/white"
+        android:gravity="top|left"
+        tools:ignore="RtlHardcoded"/>
 
     <TextView
+        android:id="@+id/WindSpeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add_session"
-        android:textSize="24sp"
+        android:layout_marginTop="300dp"
+        android:text="@string/wind_speed"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/white"/>
+
+    <EditText
+        android:id="@+id/WindSpeedEdit"
+        android:layout_width="200dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="160dp"
+        android:autofillHints="description"
+        android:background="@color/white"
+        android:hint="@string/in_kilometer_per_hour"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/WindSpeed"
+        app:layout_constraintStart_toStartOf="@+id/WindSpeed"
+        tools:ignore="TextFields" />
+
+    <TextView
+        android:id="@+id/WindOrientation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="350dp"
+        android:text="@string/wind_orientation"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/white"/>
+
+    <Spinner
+        android:id="@+id/WindOrientationSpinner"
+        android:layout_width="200dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="160dp"
+        android:background="@color/white"
+        android:hint="@string/in_kilometer_per_hour"
+        app:layout_constraintBottom_toBottomOf="@+id/WindOrientation"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/waveSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="400dp"
+        android:text="@string/wave_size"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/white"/>
+
+    <EditText
+        android:id="@+id/waveSizeEdit"
+        android:layout_width="200dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="160dp"
+        android:autofillHints="description"
+        android:background="@color/white"
+        android:hint="@string/in_meter"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/waveSize"
+        app:layout_constraintStart_toStartOf="@+id/waveSize"
+        tools:ignore="TextFields" />
+
+    <TextView
+        android:id="@+id/WaveFrequency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="450dp"
+        android:text="@string/wave_frequency"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/white"/>
+
+    <EditText
+        android:id="@+id/WaveFrequencyEdit"
+        android:layout_width="200dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="160dp"
+        android:autofillHints="description"
+        android:background="@color/white"
+        android:hint="@string/in_herz"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/WaveFrequency"
+        app:layout_constraintStart_toStartOf="@+id/WaveFrequency"
+        tools:ignore="TextFields" />
+
+    <Button
+        android:id="@+id/discardButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/discard"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/addButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add"
+        app:layout_constraintBottom_toBottomOf="@+id/discardButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

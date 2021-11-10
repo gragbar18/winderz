@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WinderzProject">
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,11 +19,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
         </activity>
         <activity
-            android:name=".AddSession"
+            android:name=".ui.AddSession"
             android:exported="true">
         </activity>
     </application>

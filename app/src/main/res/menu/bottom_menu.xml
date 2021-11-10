@@ -13,7 +13,7 @@
         app:showAsAction="ifRoom"
         android:icon="@drawable/map"/>
     <item
-        android:id="@+id/addSessionFragment"
+        android:id="@+id/addSession"
         android:title="@string/add_session"
         app:showAsAction="ifRoom"/>
     <item

@@ -1,4 +1,4 @@
-package com.via.android.winderzproject;
+package com.via.android.winderzproject.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,10 +12,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.via.android.winderzproject.R;
+
 import java.lang.reflect.Array;
 
 public class AddSession extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+    Spinner WindOrientationSpinner;
     EditText titleEdit;
     EditText descriptionEdit;
     EditText windSpeedEdit;
@@ -29,19 +32,15 @@ public class AddSession extends AppCompatActivity implements AdapterView.OnItemS
     String waveSize;
     String waveFrequency;
 
-    Button discardButton;
+    Button deleteButton;
     Button addButton;
-
-    Spinner WindOrientationSpinner;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_add_session);
 
-        discardButton = findViewById(R.id.discardButton);
+        deleteButton = findViewById(R.id.deleteButton);
         addButton = findViewById(R.id.addButton);
 
         //add part
@@ -57,8 +56,8 @@ public class AddSession extends AppCompatActivity implements AdapterView.OnItemS
             }
         });
 
-        //discard part
-        discardButton.setOnClickListener(new View.OnClickListener() {
+        //delete part
+        deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();

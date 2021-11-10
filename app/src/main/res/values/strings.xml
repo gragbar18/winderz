@@ -17,7 +17,7 @@
     <string name="wind_orientation">Wind Orientation :</string>
     <string name="wave_frequency">Wave frequency :</string>
     <string name="in_herz">in herz</string>
-    <string name="discard">DISCARD</string>
+    <string name="delete">delete</string>
     <string name="add">ADD</string>
 
     <string-array name="windOrientation">

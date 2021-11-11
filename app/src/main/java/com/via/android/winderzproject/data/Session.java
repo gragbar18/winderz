@@ -8,6 +8,10 @@ public class Session {
     String waveSize;
     String waveFrequency;
 
+    public Session(){
+        //Default constructor required for calls to Datasnapshot.getValue(Session.class)
+    }
+
     public Session(String title, String description, String windSpeed, String windOrientation, String waveSize, String waveFrequency) {
         this.title = title;
         this.description = description;

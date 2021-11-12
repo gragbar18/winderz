@@ -13,13 +13,13 @@ import com.via.android.winderzproject.data.SessionRepository;
 
 import java.util.List;
 
-public class HomeFragmentViewModel extends AndroidViewModel {
+public class HomeViewModel extends AndroidViewModel {
     private final CurrentUserRepository currentUserRepository;
     private final SessionRepository sessionRepository;
 
 
 
-    public HomeFragmentViewModel(@NonNull Application application) {
+    public HomeViewModel(@NonNull Application application) {
         super(application);
         currentUserRepository = CurrentUserRepository.getInstance(application);
         sessionRepository = SessionRepository.getInstance();
@@ -29,6 +29,7 @@ public class HomeFragmentViewModel extends AndroidViewModel {
         String currentUserId = currentUserRepository.getCurrentUser().getValue().getUid();
         sessionRepository.init(currentUserId);
     }
+
     public LiveData<FirebaseUser> getCurrentUser() {return currentUserRepository.getCurrentUser();}
 
     public LiveData<List<Session>> getSessions() {

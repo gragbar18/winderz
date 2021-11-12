@@ -1,12 +1,14 @@
 package com.via.android.winderzproject.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -14,25 +16,21 @@ import com.via.android.winderzproject.R;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    MainActivityViewModel viewModel;
     BottomNavigationView bottomNavigationView;
     FloatingActionButton addSessionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        viewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
+        checkIfSignedIn();
         setContentView(R.layout.activity_main);
 
         bottomNavigationView=findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setBackground(null);
 
-        /*AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.homeFragment, R.id.mapFragment, R.id.addSessionFragment, R.id.favoriteFragment, R.id.profileFragment)
-                .build();*/
-
         NavController navController = Navigation.findNavController(this, R.id.fragmentContainerView);
-        //App crashes when next line is uncomment
-        //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
         //Go to the AddSessionFragment if we click on the plus button
@@ -41,5 +39,19 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, AddSession.class);
             startActivity(intent);
         });
+    }
+
+    private void checkIfSignedIn() {
+        viewModel.getCurrentUser().observe(this, user -> {
+            if(user != null) {
+                Toast.makeText(this, "Welcome " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
+            }else
+                starLoginActivity();
+        });
+    }
+
+    private void starLoginActivity() {
+        startActivity(new Intent(this, LoginActivity.class));
+        finish();
     }
 }

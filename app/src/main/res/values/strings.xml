@@ -19,6 +19,9 @@
     <string name="in_herz">in herz</string>
     <string name="delete">delete</string>
     <string name="add">ADD</string>
+    <string name="user_name">User name</string>
+    <string name="email">email</string>
+    <string name="sign_out">Sign out</string>
 
     <string-array name="windOrientation">
         <item>North</item>

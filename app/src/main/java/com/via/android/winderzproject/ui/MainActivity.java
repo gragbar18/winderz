@@ -8,6 +8,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     MainActivityViewModel viewModel;
     BottomNavigationView bottomNavigationView;
     FloatingActionButton addSessionButton;
+    Button signOutButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
         checkIfSignedIn();
         setContentView(R.layout.activity_main);
+
+        signOutButton = findViewById(R.id.signOutButton);
+        signOutButton.setOnClickListener(v -> {
+
+        });
 
         bottomNavigationView=findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setBackground(null);

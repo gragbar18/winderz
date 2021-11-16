@@ -22,6 +22,8 @@
     <string name="user_name">User name</string>
     <string name="email">email</string>
     <string name="sign_out">Sign out</string>
+    <string name="first_name">First Name</string>
+    <string name="first_name">First Name</string>
 
     <string-array name="windOrientation">
         <item>North</item>

@@ -19,6 +19,11 @@
     <string name="in_herz">in herz</string>
     <string name="delete">delete</string>
     <string name="add">ADD</string>
+    <string name="user_name">User name</string>
+    <string name="email">email</string>
+    <string name="sign_out">Sign out</string>
+    <string name="first_name">First Name</string>
+    <string name="favorite">Favorite</string>
 
     <string-array name="windOrientation">
         <item>North</item>

@@ -1,8 +1,10 @@
 package com.via.android.winderzproject.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Switch;
 
 import com.via.android.winderzproject.R;
 import com.via.android.winderzproject.data.Session;
@@ -23,6 +26,7 @@ public class AddSession extends AppCompatActivity implements AdapterView.OnItemS
     EditText windSpeedEdit;
     EditText waveSizeEdit;
     EditText waveFrequencyEdit;
+    Switch favoriteSwitch;
 
     String title;
     String description;
@@ -30,6 +34,7 @@ public class AddSession extends AppCompatActivity implements AdapterView.OnItemS
     String windOrientation;
     String waveSize;
     String waveFrequency;
+    Boolean favorite;
 
     Button cancelButton;
     Button addButton;
@@ -48,6 +53,7 @@ public class AddSession extends AppCompatActivity implements AdapterView.OnItemS
         windSpeedEdit = findViewById(R.id.WindSpeedEdit);
         waveSizeEdit = findViewById(R.id.waveSizeEdit);
         waveFrequencyEdit = findViewById(R.id.WaveFrequencyEdit);
+        favoriteSwitch = findViewById(R.id.Favorite_switch);
 
         //add part
         addButton.setOnClickListener(view -> {

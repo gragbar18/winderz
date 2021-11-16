@@ -30,11 +30,6 @@ public class MainActivity extends AppCompatActivity {
         checkIfSignedIn();
         setContentView(R.layout.activity_main);
 
-        signOutButton = findViewById(R.id.signOutButton);
-        signOutButton.setOnClickListener(v -> {
-            viewModel.signOut();
-        });
-
         bottomNavigationView=findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setBackground(null);
 
@@ -47,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, AddSession.class);
             startActivity(intent);
         });
+
+        /*signOutButton = findViewById(R.id.signOutButton);
+        signOutButton.setOnClickListener(v -> viewModel.signOut());*/
     }
 
     private void checkIfSignedIn() {

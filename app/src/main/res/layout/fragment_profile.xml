@@ -15,19 +15,9 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageView"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:src="@drawable/photoprofile"/>
-
-        <TextView
-            android:id="@+id/userName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/user_name"
-            android:textSize="20sp"
-            android:layout_marginTop="8dp"
-            android:textStyle="bold"
-            android:textColor="@color/purple_500"/>
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/profile" />
 
         <View
             android:layout_width="match_parent"
@@ -46,7 +36,8 @@
         android:gravity="center_vertical">
         <ImageView
             android:layout_width="30dp"
-            android:layout_height="30dp"/>
+            android:layout_height="30dp"
+            android:src="@drawable/profile"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -82,7 +73,8 @@
         android:gravity="center_vertical">
         <ImageView
             android:layout_width="30dp"
-            android:layout_height="30dp"/>
+            android:layout_height="30dp"
+            android:src="@drawable/profile"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -117,7 +109,8 @@
         android:gravity="center_vertical">
         <ImageView
             android:layout_width="30dp"
-            android:layout_height="30dp"/>
+            android:layout_height="30dp"
+            android:src="@drawable/email"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -50,7 +50,8 @@ public class MainActivity extends AppCompatActivity {
     private void checkIfSignedIn() {
         viewModel.getCurrentUser().observe(this, user -> {
             if(user != null) {
-                Toast.makeText(this, "Welcome " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Welcome " + user.getDisplayName() + user.getEmail(), Toast.LENGTH_SHORT).show();
+
             }else
                 starLoginActivity();
         });

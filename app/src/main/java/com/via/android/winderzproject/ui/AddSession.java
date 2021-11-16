@@ -2,6 +2,7 @@ package com.via.android.winderzproject.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -9,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +26,7 @@ public class AddSession extends AppCompatActivity implements AdapterView.OnItemS
     EditText windSpeedEdit;
     EditText waveSizeEdit;
     EditText waveFrequencyEdit;
+    Switch favoriteSwitch;
 
     String title;
     String description;
@@ -31,6 +34,7 @@ public class AddSession extends AppCompatActivity implements AdapterView.OnItemS
     String windOrientation;
     String waveSize;
     String waveFrequency;
+    Boolean favorite;
 
     Button deleteButton;
     Button addButton;
@@ -42,6 +46,7 @@ public class AddSession extends AppCompatActivity implements AdapterView.OnItemS
 
         deleteButton = findViewById(R.id.deleteButton);
         addButton = findViewById(R.id.addButton);
+        favoriteSwitch = findViewById(R.id.Favorite_switch);
 
         //add part
         addButton.setOnClickListener(new View.OnClickListener() {
@@ -52,6 +57,7 @@ public class AddSession extends AppCompatActivity implements AdapterView.OnItemS
                 windSpeed = windSpeedEdit.getText().toString();
                 waveSize = waveSizeEdit.getText().toString();
                 waveFrequency = waveFrequencyEdit.getText().toString();
+                favorite = favoriteSwitch.isChecked();
                 finish();
             }
         });
@@ -70,6 +76,7 @@ public class AddSession extends AppCompatActivity implements AdapterView.OnItemS
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         WindOrientationSpinner.setAdapter(adapter);
         WindOrientationSpinner.setOnItemSelectedListener(this);
+
     }
 
     @Override

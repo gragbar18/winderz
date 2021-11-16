@@ -131,6 +131,19 @@
         app:layout_constraintStart_toStartOf="@+id/WaveFrequency"
         tools:ignore="TextFields" />
 
+
+    <Switch
+        android:id="@+id/Favorite_switch"
+        android:layout_width="210dp"
+        android:layout_height="10dp"
+        android:layout_marginTop="500dp"
+        android:text="@string/favorite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
     <Button
         android:id="@+id/deleteButton"
         android:layout_width="wrap_content"

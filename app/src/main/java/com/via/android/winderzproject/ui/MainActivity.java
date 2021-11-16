@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         signOutButton = findViewById(R.id.signOutButton);
         signOutButton.setOnClickListener(v -> {
-
+            viewModel.signOut();
         });
 
         bottomNavigationView=findViewById(R.id.bottomNavigationView);
@@ -61,9 +61,5 @@ public class MainActivity extends AppCompatActivity {
     private void starLoginActivity() {
         startActivity(new Intent(this, LoginActivity.class));
         finish();
-    }
-
-    public void signOut(View view) {
-        viewModel.signOut();
     }
 }

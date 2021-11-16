@@ -18,7 +18,6 @@ public class SessionDataViewModel extends AndroidViewModel {
     private final SessionRepository sessionRepository;
 
 
-
     public SessionDataViewModel(@NonNull Application application) {
         super(application);
         currentUserRepository = CurrentUserRepository.getInstance(application);

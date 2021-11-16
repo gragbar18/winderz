@@ -22,7 +22,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        sessionDataViewModel=new ViewModelProvider(this).get(SessionDataViewModel.class);
+        /*sessionDataViewModel=new ViewModelProvider(this).get(SessionDataViewModel.class);
         setContentView(R.layout.fragment_home);
 
         mSessionList = mSessionList.findViewById();
@@ -30,8 +30,6 @@ public class HomeFragment extends Fragment {
         mSessionList.setLayoutManager(new LinearLayoutManager(this));
 
         mSessionAdapter = new SessionAdapter(R., this);
-        mSessionList.setAdapter(mSessionAdapter);
+        mSessionList.setAdapter(mSessionAdapter);*/
     }
-
-
 }

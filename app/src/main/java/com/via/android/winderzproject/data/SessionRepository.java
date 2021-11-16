@@ -1,8 +1,11 @@
 package com.via.android.winderzproject.data;
 
+import android.util.Log;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SessionRepository {
@@ -23,7 +26,10 @@ public class SessionRepository {
         sessions = new SessionsLiveData(myRef);
     }
 
-    public void saveSessions(List<Session> session) {myRef.setValue(sessions);}
+    public void saveSessions(List<Session> newSessions) {
+        Log.d("test", "session added");
+        Log.d("test", myRef.toString());
+        myRef.setValue(newSessions);}
 
     public SessionsLiveData getSessions(){ return sessions;}
 }

@@ -1,6 +1,7 @@
 package com.via.android.winderzproject.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.view.View;
@@ -9,16 +10,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.via.android.winderzproject.R;
-
-import java.lang.reflect.Array;
+import com.via.android.winderzproject.data.Session;
 
 public class AddSession extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    AddSessionViewModel addSessionViewModel;
 
-    Spinner WindOrientationSpinner;
+    Spinner windOrientationSpinner;
     EditText titleEdit;
     EditText descriptionEdit;
     EditText windSpeedEdit;
@@ -32,44 +31,46 @@ public class AddSession extends AppCompatActivity implements AdapterView.OnItemS
     String waveSize;
     String waveFrequency;
 
-    Button deleteButton;
+    Button cancelButton;
     Button addButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        addSessionViewModel = new ViewModelProvider(this).get(AddSessionViewModel.class);
+        addSessionViewModel.init();
         setContentView(R.layout.fragment_add_session);
 
-        deleteButton = findViewById(R.id.deleteButton);
+        cancelButton = findViewById(R.id.cancelButton);
         addButton = findViewById(R.id.addButton);
+        titleEdit = findViewById(R.id.titleEdit);
+        descriptionEdit = findViewById(R.id.descriptionEdit);
+        windSpeedEdit = findViewById(R.id.WindSpeedEdit);
+        waveSizeEdit = findViewById(R.id.waveSizeEdit);
+        waveFrequencyEdit = findViewById(R.id.WaveFrequencyEdit);
 
         //add part
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                title = titleEdit.getText().toString();
-                description = descriptionEdit.getText().toString();
-                windSpeed = windSpeedEdit.getText().toString();
-                waveSize = waveSizeEdit.getText().toString();
-                waveFrequency = waveFrequencyEdit.getText().toString();
-                finish();
+        addButton.setOnClickListener(view -> {
+            title = titleEdit.getText().toString();
+            description = descriptionEdit.getText().toString();
+            windSpeed = windSpeedEdit.getText().toString();
+            waveSize = waveSizeEdit.getText().toString();
+            waveFrequency = waveFrequencyEdit.getText().toString();
+            if(title != null){
+                addSessionViewModel.addSession(new Session(title, description, windSpeed, windOrientation, waveSize, waveFrequency, false));
             }
+            finish();
         });
 
         //delete part
-        deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        cancelButton.setOnClickListener(view -> finish());
 
         //Spinner part
-        WindOrientationSpinner = findViewById(R.id.WindOrientationSpinner);
+        windOrientationSpinner = findViewById(R.id.WindOrientationSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.windOrientation, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-        WindOrientationSpinner.setAdapter(adapter);
-        WindOrientationSpinner.setOnItemSelectedListener(this);
+        windOrientationSpinner.setAdapter(adapter);
+        windOrientationSpinner.setOnItemSelectedListener(this);
     }
 
     @Override

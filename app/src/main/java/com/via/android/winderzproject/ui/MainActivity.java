@@ -39,12 +39,11 @@ public class MainActivity extends AppCompatActivity {
         //Go to the AddSessionFragment if we click on the plus button
         addSessionButton = findViewById(R.id.addSessionButton);
         addSessionButton.setOnClickListener(v -> {
+            /*
             Intent intent = new Intent(this, AddSession.class);
-            startActivity(intent);
+            startActivity(intent);*/
+            navController.navigate(R.id.addSession);
         });
-
-        /*signOutButton = findViewById(R.id.signOutButton);
-        signOutButton.setOnClickListener(v -> viewModel.signOut());*/
     }
 
     private void checkIfSignedIn() {

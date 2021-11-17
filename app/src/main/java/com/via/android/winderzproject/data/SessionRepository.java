@@ -13,7 +13,9 @@ public class SessionRepository {
     private DatabaseReference myRef;
     private SessionsLiveData sessions;
 
-    private SessionRepository(){}
+    private SessionRepository(){
+
+    }
 
     public static synchronized SessionRepository getInstance(){
         if(instance == null)
@@ -26,10 +28,11 @@ public class SessionRepository {
         sessions = new SessionsLiveData(myRef);
     }
 
-    public void saveSessions(List<Session> newSessions) {
-        Log.d("test", "session added");
-        Log.d("test", myRef.toString());
-        myRef.setValue(newSessions);}
+    public void saveSessions(Session session) {
+        myRef.push().setValue(session);
+    }
 
-    public SessionsLiveData getSessions(){ return sessions;}
+    public SessionsLiveData getSessions(){
+        return sessions;
+    }
 }

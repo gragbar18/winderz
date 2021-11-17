@@ -78,4 +78,17 @@ public class Session {
     public void setWaveFrequency(String waveFrequency) {
         this.waveFrequency = waveFrequency;
     }
+
+    @Override
+    public String toString() {
+        return "Session{" +
+                "title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", windSpeed='" + windSpeed + '\'' +
+                ", windOrientation='" + windOrientation + '\'' +
+                ", waveSize='" + waveSize + '\'' +
+                ", waveFrequency='" + waveFrequency + '\'' +
+                ", favorite=" + favorite +
+                '}';
+    }
 }

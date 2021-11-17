@@ -1,6 +1,7 @@
 package com.via.android.winderzproject.ui;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -29,11 +30,6 @@ public class AddSessionViewModel extends AndroidViewModel {
     }
 
     public void addSession(Session session) {
-        List<Session> sessions = sessionRepository.getSessions().getValue();
-        if(sessions == null){
-            sessions = new ArrayList<>();
-        }
-        sessions.add(session);
-        sessionRepository.saveSessions(sessions);
+        sessionRepository.saveSessions(session);
     }
 }

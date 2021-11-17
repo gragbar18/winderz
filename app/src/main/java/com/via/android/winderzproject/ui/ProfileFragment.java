@@ -61,7 +61,8 @@ public class ProfileFragment extends Fragment {
                 String[] name = firebaseUser.getDisplayName().split(" ");
                 Uri uriImage = firebaseUser.getPhotoUrl();
                 firstNameTextView.setText(name[0]);
-                lastNameTextView.setText(name[1]);
+                if(name.length != 1) //Case if the user entered an username instead of a name and a lastname
+                    lastNameTextView.setText(name[1]);
                 emailTextView.setText(firebaseUser.getEmail());
 
                 if (uriImage != null){

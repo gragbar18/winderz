@@ -18,6 +18,12 @@ import com.via.android.winderzproject.R;
 import com.via.android.winderzproject.data.Session;
 
 public class AddSession extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+
+    /*
+
+    A SUPPRIMER
+
+     */
     AddSessionViewModel addSessionViewModel;
 
     Spinner windOrientationSpinner;

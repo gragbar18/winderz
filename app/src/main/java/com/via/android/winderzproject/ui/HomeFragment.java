@@ -16,6 +16,7 @@ import com.via.android.winderzproject.R;
 import com.via.android.winderzproject.data.Session;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class HomeFragment extends Fragment implements SessionAdapter.OnListItemClickListener {
@@ -23,20 +24,15 @@ public class HomeFragment extends Fragment implements SessionAdapter.OnListItemC
     SessionDataViewModel sessionDataViewModel;
     RecyclerView mSessionList;
     SessionAdapter mSessionAdapter;
+    List<Session> displayedSessions = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //sessionDataViewModel=new ViewModelProvider(this).get(SessionDataViewModel.class);
-
-
-
-        ArrayList<Session>sessions = new ArrayList<>();
-        sessions.add(new Session("Session 1","description 1","20","North","1","10",true));
-        sessions.add(new Session("Session 2","description 2","15","North-Ouest","1","10",true));
-
-        mSessionAdapter = new SessionAdapter(/*sessionDataViewModel.getSessions().getValue()*/sessions,this);
+        sessionDataViewModel=new ViewModelProvider(this).get(SessionDataViewModel.class);
+        sessionDataViewModel.init();
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -48,7 +44,14 @@ public class HomeFragment extends Fragment implements SessionAdapter.OnListItemC
     public void onStart() {
         super.onStart();
         mSessionList = getView().findViewById(R.id.rv);
-        mSessionList.setAdapter(mSessionAdapter);
+        sessionDataViewModel.getSessions().observe(this, sessions -> {
+            //Add all the sessions in our list that is displayed
+            displayedSessions.clear();
+            displayedSessions.addAll(sessions);
+            //define the adapter and assign it to our recycler
+            mSessionAdapter = new SessionAdapter(displayedSessions,this);
+            mSessionList.setAdapter(mSessionAdapter);
+        });
 
         mSessionList.hasFixedSize();
         mSessionList.setLayoutManager(new LinearLayoutManager(getContext()));

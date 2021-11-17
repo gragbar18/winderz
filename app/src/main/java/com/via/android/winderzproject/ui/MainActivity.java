@@ -39,9 +39,6 @@ public class MainActivity extends AppCompatActivity {
         //Go to the AddSessionFragment if we click on the plus button
         addSessionButton = findViewById(R.id.addSessionButton);
         addSessionButton.setOnClickListener(v -> {
-            /*
-            Intent intent = new Intent(this, AddSession.class);
-            startActivity(intent);*/
             navController.navigate(R.id.addSession);
         });
     }
@@ -49,8 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private void checkIfSignedIn() {
         viewModel.getCurrentUser().observe(this, user -> {
             if(user != null) {
-                Toast.makeText(this, "Welcome " + user.getDisplayName() + user.getEmail(), Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(this, "Welcome " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
             }else
                 starLoginActivity();
         });

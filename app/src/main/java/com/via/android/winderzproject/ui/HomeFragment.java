@@ -31,6 +31,13 @@ public class HomeFragment extends Fragment implements SessionAdapter.OnListItemC
         super.onCreate(savedInstanceState);
         sessionDataViewModel=new ViewModelProvider(this).get(SessionDataViewModel.class);
         sessionDataViewModel.init();
+        mSessionAdapter = new SessionAdapter(displayedSessions,this);
+        sessionDataViewModel.getSessions().observe(this, sessions -> {
+            //Add all the sessions in our list that is displayed
+            displayedSessions.clear();
+            displayedSessions.addAll(sessions);
+            mSessionAdapter.notifyDataSetChanged();
+        });
     }
 
     @Override
@@ -44,14 +51,7 @@ public class HomeFragment extends Fragment implements SessionAdapter.OnListItemC
     public void onStart() {
         super.onStart();
         mSessionList = getView().findViewById(R.id.rv);
-        sessionDataViewModel.getSessions().observe(this, sessions -> {
-            //Add all the sessions in our list that is displayed
-            displayedSessions.clear();
-            displayedSessions.addAll(sessions);
-            //define the adapter and assign it to our recycler
-            mSessionAdapter = new SessionAdapter(displayedSessions,this);
-            mSessionList.setAdapter(mSessionAdapter);
-        });
+        mSessionList.setAdapter(mSessionAdapter);
 
         mSessionList.hasFixedSize();
         mSessionList.setLayoutManager(new LinearLayoutManager(getContext()));

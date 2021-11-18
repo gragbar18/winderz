@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="400dp"
@@ -27,7 +28,7 @@
 
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.9"
             android:orientation="horizontal"
@@ -49,16 +50,30 @@
                 android:textSize="11sp"
                 android:gravity="bottom"
                 android:layout_marginEnd="10dp"
-                />
-
+                android:text="date"                />
 
             <TextView
                 android:id="@+id/session_hour"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textSize="11sp"
-
+                android:text="heure"
                 android:gravity="bottom"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".MainActivity">
+                <TextView
+                    android:id="@+id/text"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/ic_more_horiz"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"

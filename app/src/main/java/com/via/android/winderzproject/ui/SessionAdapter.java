@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.via.android.winderzproject.R;
 import com.via.android.winderzproject.data.Session;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +39,12 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
         viewHolder.description.setText(mSessions.get(position).getDescription());
         viewHolder.windOrientation.setText(mSessions.get(position).getWindOrientation());
         viewHolder.windSpeed.setText(mSessions.get(position).getWindSpeed());
+        viewHolder.date.setText(mSessions.get(position).getDate());
+        viewHolder.hour.setText(mSessions.get(position).getHour());
+        viewHolder.time.setText(mSessions.get(position).getTime());
+        viewHolder.waveSize.setText(mSessions.get(position).getWaveSize());
+        viewHolder.waveFrequency.setText(mSessions.get(position).getWaveFrequency());
+
     }
 
     @Override
@@ -48,6 +56,11 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
         TextView description;
         TextView windOrientation;
         TextView windSpeed;
+        TextView date;
+        TextView hour;
+        TextView time;
+        TextView waveSize;
+        TextView waveFrequency;
 
         ViewHolder(View itemView){
             super(itemView);
@@ -55,6 +68,11 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
             description=itemView.findViewById(R.id.session_description);
             windOrientation=itemView.findViewById(R.id.session_windOrientation);
             windSpeed=itemView.findViewById(R.id.session_windSpeed);
+            date=itemView.findViewById(R.id.session_date);
+            hour=itemView.findViewById(R.id.session_hour);
+            time=itemView.findViewById(R.id.session_time);
+            waveSize=itemView.findViewById(R.id.session_waveSize);
+            waveFrequency=itemView.findViewById(R.id.session_waveFrequency);
         }
 
         @Override

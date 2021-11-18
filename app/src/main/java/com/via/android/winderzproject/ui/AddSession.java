@@ -17,6 +17,9 @@ import android.widget.Switch;
 import com.via.android.winderzproject.R;
 import com.via.android.winderzproject.data.Session;
 
+import java.text.DateFormat;
+import java.util.Date;
+
 public class AddSession extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     /*
@@ -32,6 +35,7 @@ public class AddSession extends AppCompatActivity implements AdapterView.OnItemS
     EditText windSpeedEdit;
     EditText waveSizeEdit;
     EditText waveFrequencyEdit;
+    EditText timeEdit;
     Switch favoriteSwitch;
 
     String title;
@@ -41,6 +45,9 @@ public class AddSession extends AppCompatActivity implements AdapterView.OnItemS
     String waveSize;
     String waveFrequency;
     Boolean favorite;
+    String date;
+    String hour;
+    String time;
 
     Button cancelButton;
     Button addButton;
@@ -60,6 +67,7 @@ public class AddSession extends AppCompatActivity implements AdapterView.OnItemS
         waveSizeEdit = findViewById(R.id.waveSizeEdit);
         waveFrequencyEdit = findViewById(R.id.WaveFrequencyEdit);
         favoriteSwitch = findViewById(R.id.Favorite_switch);
+        timeEdit = findViewById(R.id.timeEdit);
 
         //add part
         addButton.setOnClickListener(view -> {
@@ -68,8 +76,17 @@ public class AddSession extends AppCompatActivity implements AdapterView.OnItemS
             windSpeed = windSpeedEdit.getText().toString();
             waveSize = waveSizeEdit.getText().toString();
             waveFrequency = waveFrequencyEdit.getText().toString();
+            time = timeEdit.getText().toString();
+
+            //date part
+            Date now = new Date();
+            DateFormat dateformatter = DateFormat.getDateInstance(DateFormat.SHORT);
+            date = dateformatter.format(now);
+            DateFormat timeformatter = DateFormat.getTimeInstance(DateFormat.SHORT);
+            hour = timeformatter.format(now);
+
             if(title != null){
-                addSessionViewModel.addSession(new Session(title, description, windSpeed, windOrientation, waveSize, waveFrequency, false));
+                addSessionViewModel.addSession(new Session(title, description, windSpeed, windOrientation, waveSize, waveFrequency, favorite,date, hour, time));
             }
             finish();
         });

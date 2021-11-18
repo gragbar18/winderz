@@ -8,12 +8,15 @@ public class Session {
     String waveSize;
     String waveFrequency;
     Boolean favorite;
+    String date;
+    String time;
+    String hour;
 
     public Session(){
         //Default constructor required for calls to Datasnapshot.getValue(Session.class)
     }
 
-    public Session(String title, String description, String windSpeed, String windOrientation, String waveSize, String waveFrequency, Boolean favorite) {
+    public Session(String title, String description, String windSpeed, String windOrientation, String waveSize, String waveFrequency, Boolean favorite, String date, String hour, String time) {
         this.title = title;
         this.description = description;
         this.windSpeed = windSpeed;
@@ -21,6 +24,33 @@ public class Session {
         this.waveSize = waveSize;
         this.waveFrequency = waveFrequency;
         this.favorite = favorite;
+        this.date=date;
+        this.time=time;
+        this.hour=hour;
+    }
+
+    public String getHour() {
+        return hour;
+    }
+
+    public void setHour(String hour) {
+        this.hour = hour;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public Boolean getFavorite() {
@@ -89,6 +119,9 @@ public class Session {
                 ", waveSize='" + waveSize + '\'' +
                 ", waveFrequency='" + waveFrequency + '\'' +
                 ", favorite=" + favorite +
+                ", date='" + date + '\'' +
+                ", hour='" + hour + '\'' +
+                ", time=" + time +
                 '}';
     }
 }

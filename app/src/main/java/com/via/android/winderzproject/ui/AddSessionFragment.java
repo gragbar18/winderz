@@ -21,6 +21,9 @@ import androidx.navigation.Navigation;
 import com.via.android.winderzproject.R;
 import com.via.android.winderzproject.data.Session;
 
+import java.text.DateFormat;
+import java.util.Date;
+
 public class AddSessionFragment extends Fragment {
     AddSessionViewModel addSessionViewModel;
     NavController navController;
@@ -31,6 +34,7 @@ public class AddSessionFragment extends Fragment {
     EditText windSpeedEdit;
     EditText waveSizeEdit;
     EditText waveFrequencyEdit;
+    EditText timeEdit;
     Switch favoriteSwitch;
     Button cancelButton;
     Button addButton;
@@ -42,6 +46,9 @@ public class AddSessionFragment extends Fragment {
     String waveSize;
     String waveFrequency;
     Boolean favorite;
+    String date;
+    String hour;
+    String time;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -75,6 +82,8 @@ public class AddSessionFragment extends Fragment {
         waveSizeEdit = view.findViewById(R.id.waveSizeEdit);
         waveFrequencyEdit = view.findViewById(R.id.WaveFrequencyEdit);
         favoriteSwitch = view.findViewById(R.id.Favorite_switch);
+        timeEdit = view.findViewById(R.id.timeEdit);
+
 
         //add part
         addButton.setOnClickListener(v -> {
@@ -83,8 +92,17 @@ public class AddSessionFragment extends Fragment {
             windSpeed = windSpeedEdit.getText().toString();
             waveSize = waveSizeEdit.getText().toString();
             waveFrequency = waveFrequencyEdit.getText().toString();
+            time = timeEdit.getText().toString();
+
+            //Date part
+            Date now = new Date();
+            DateFormat dateformatter = DateFormat.getDateInstance(DateFormat.SHORT);
+            date = dateformatter.format(now);
+            DateFormat timeformatter = DateFormat.getTimeInstance(DateFormat.SHORT);
+            hour = timeformatter.format(now);
+
             if(title != null){
-                addSessionViewModel.addSession(new Session(title, description, windSpeed, windOrientation, waveSize, waveFrequency, false));
+                addSessionViewModel.addSession(new Session(title, description, windSpeed, windOrientation, waveSize, waveFrequency, favorite,date,hour,time));
             }
             navController.navigate(R.id.homeFragment);
         });

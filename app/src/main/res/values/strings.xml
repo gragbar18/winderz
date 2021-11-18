@@ -26,6 +26,8 @@
     <string name="fav">favorite : </string>
     <string name="time">Time :</string>
     <string name="in_minutes">in minutes</string>
+    <string name="button">Button</string>
+    <string name="log_in">Log in</string>
 
 
     <string-array name="windOrientation">

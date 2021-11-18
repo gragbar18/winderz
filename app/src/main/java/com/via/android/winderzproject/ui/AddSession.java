@@ -44,10 +44,10 @@ public class AddSession extends AppCompatActivity implements AdapterView.OnItemS
     String windOrientation;
     String waveSize;
     String waveFrequency;
-    Boolean favorite;
     String date;
-    String hour;
     String time;
+    Boolean favorite;
+    String hour;
 
     Button cancelButton;
     Button addButton;
@@ -69,6 +69,7 @@ public class AddSession extends AppCompatActivity implements AdapterView.OnItemS
         favoriteSwitch = findViewById(R.id.Favorite_switch);
         timeEdit = findViewById(R.id.timeEdit);
 
+
         //add part
         addButton.setOnClickListener(view -> {
             title = titleEdit.getText().toString();
@@ -87,6 +88,7 @@ public class AddSession extends AppCompatActivity implements AdapterView.OnItemS
 
             if(title != null){
                 addSessionViewModel.addSession(new Session(title, description, windSpeed, windOrientation, waveSize, waveFrequency, favorite,date, hour, time));
+            time = timeformatter.format(now);
             }
             finish();
         });

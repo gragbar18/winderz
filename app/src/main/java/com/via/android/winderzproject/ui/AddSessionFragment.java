@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +26,7 @@ import java.text.DateFormat;
 import java.util.Date;
 
 public class AddSessionFragment extends Fragment {
+
     AddSessionViewModel addSessionViewModel;
     NavController navController;
 
@@ -49,6 +51,7 @@ public class AddSessionFragment extends Fragment {
     String date;
     String hour;
     String time;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -83,6 +86,8 @@ public class AddSessionFragment extends Fragment {
         waveFrequencyEdit = view.findViewById(R.id.WaveFrequencyEdit);
         favoriteSwitch = view.findViewById(R.id.Favorite_switch);
         timeEdit = view.findViewById(R.id.timeEdit);
+
+
 
 
         //add part

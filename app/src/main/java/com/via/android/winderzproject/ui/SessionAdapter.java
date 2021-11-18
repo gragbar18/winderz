@@ -45,6 +45,7 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
         viewHolder.waveSize.setText(mSessions.get(position).getWaveSize());
         viewHolder.waveFrequency.setText(mSessions.get(position).getWaveFrequency());
 
+
     }
 
     @Override
@@ -73,6 +74,7 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
             time=itemView.findViewById(R.id.session_time);
             waveSize=itemView.findViewById(R.id.session_waveSize);
             waveFrequency=itemView.findViewById(R.id.session_waveFrequency);
+
         }
 
         @Override

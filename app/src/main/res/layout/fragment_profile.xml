@@ -147,7 +147,11 @@
             android:id="@+id/signOutButton"
             android:layout_width="150dp"
             android:layout_height="80dp"
-            android:text="@string/sign_out"/>
+            android:text="@string/sign_out"
+            android:background="@drawable/button"
+            android:backgroundTint="@color/black"
+
+            />
 
 
     </LinearLayout>

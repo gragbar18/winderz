@@ -37,21 +37,17 @@ public class Session {
         this.hour = hour;
     }
 
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
     public String getDate() {
         return date;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDate(String date) {this.date = date; }
+
+    public String getTime() {
+        return time;
     }
+
+    public void setTime(String time) {this.time = time; }
 
     public Boolean getFavorite() {
         return favorite;
@@ -121,7 +117,7 @@ public class Session {
                 ", favorite=" + favorite +
                 ", date='" + date + '\'' +
                 ", hour='" + hour + '\'' +
-                ", time=" + time +
+                ", time=" + time  +
                 '}';
     }
 }

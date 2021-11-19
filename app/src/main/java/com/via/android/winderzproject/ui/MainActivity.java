@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         addSessionButton.setOnClickListener(v -> {
             navController.navigate(R.id.addSession);
         });
+    }
 
 
     private void checkIfSignedIn() {
@@ -76,11 +77,12 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     public boolean onMenuItemClick(MenuItem item) {
         if(item.getTitle().equals("change") ){
             Toast.makeText(this, "change", Toast.LENGTH_SHORT).show();
+            return true;
         }
         if(item.getTitle().equals("delete")){
             Toast.makeText(this, "delete", Toast.LENGTH_SHORT).show();
+            return true;
         }
-        Toast.makeText(this, "no Where", Toast.LENGTH_SHORT).show();
         return false;
     }
 

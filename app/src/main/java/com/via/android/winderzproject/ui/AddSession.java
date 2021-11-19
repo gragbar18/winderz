@@ -1,16 +1,19 @@
 package com.via.android.winderzproject.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SwitchCompat;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Switch;
 
@@ -37,6 +40,7 @@ public class AddSession extends AppCompatActivity implements AdapterView.OnItemS
     EditText waveFrequencyEdit;
     EditText timeEdit;
     Switch favoriteSwitch;
+    ImageView imageView;
 
     String title;
     String description;
@@ -51,6 +55,7 @@ public class AddSession extends AppCompatActivity implements AdapterView.OnItemS
 
     Button cancelButton;
     Button addButton;
+    Button photoButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +74,9 @@ public class AddSession extends AppCompatActivity implements AdapterView.OnItemS
         favoriteSwitch = findViewById(R.id.Favorite_switch);
         timeEdit = findViewById(R.id.timeEdit);
 
+        //image part
+        imageView = findViewById(R.id.activityImage);
+        photoButton = findViewById(R.id.takePhotoButton);
 
         //add part
         addButton.setOnClickListener(view -> {
@@ -86,9 +94,9 @@ public class AddSession extends AppCompatActivity implements AdapterView.OnItemS
             DateFormat timeformatter = DateFormat.getTimeInstance(DateFormat.SHORT);
             hour = timeformatter.format(now);
 
-            if(title != null){
-                addSessionViewModel.addSession(new Session(title, description, windSpeed, windOrientation, waveSize, waveFrequency, favorite,date, hour, time));
-            time = timeformatter.format(now);
+            if (title != null) {
+                addSessionViewModel.addSession(new Session(title, description, windSpeed, windOrientation, waveSize, waveFrequency, favorite, date, hour, time));
+                time = timeformatter.format(now);
             }
             finish();
         });

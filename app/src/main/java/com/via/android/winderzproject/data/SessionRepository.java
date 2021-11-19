@@ -35,4 +35,8 @@ public class SessionRepository {
     public SessionsLiveData getSessions(){
         return sessions;
     }
+
+    public void deleteSession(String key) {
+        myRef.child(key).removeValue();
+    }
 }

@@ -2,8 +2,10 @@ package com.via.android.winderzproject.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
@@ -21,7 +23,7 @@ import java.util.List;
 
 public class HomeFragment extends Fragment implements SessionAdapter.OnListItemClickListener {
 
-    SessionDataViewModel sessionDataViewModel;
+    static SessionDataViewModel sessionDataViewModel;
     RecyclerView mSessionList;
     SessionAdapter mSessionAdapter;
     List<Session> displayedSessions = new ArrayList<>();
@@ -38,8 +40,6 @@ public class HomeFragment extends Fragment implements SessionAdapter.OnListItemC
             displayedSessions.addAll(sessions);
             mSessionAdapter.notifyDataSetChanged();
         });
-        //sessionDataViewModel=new ViewModelProvider(this).get(SessionDataViewModel.class);
-
     }
 
     @Override
@@ -53,14 +53,7 @@ public class HomeFragment extends Fragment implements SessionAdapter.OnListItemC
     public void onStart() {
         super.onStart();
         mSessionList = getView().findViewById(R.id.rv);
-        sessionDataViewModel.getSessions().observe(this, sessions -> {
-            //Add all the sessions in our list that is displayed
-            displayedSessions.clear();
-            displayedSessions.addAll(sessions);
-            //define the adapter and assign it to our recycler
-            mSessionAdapter = new SessionAdapter(displayedSessions,this);
-            mSessionList.setAdapter(mSessionAdapter);
-        });
+        mSessionList.setAdapter(mSessionAdapter);
 
         mSessionList.hasFixedSize();
         mSessionList.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -69,7 +62,11 @@ public class HomeFragment extends Fragment implements SessionAdapter.OnListItemC
 
     @Override
     public void onListItemClick(int clickedItemIndex) {
-        int sessionNumber = clickedItemIndex + 1;
-        Toast.makeText(getContext(),"Session Number: " + sessionNumber, Toast.LENGTH_SHORT).show();
+        Session session = displayedSessions.get(clickedItemIndex);
+        Toast.makeText(getContext(), session.toString() , Toast.LENGTH_SHORT).show();
+    }
+
+    public static void deleteSession(String keySession){
+        sessionDataViewModel.deleteSession(keySession);
     }
 }

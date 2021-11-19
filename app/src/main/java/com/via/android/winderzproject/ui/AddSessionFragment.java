@@ -47,7 +47,7 @@ public class AddSessionFragment extends Fragment {
     String windOrientation;
     String waveSize;
     String waveFrequency;
-    Boolean favorite;
+    Boolean favorite = false;
     String date;
     String hour;
     String time;

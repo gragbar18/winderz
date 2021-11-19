@@ -1,13 +1,14 @@
 package com.via.android.winderzproject.data;
 
 public class Session {
+    String key;
     String title;
     String description;
     String windSpeed;
     String windOrientation;
     String waveSize;
     String waveFrequency;
-    Boolean favorite;
+    boolean favorite;
     String date;
     String time;
     String hour;
@@ -16,7 +17,7 @@ public class Session {
         //Default constructor required for calls to Datasnapshot.getValue(Session.class)
     }
 
-    public Session(String title, String description, String windSpeed, String windOrientation, String waveSize, String waveFrequency, Boolean favorite, String date, String hour, String time) {
+    public Session(String title, String description, String windSpeed, String windOrientation, String waveSize, String waveFrequency, boolean favorite, String date, String hour, String time) {
         this.title = title;
         this.description = description;
         this.windSpeed = windSpeed;
@@ -27,6 +28,14 @@ public class Session {
         this.date=date;
         this.time=time;
         this.hour=hour;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getHour() {
@@ -49,11 +58,11 @@ public class Session {
 
     public void setTime(String time) {this.time = time; }
 
-    public Boolean getFavorite() {
+    public boolean getFavorite() {
         return favorite;
     }
 
-    public void setFavorite(Boolean favorite) {
+    public void setFavorite(boolean favorite) {
         this.favorite = favorite;
     }
 
@@ -108,7 +117,8 @@ public class Session {
     @Override
     public String toString() {
         return "Session{" +
-                "title='" + title + '\'' +
+                "key='" + key + '\'' +
+                ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", windSpeed='" + windSpeed + '\'' +
                 ", windOrientation='" + windOrientation + '\'' +
@@ -116,8 +126,8 @@ public class Session {
                 ", waveFrequency='" + waveFrequency + '\'' +
                 ", favorite=" + favorite +
                 ", date='" + date + '\'' +
+                ", time='" + time + '\'' +
                 ", hour='" + hour + '\'' +
-                ", time=" + time  +
                 '}';
     }
 }

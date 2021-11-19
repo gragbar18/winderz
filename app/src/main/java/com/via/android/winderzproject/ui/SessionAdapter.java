@@ -1,11 +1,19 @@
 package com.via.android.winderzproject.ui;
 
+import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.via.android.winderzproject.R;
@@ -18,12 +26,12 @@ import java.util.List;
 
 public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHolder> {
 
-    private List<Session> mSessions;
-    final private OnListItemClickListener mOnListItemClickListener;
+    private final List<Session> mSessions;
+    private final OnListItemClickListener mOnListItemClickListener;
 
     SessionAdapter(List<Session> sessions, OnListItemClickListener listener){
-    mSessions = sessions;
-    mOnListItemClickListener = listener;
+        mSessions = sessions;
+        mOnListItemClickListener = listener;
     }
 
     @NonNull
@@ -35,6 +43,7 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull SessionAdapter.ViewHolder viewHolder, int position) {
+        Session session = mSessions.get(position);
         viewHolder.title.setText(mSessions.get(position).getTitle());
         viewHolder.description.setText(mSessions.get(position).getDescription());
         viewHolder.windOrientation.setText(mSessions.get(position).getWindOrientation());
@@ -44,14 +53,17 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
         viewHolder.time.setText(mSessions.get(position).getTime());
         viewHolder.waveSize.setText(mSessions.get(position).getWaveSize());
         viewHolder.waveFrequency.setText(mSessions.get(position).getWaveFrequency());
-
-
+        //Pass the session object to the viewholder
+        viewHolder.session = session;
+        if(viewHolder.session.getFavorite()){
+            viewHolder.favoriteCheckbox.setChecked(true);
+        }
     }
 
     @Override
     public int getItemCount() { return mSessions.size();}
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView title;
         TextView description;
@@ -62,6 +74,9 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
         TextView time;
         TextView waveSize;
         TextView waveFrequency;
+        Button deleteButton;
+        CheckBox favoriteCheckbox;
+        Session session;
 
         ViewHolder(View itemView){
             super(itemView);
@@ -74,7 +89,12 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
             time=itemView.findViewById(R.id.session_time);
             waveSize=itemView.findViewById(R.id.session_waveSize);
             waveFrequency=itemView.findViewById(R.id.session_waveFrequency);
-
+            deleteButton = itemView.findViewById(R.id.deleteButton);
+            deleteButton.setOnClickListener(view -> {
+                HomeFragment.deleteSession(session.getKey());
+            });
+            favoriteCheckbox = itemView.findViewById(R.id.favoriteCheckbox);
+            itemView.setOnClickListener(this);
         }
 
         @Override

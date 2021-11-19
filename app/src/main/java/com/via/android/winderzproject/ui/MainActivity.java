@@ -8,8 +8,11 @@ import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -17,11 +20,15 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.via.android.winderzproject.R;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
     MainActivityViewModel viewModel;
     BottomNavigationView bottomNavigationView;
     FloatingActionButton addSessionButton;
     Button signOutButton;
+    CheckBox heart;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         addSessionButton.setOnClickListener(v -> {
             navController.navigate(R.id.addSession);
         });
-    }
+
 
     private void checkIfSignedIn() {
         viewModel.getCurrentUser().observe(this, user -> {
@@ -56,4 +63,25 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, LoginActivity.class));
         finish();
     }
+
+
+    public void showPopup(View view) {
+        PopupMenu popup = new PopupMenu(this, view);
+        popup.setOnMenuItemClickListener(this);
+        popup.inflate(R.menu.popup_menu);
+        popup.show();
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        if(item.getTitle().equals("change") ){
+            Toast.makeText(this, "change", Toast.LENGTH_SHORT).show();
+        }
+        if(item.getTitle().equals("delete")){
+            Toast.makeText(this, "delete", Toast.LENGTH_SHORT).show();
+        }
+        Toast.makeText(this, "no Where", Toast.LENGTH_SHORT).show();
+        return false;
+    }
+
 }

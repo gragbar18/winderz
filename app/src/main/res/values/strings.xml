@@ -28,6 +28,7 @@
     <string name="in_minutes">in minutes</string>
     <string name="button">Button</string>
     <string name="log_in">Log in</string>
+    <string name="change">change</string>
 
 
     <string-array name="windOrientation">

@@ -27,6 +27,8 @@
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/email.xml" value="0.26510416666666664" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/favorite.xml" value="0.2512820512820513" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/home.xml" value="0.2512820512820513" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/ic_favorite.xml" value="0.26510416666666664" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/ic_favorite_border.xml" value="0.26510416666666664" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/ic_launcher_background.xml" value="0.26927083333333335" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/ic_more_horiz.xml" value="0.140625" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/localisation.xml" value="0.2512820512820513" />
@@ -34,7 +36,9 @@
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/person.xml" value="0.2512820512820513" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/profile.xml" value="0.26927083333333335" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/rectangle.xml" value="0.25743589743589745" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/selector_fav.xml" value="0.26510416666666664" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/sign_out_btn.xml" value="0.26510416666666664" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/toggle_selector.xml" value="0.26510416666666664" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/fragment_add_session.xml" value="0.2" />
@@ -42,9 +46,10 @@
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/fragment_home.xml" value="0.2074074074074074" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/fragment_map.xml" value="0.253125" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/fragment_profile.xml" value="0.3256113256113256" />
-        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/session_list_item.xml" value="0.4812623274161736" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/session_list_item.xml" value="0.6" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/menu/bottom_menu.xml" value="0.2390625" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/menu/horiz_menu.xml" value="0.12708333333333333" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/menu/popup_menu.xml" value="0.24895833333333334" />
       </map>
     </option>
   </component>

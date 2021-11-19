@@ -17,15 +17,31 @@ import java.util.List;
 
 public class SessionsLiveData extends LiveData<List<Session>> {
     List<Session> tmp = new ArrayList<>();
-    private final ValueEventListener listener = new ValueEventListener() {
+
+    private final ChildEventListener listener = new ChildEventListener() {
+        @Override
+        public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+            Session addedSession = snapshot.getValue(Session.class);
+            addedSession.setKey(snapshot.getKey());
+            tmp.add(addedSession);
+            setValue(tmp);
+        }
 
         @Override
-        public void onDataChange(@NonNull DataSnapshot snapshot) {
-            tmp.clear();
-            for(DataSnapshot ds : snapshot.getChildren()) {
-                tmp.add(ds.getValue(Session.class));
-            }
+        public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+        }
+
+        @Override
+        public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+            Session deletedSession = snapshot.getValue(Session.class);
+            deletedSession.setKey(snapshot.getKey());
+            tmp.remove(deletedSession);
             setValue(tmp);
+        }
+
+        @Override
+        public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
         }
 
         @Override
@@ -43,7 +59,7 @@ public class SessionsLiveData extends LiveData<List<Session>> {
     @Override
     protected void onActive() {
         super.onActive();
-        databaseReference.addValueEventListener(listener);
+        databaseReference.addChildEventListener(listener);
     }
 
     @Override

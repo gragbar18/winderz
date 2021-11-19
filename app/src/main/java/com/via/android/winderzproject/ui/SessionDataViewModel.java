@@ -33,4 +33,8 @@ public class SessionDataViewModel extends AndroidViewModel {
     public LiveData<List<Session>> getSessions() {
         return sessionRepository.getSessions();
     }
+
+    public void deleteSession(String key) {
+        sessionRepository.deleteSession(key);
+    }
 }

@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -25,7 +26,7 @@ import com.via.android.winderzproject.data.Session;
 import java.text.DateFormat;
 import java.util.Date;
 
-public class AddSessionFragment extends Fragment {
+public class AddSessionFragment extends Fragment{
 
     AddSessionViewModel addSessionViewModel;
     NavController navController;
@@ -36,10 +37,12 @@ public class AddSessionFragment extends Fragment {
     EditText windSpeedEdit;
     EditText waveSizeEdit;
     EditText waveFrequencyEdit;
-    EditText timeEdit;
     Switch favoriteSwitch;
     Button cancelButton;
     Button addButton;
+    NumberPicker hourPicker;
+    NumberPicker minPicker;
+
 
     String title;
     String description;
@@ -50,8 +53,8 @@ public class AddSessionFragment extends Fragment {
     Boolean favorite = false;
     String date;
     String hour;
-    String time;
-
+    String hourSession;
+    String minSession;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -85,9 +88,13 @@ public class AddSessionFragment extends Fragment {
         waveSizeEdit = view.findViewById(R.id.waveSizeEdit);
         waveFrequencyEdit = view.findViewById(R.id.WaveFrequencyEdit);
         favoriteSwitch = view.findViewById(R.id.Favorite_switch);
-        timeEdit = view.findViewById(R.id.timeEdit);
+        hourPicker = getView().findViewById(R.id.hourPicker);
+        hourPicker.setMinValue(0);
+        hourPicker.setMaxValue(23);
 
-
+        minPicker = getView().findViewById(R.id.minPicker);
+        minPicker.setMinValue(0);
+        minPicker.setMaxValue(59);
 
 
         //add part
@@ -97,7 +104,8 @@ public class AddSessionFragment extends Fragment {
             windSpeed = windSpeedEdit.getText().toString();
             waveSize = waveSizeEdit.getText().toString();
             waveFrequency = waveFrequencyEdit.getText().toString();
-            time = timeEdit.getText().toString();
+            hourSession = hourPicker.getValue()+" hours";
+            minSession = minPicker.getValue() + " minutes";
 
             //Date part
             Date now = new Date();
@@ -107,7 +115,7 @@ public class AddSessionFragment extends Fragment {
             hour = timeformatter.format(now);
 
             if(title != null){
-                addSessionViewModel.addSession(new Session(title, description, windSpeed, windOrientation, waveSize, waveFrequency, favorite,date,hour,time));
+                addSessionViewModel.addSession(new Session(title, description, windSpeed, windOrientation, waveSize, waveFrequency, favorite,date,hour,hourSession,minSession));
             }
             navController.navigate(R.id.homeFragment);
         });
@@ -132,4 +140,5 @@ public class AddSessionFragment extends Fragment {
             }
         });
     }
+
 }

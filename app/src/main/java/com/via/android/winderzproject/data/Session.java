@@ -10,14 +10,15 @@ public class Session {
     String waveFrequency;
     boolean favorite;
     String date;
-    String time;
+    String hourSession;
+    String minSession;
     String hour;
 
     public Session(){
         //Default constructor required for calls to Datasnapshot.getValue(Session.class)
     }
 
-    public Session(String title, String description, String windSpeed, String windOrientation, String waveSize, String waveFrequency, boolean favorite, String date, String hour, String time) {
+    public Session(String title, String description, String windSpeed, String windOrientation, String waveSize, String waveFrequency, boolean favorite, String date, String hour, String hourSession, String minSession) {
         this.title = title;
         this.description = description;
         this.windSpeed = windSpeed;
@@ -26,7 +27,8 @@ public class Session {
         this.waveFrequency = waveFrequency;
         this.favorite = favorite;
         this.date=date;
-        this.time=time;
+        this.hourSession=hourSession;
+        this.minSession=minSession;
         this.hour=hour;
     }
 
@@ -52,11 +54,17 @@ public class Session {
 
     public void setDate(String date) {this.date = date; }
 
-    public String getTime() {
-        return time;
+    public String getHourSession() {
+        return hourSession;
     }
 
-    public void setTime(String time) {this.time = time; }
+    public void setHourSession(String hourSession) {this.hourSession = hourSession; }
+
+    public String getMinSession() {
+        return minSession;
+    }
+
+    public void setMinSession(String minSession) {this.minSession = minSession; }
 
     public boolean getFavorite() {
         return favorite;
@@ -126,7 +134,8 @@ public class Session {
                 ", waveFrequency='" + waveFrequency + '\'' +
                 ", favorite=" + favorite +
                 ", date='" + date + '\'' +
-                ", time='" + time + '\'' +
+                ", hour session='" + hourSession + '\'' +
+                ", min session='" + minSession + '\'' +
                 ", hour='" + hour + '\'' +
                 '}';
     }

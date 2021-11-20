@@ -50,7 +50,8 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
         viewHolder.windSpeed.setText(mSessions.get(position).getWindSpeed());
         viewHolder.date.setText(mSessions.get(position).getDate());
         viewHolder.hour.setText(mSessions.get(position).getHour());
-        viewHolder.time.setText(mSessions.get(position).getTime());
+        viewHolder.hourSession.setText(mSessions.get(position).getHourSession());
+        viewHolder.minSession.setText(mSessions.get(position).getMinSession());
         viewHolder.waveSize.setText(mSessions.get(position).getWaveSize());
         viewHolder.waveFrequency.setText(mSessions.get(position).getWaveFrequency());
         //Pass the session object to the viewholder
@@ -71,7 +72,8 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
         TextView windSpeed;
         TextView date;
         TextView hour;
-        TextView time;
+        TextView hourSession;
+        TextView minSession;
         TextView waveSize;
         TextView waveFrequency;
         Button deleteButton;
@@ -86,7 +88,8 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
             windSpeed=itemView.findViewById(R.id.session_windSpeed);
             date=itemView.findViewById(R.id.session_date);
             hour=itemView.findViewById(R.id.session_hour);
-            time=itemView.findViewById(R.id.session_time);
+            hourSession=itemView.findViewById(R.id.hourSession);
+            minSession=itemView.findViewById(R.id.minSession);
             waveSize=itemView.findViewById(R.id.session_waveSize);
             waveFrequency=itemView.findViewById(R.id.session_waveFrequency);
             deleteButton = itemView.findViewById(R.id.deleteButton);

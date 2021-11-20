@@ -20,7 +20,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.via.android.winderzproject.R;
 
 
-public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
+public class MainActivity extends AppCompatActivity{
     MainActivityViewModel viewModel;
     BottomNavigationView bottomNavigationView;
     FloatingActionButton addSessionButton;
@@ -63,27 +63,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     private void starLoginActivity() {
         startActivity(new Intent(this, LoginActivity.class));
         finish();
-    }
-
-
-    public void showPopup(View view) {
-        PopupMenu popup = new PopupMenu(this, view);
-        popup.setOnMenuItemClickListener(this);
-        popup.inflate(R.menu.popup_menu);
-        popup.show();
-    }
-
-    @Override
-    public boolean onMenuItemClick(MenuItem item) {
-        if(item.getTitle().equals("change") ){
-            Toast.makeText(this, "change", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        if(item.getTitle().equals("delete")){
-            Toast.makeText(this, "delete", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        return false;
     }
 
 }

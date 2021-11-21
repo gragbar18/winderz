@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         addSessionButton.setOnClickListener(v -> {
             navController.navigate(R.id.addSession);
         });
-    }
 
 
     private void checkIfSignedIn() {

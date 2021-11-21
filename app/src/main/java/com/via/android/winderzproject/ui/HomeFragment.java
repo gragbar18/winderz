@@ -69,4 +69,8 @@ public class HomeFragment extends Fragment implements SessionAdapter.OnListItemC
     public static void deleteSession(String keySession){
         sessionDataViewModel.deleteSession(keySession);
     }
+
+    public static void updateFavoriteSession(String keySession, Boolean isChecked){
+        sessionDataViewModel.updateFavoriteSession(keySession, isChecked);
+    }
 }

@@ -39,4 +39,6 @@ public class SessionRepository {
     public void deleteSession(String key) {
         myRef.child(key).removeValue();
     }
+
+    public void updateFavoriteSession(String key , boolean isChecked) {myRef.child(key).child("favorite").setValue(isChecked); }
 }

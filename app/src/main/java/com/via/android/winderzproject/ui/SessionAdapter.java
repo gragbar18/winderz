@@ -1,6 +1,7 @@
 package com.via.android.winderzproject.ui;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -95,6 +96,10 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
             });
             favoriteCheckbox = itemView.findViewById(R.id.favoriteCheckbox);
             itemView.setOnClickListener(this);
+            favoriteCheckbox.setOnClickListener(view -> {
+                HomeFragment.updateFavoriteSession(session.getKey(), favoriteCheckbox.isChecked());
+                Log.d("test", String.valueOf(favoriteCheckbox.isChecked()));
+            });
         }
 
         @Override

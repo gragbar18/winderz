@@ -98,6 +98,7 @@ public class AddSessionFragment extends Fragment {
             waveSize = waveSizeEdit.getText().toString();
             waveFrequency = waveFrequencyEdit.getText().toString();
             time = timeEdit.getText().toString();
+            favorite=favoriteSwitch.isChecked();
 
             //Date part
             Date now = new Date();

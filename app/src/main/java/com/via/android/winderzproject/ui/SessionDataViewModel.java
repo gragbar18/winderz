@@ -37,4 +37,8 @@ public class SessionDataViewModel extends AndroidViewModel {
     public void deleteSession(String key) {
         sessionRepository.deleteSession(key);
     }
+
+    public void updateFavoriteSession(String key, Boolean isChecked){
+        sessionRepository.updateFavoriteSession(key, isChecked);
+    }
 }

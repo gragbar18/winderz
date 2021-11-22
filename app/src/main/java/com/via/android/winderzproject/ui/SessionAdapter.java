@@ -53,7 +53,7 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
         viewHolder.hourSession.setText(mSessions.get(position).getHourSession());
         viewHolder.minSession.setText(mSessions.get(position).getMinSession());
         viewHolder.waveSize.setText(mSessions.get(position).getWaveSize());
-        viewHolder.waveFrequency.setText(mSessions.get(position).getWaveFrequency());
+        viewHolder.wavePeriod.setText(mSessions.get(position).getWavePeriod());
         //Pass the session object to the viewholder
         viewHolder.session = session;
         if(viewHolder.session.getFavorite()){
@@ -75,7 +75,7 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
         TextView hourSession;
         TextView minSession;
         TextView waveSize;
-        TextView waveFrequency;
+        TextView wavePeriod;
         Button deleteButton;
         CheckBox favoriteCheckbox;
         Session session;
@@ -91,7 +91,7 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
             hourSession=itemView.findViewById(R.id.hourSession);
             minSession=itemView.findViewById(R.id.minSession);
             waveSize=itemView.findViewById(R.id.session_waveSize);
-            waveFrequency=itemView.findViewById(R.id.session_waveFrequency);
+            wavePeriod=itemView.findViewById(R.id.session_wavePeriod);
             deleteButton = itemView.findViewById(R.id.deleteButton);
             deleteButton.setOnClickListener(view -> {
                 HomeFragment.deleteSession(session.getKey());

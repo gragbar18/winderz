@@ -38,10 +38,9 @@
             <EditText
                 android:id="@+id/descriptionEdit"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="match_parent"
                 android:layout_marginTop="16dp"
                 android:autofillHints="description"
-                android:gravity="top"
                 android:hint="@string/description_of_the_session"
                 android:inputType="textPersonName"
                 android:textSize="16sp" />
@@ -98,64 +97,8 @@
                     app:layout_constraintTop_toTopOf="parent" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp">
 
-                <TextView
-                    android:id="@+id/WindSpeed"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:text="@string/wind_speed"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
 
-                <EditText
-                    android:id="@+id/WindSpeedEdit"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:autofillHints="description"
-                    android:hint="@string/in_kilometer_per_hour"
-                    android:textSize="18sp"
-                    tools:ignore="TextFields" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp">
-
-                <TextView
-                    android:id="@+id/WindOrientation"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:text="@string/wind_orientation"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <Spinner
-                    android:id="@+id/WindOrientationSpinner"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:hint="@string/in_kilometer_per_hour"
-                    android:textSize="18sp" />
-
-            </LinearLayout>
 
 
             <LinearLayout
@@ -169,24 +112,90 @@
 
                 <TextView
                     android:id="@+id/waveSize"
-                    android:layout_width="150dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_marginStart="5dp"
                     android:text="@string/wave_size"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:gravity="center"/>
 
-                <EditText
-                    android:id="@+id/waveSizeEdit"
-                    android:layout_width="200dp"
+
+
+                <TextView
+                    android:id="@+id/WindOrientation"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_marginStart="5dp"
-                    android:autofillHints="description"
-                    android:hint="@string/in_meter"
+                    android:text="@string/wind_orientation"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp"
-                    tools:ignore="TextFields" />
+                    android:textStyle="bold"
+                    android:gravity="center"/>
+
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    >
+
+                    <Spinner
+                        android:id="@+id/waveSizeSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:textAlignment="center"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <Spinner
+                        android:id="@+id/windOrientationSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:hint="@string/in_kilometer_per_hour"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:textAlignment="center"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -196,26 +205,104 @@
                 android:orientation="horizontal"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp">
-
                 <TextView
-                    android:id="@+id/WaveFrequency"
-                    android:layout_width="150dp"
+                    android:id="@+id/WindSpeed"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_marginStart="5dp"
-                    android:text="@string/wave_frequency"
+                    android:text="@string/wind_speed"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:gravity="center"/>
 
-                <EditText
-                    android:id="@+id/WaveFrequencyEdit"
-                    android:layout_width="200dp"
+
+
+                <TextView
+                    android:id="@+id/WavePeriod"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_marginStart="5dp"
-                    android:autofillHints="description"
-                    android:hint="@string/in_herz"
+                    android:text="@string/wave_period"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp"
-                    tools:ignore="TextFields" />
+                    android:textStyle="bold"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    >
+
+                    <NumberPicker
+                        android:id="@+id/windSpeedPicker"
+                        android:layout_width="40dp"
+                        android:layout_height="100dp"
+                        android:gravity="center_horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="m/s"
+                        android:textColor="@android:color/black"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/windSpeedPicker"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    >
+
+
+                    <NumberPicker
+                        android:id="@+id/wavePeriodPicker"
+                        android:layout_width="40dp"
+                        android:layout_height="100dp"
+                        android:gravity="center_horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="wave / sec"
+                        android:textColor="@android:color/black"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/wavePeriodPicker"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
             </LinearLayout>
 
             <LinearLayout

@@ -155,7 +155,7 @@
                         android:layout_weight="1"/>
 
                     <TextView
-                        android:id="@+id/session_waveFrequency"
+                        android:id="@+id/session_wavePeriod"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"/>

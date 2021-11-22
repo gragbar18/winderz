@@ -24,11 +24,6 @@ public class MainActivity extends AppCompatActivity{
     MainActivityViewModel viewModel;
     BottomNavigationView bottomNavigationView;
     FloatingActionButton addSessionButton;
-    Button signOutButton;
-    CheckBox heart;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +32,7 @@ public class MainActivity extends AppCompatActivity{
         checkIfSignedIn();
         setContentView(R.layout.activity_main);
 
-        bottomNavigationView=findViewById(R.id.bottomNavigationView);
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setBackground(null);
 
         NavController navController = Navigation.findNavController(this, R.id.fragmentContainerView);
@@ -50,19 +45,16 @@ public class MainActivity extends AppCompatActivity{
         });
     }
 
-
     private void checkIfSignedIn() {
         viewModel.getCurrentUser().observe(this, user -> {
-            if(user != null) {
-                Toast.makeText(this, "Welcome " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
-            }else
+            if (user == null)
                 starLoginActivity();
-        });
+            }
+        );
     }
 
     private void starLoginActivity() {
         startActivity(new Intent(this, LoginActivity.class));
         finish();
     }
-
 }

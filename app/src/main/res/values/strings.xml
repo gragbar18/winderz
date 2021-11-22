@@ -29,6 +29,8 @@
     <string name="button">Button</string>
     <string name="log_in">Log in</string>
     <string name="change">change</string>
+    <string name="cancel">cancel</string>
+    <string name="update">update</string>
 
 
     <string-array name="windOrientation">

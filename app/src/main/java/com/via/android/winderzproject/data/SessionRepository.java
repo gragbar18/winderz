@@ -6,6 +6,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class SessionRepository {
@@ -38,5 +39,9 @@ public class SessionRepository {
 
     public void deleteSession(String key) {
         myRef.child(key).removeValue();
+    }
+
+    public void updateSession(String key, Session session){
+        myRef.child(key).setValue(session.toMap());
     }
 }

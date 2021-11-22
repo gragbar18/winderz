@@ -1,5 +1,6 @@
 package com.via.android.winderzproject.data;
 
+//Object not used yet but can be integrated in the future to store more data on the user
 public class User {
     String username;
     String email;

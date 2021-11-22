@@ -106,6 +106,7 @@ public class AddSessionFragment extends Fragment{
             waveFrequency = waveFrequencyEdit.getText().toString();
             hourSession = hourPicker.getValue()+" hours";
             minSession = minPicker.getValue() + " minutes";
+            favorite = favoriteSwitch.isChecked();
 
             //Date part
             Date now = new Date();

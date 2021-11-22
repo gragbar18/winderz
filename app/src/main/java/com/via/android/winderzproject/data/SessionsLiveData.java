@@ -18,24 +18,37 @@ import java.util.List;
 public class SessionsLiveData extends LiveData<List<Session>> {
     List<Session> tmp = new ArrayList<>();
 
-    private final ChildEventListener listener = new ChildEventListener() {
+    /*private final ChildEventListener listener = new ChildEventListener() {
         @Override
         public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
             Session addedSession = snapshot.getValue(Session.class);
             addedSession.setKey(snapshot.getKey());
+            tmp = getValue();
+            if (tmp == null)
+                tmp = new ArrayList<>();
             tmp.add(addedSession);
+            Log.d("test", tmp.toString() + " added");
             setValue(tmp);
         }
 
         @Override
         public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+            Session updatedSession = snapshot.getValue(Session.class);
+            for(Session session : tmp){
+                if (session.getKey().equals(updatedSession.getKey())){
+                    session = new Session(updatedSession);
+                    Log.d("test", "updated");
+                }
+            }
+            Log.d("test", tmp.toString() + " updated");
+            setValue(tmp);
         }
 
         @Override
         public void onChildRemoved(@NonNull DataSnapshot snapshot) {
             Session deletedSession = snapshot.getValue(Session.class);
-            deletedSession.setKey(snapshot.getKey());
             tmp.remove(deletedSession);
+            Log.d("test", tmp.toString() + " deleted");
             setValue(tmp);
         }
 
@@ -48,6 +61,24 @@ public class SessionsLiveData extends LiveData<List<Session>> {
         public void onCancelled(@NonNull DatabaseError error) {
 
         }
+    };*/
+
+    private final ValueEventListener listener = new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot snapshot) {
+            tmp = new ArrayList<>();
+            for(DataSnapshot ds : snapshot.getChildren()){
+                Session session = ds.getValue(Session.class);
+                session.setKey(ds.getKey());
+                tmp.add(session);
+            }
+            setValue(tmp);
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError error) {
+            Log.d("test", "Error in valueEventListener");
+        }
     };
 
     DatabaseReference databaseReference;
@@ -59,7 +90,8 @@ public class SessionsLiveData extends LiveData<List<Session>> {
     @Override
     protected void onActive() {
         super.onActive();
-        databaseReference.addChildEventListener(listener);
+        //databaseReference.addChildEventListener(listener);
+        databaseReference.addValueEventListener(listener);
     }
 
     @Override

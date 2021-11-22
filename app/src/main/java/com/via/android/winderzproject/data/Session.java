@@ -1,6 +1,12 @@
 package com.via.android.winderzproject.data;
 
-public class Session {
+import androidx.annotation.NonNull;
+
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Session implements Serializable {
     String key;
     String title;
     String description;
@@ -30,6 +36,19 @@ public class Session {
         this.hourSession=hourSession;
         this.minSession=minSession;
         this.hour=hour;
+    }
+
+    public Session(Session updatedSession) {
+        this.title = updatedSession.title;
+        this.description = updatedSession.description;
+        this.windSpeed = updatedSession.windSpeed;
+        this.windOrientation = updatedSession.windOrientation;
+        this.waveSize = updatedSession.waveSize;
+        this.waveFrequency = updatedSession.waveFrequency;
+        this.favorite = updatedSession.favorite;
+        this.date= updatedSession.date;
+        this.time = updatedSession.time;
+        this.hour= updatedSession.hour;
     }
 
     public String getKey() {
@@ -122,6 +141,7 @@ public class Session {
         this.waveFrequency = waveFrequency;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "Session{" +
@@ -138,5 +158,20 @@ public class Session {
                 ", min session='" + minSession + '\'' +
                 ", hour='" + hour + '\'' +
                 '}';
+    }
+
+    public Map<String, Object> toMap(){
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("title", title);
+        map.put("description", description);
+        map.put("windSpeed", windSpeed);
+        map.put("windOrientation", windOrientation);
+        map.put("waveSize", waveSize);
+        map.put("waveFrequency", waveFrequency);
+        map.put("favorite", favorite);
+        map.put("date", date);
+        map.put("time", time);
+        map.put("hour", hour);
+        return map;
     }
 }

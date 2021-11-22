@@ -20,15 +20,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.via.android.winderzproject.R;
 
 
-public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
+public class MainActivity extends AppCompatActivity{
     MainActivityViewModel viewModel;
     BottomNavigationView bottomNavigationView;
     FloatingActionButton addSessionButton;
-    Button signOutButton;
-    CheckBox heart;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         checkIfSignedIn();
         setContentView(R.layout.activity_main);
 
-        bottomNavigationView=findViewById(R.id.bottomNavigationView);
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setBackground(null);
 
         NavController navController = Navigation.findNavController(this, R.id.fragmentContainerView);
@@ -48,41 +43,18 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         addSessionButton.setOnClickListener(v -> {
             navController.navigate(R.id.addSession);
         });
-
+    }
 
     private void checkIfSignedIn() {
         viewModel.getCurrentUser().observe(this, user -> {
-            if(user != null) {
-                Toast.makeText(this, "Welcome " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
-            }else
+            if (user == null)
                 starLoginActivity();
-        });
+            }
+        );
     }
 
     private void starLoginActivity() {
         startActivity(new Intent(this, LoginActivity.class));
         finish();
     }
-
-
-    public void showPopup(View view) {
-        PopupMenu popup = new PopupMenu(this, view);
-        popup.setOnMenuItemClickListener(this);
-        popup.inflate(R.menu.popup_menu);
-        popup.show();
-    }
-
-    @Override
-    public boolean onMenuItemClick(MenuItem item) {
-        if(item.getTitle().equals("change") ){
-            Toast.makeText(this, "change", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        if(item.getTitle().equals("delete")){
-            Toast.makeText(this, "delete", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        return false;
-    }
-
 }

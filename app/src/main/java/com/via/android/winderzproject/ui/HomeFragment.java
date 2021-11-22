@@ -1,5 +1,6 @@
 package com.via.android.winderzproject.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -33,11 +34,13 @@ public class HomeFragment extends Fragment implements SessionAdapter.OnListItemC
         super.onCreate(savedInstanceState);
         sessionDataViewModel=new ViewModelProvider(this).get(SessionDataViewModel.class);
         sessionDataViewModel.init();
+
         mSessionAdapter = new SessionAdapter(displayedSessions,this);
         sessionDataViewModel.getSessions().observe(this, sessions -> {
             //Add all the sessions in our list that is displayed
             displayedSessions.clear();
             displayedSessions.addAll(sessions);
+            Toast.makeText(getContext(), "Bip", Toast.LENGTH_SHORT).show();
             mSessionAdapter.notifyDataSetChanged();
         });
     }
@@ -53,17 +56,31 @@ public class HomeFragment extends Fragment implements SessionAdapter.OnListItemC
     public void onStart() {
         super.onStart();
         mSessionList = getView().findViewById(R.id.rv);
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        displayedSessions.clear();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         mSessionList.setAdapter(mSessionAdapter);
 
         mSessionList.hasFixedSize();
         mSessionList.setLayoutManager(new LinearLayoutManager(getContext()));
-
     }
 
     @Override
     public void onListItemClick(int clickedItemIndex) {
         Session session = displayedSessions.get(clickedItemIndex);
-        Toast.makeText(getContext(), session.toString() , Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), session.getTitle() , Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getContext(), UpdateSessionActivity.class);
+        intent.putExtra("session", session);
+        startActivity(intent);
     }
 
     public static void deleteSession(String keySession){

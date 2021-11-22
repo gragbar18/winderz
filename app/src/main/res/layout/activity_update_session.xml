@@ -213,11 +213,11 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
             </LinearLayout>
-        <ImageView
-            android:id="@+id/activityImage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"/>
+            <ImageView
+                android:id="@+id/activityImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"/>
         </androidx.appcompat.widget.LinearLayoutCompat>
     </ScrollView>
 
@@ -232,10 +232,10 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/addButton"
+        android:id="@+id/updateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add"
+        android:text="@string/update"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1"

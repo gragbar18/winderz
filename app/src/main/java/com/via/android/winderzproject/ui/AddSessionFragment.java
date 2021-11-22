@@ -87,9 +87,6 @@ public class AddSessionFragment extends Fragment {
         favoriteSwitch = view.findViewById(R.id.Favorite_switch);
         timeEdit = view.findViewById(R.id.timeEdit);
 
-
-
-
         //add part
         addButton.setOnClickListener(v -> {
             title = titleEdit.getText().toString();
@@ -98,6 +95,7 @@ public class AddSessionFragment extends Fragment {
             waveSize = waveSizeEdit.getText().toString();
             waveFrequency = waveFrequencyEdit.getText().toString();
             time = timeEdit.getText().toString();
+            favorite = favoriteSwitch.isChecked();
 
             //Date part
             Date now = new Date();

@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.Switch;
 
@@ -24,7 +25,8 @@ public class UpdateSessionActivity extends AppCompatActivity {
     EditText windSpeedEdit;
     EditText waveSizeEdit;
     EditText waveFrequencyEdit;
-    EditText timeEdit;
+    NumberPicker hourPicker;
+    NumberPicker minPicker;
     Switch favoriteSwitch;
     String windOrientation;
     Button cancelButton;
@@ -59,8 +61,13 @@ public class UpdateSessionActivity extends AppCompatActivity {
         favoriteSwitch = findViewById(R.id.Favorite_switch);
         favoriteSwitch.setChecked(session.getFavorite());
 
-        timeEdit = findViewById(R.id.timeEdit);
-        timeEdit.setText(session.getTime());
+        hourPicker = findViewById(R.id.hourPicker);
+        hourPicker.setMinValue(0);
+        hourPicker.setMaxValue(23);
+
+        minPicker = findViewById(R.id.minPicker);
+        minPicker.setMinValue(0);
+        minPicker.setMaxValue(59);
 
         windOrientationSpinner = findViewById(R.id.WindOrientationSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.windOrientation, android.R.layout.simple_spinner_item);
@@ -84,7 +91,8 @@ public class UpdateSessionActivity extends AppCompatActivity {
             session.setWaveSize(waveSizeEdit.getText().toString());
             session.setWaveFrequency(waveFrequencyEdit.getText().toString());
             session.setFavorite(favoriteSwitch.isChecked());
-            session.setTime(timeEdit.getText().toString());
+            session.setHourSession(hourPicker.getValue()+" hours");
+            session.setHourSession(minPicker.getValue() + " minutes");
 
             if(session.getTitle() != null){
                 updateSessionViewModel.updateSession(session);

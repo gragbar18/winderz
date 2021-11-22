@@ -47,8 +47,9 @@ public class Session implements Serializable {
         this.waveFrequency = updatedSession.waveFrequency;
         this.favorite = updatedSession.favorite;
         this.date= updatedSession.date;
-        this.time = updatedSession.time;
         this.hour= updatedSession.hour;
+        this.hourSession=hourSession;
+        this.minSession=minSession;
     }
 
     public String getKey() {
@@ -170,8 +171,9 @@ public class Session implements Serializable {
         map.put("waveFrequency", waveFrequency);
         map.put("favorite", favorite);
         map.put("date", date);
-        map.put("time", time);
         map.put("hour", hour);
+        map.put("hourSession", date);
+        map.put("minSession", hour);
         return map;
     }
 }

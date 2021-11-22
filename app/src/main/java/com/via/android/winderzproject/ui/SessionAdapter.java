@@ -54,11 +54,12 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
         viewHolder.minSession.setText(mSessions.get(position).getMinSession());
         viewHolder.waveSize.setText(mSessions.get(position).getWaveSize());
         viewHolder.wavePeriod.setText(mSessions.get(position).getWavePeriod());
-        //Pass the session object to the viewholder
-        viewHolder.session = session;
-        if(viewHolder.session.getFavorite()){
+        if(mSessions.get(position).getFavorite()) {
             viewHolder.favoriteCheckbox.setChecked(true);
         }
+        //Pass the session object to the viewholder
+        viewHolder.session = session;
+
     }
 
     @Override

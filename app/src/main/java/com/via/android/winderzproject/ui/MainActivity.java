@@ -18,12 +18,14 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.via.android.winderzproject.R;
+import com.via.android.winderzproject.data.Session;
 
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
     MainActivityViewModel viewModel;
     BottomNavigationView bottomNavigationView;
     FloatingActionButton addSessionButton;
+    Session session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,5 +58,28 @@ public class MainActivity extends AppCompatActivity{
     private void starLoginActivity() {
         startActivity(new Intent(this, LoginActivity.class));
         finish();
+    }
+
+    public void showPopup(View view) {
+        PopupMenu popup = new PopupMenu(this,view);
+        popup.setOnMenuItemClickListener(this);
+        popup.inflate(R.menu.choice_menu);
+        popup.show();
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.modify :
+                Toast.makeText(this,"Modify clicked", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.delete :
+                Toast.makeText(this,"Delete clicked", Toast.LENGTH_SHORT).show();
+
+                    HomeFragment.deleteSession(session.getKey());
+                return  true;
+            default:
+                return false;
+        }
     }
 }

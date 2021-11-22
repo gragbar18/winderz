@@ -31,6 +31,7 @@ public class UpdateSessionActivity extends AppCompatActivity {
     String windOrientation;
     Button cancelButton;
     Button updateButton;
+    Button changeButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

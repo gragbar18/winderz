@@ -38,7 +38,7 @@
             <EditText
                 android:id="@+id/descriptionEdit"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="match_parent"
                 android:layout_marginTop="16dp"
                 android:autofillHints="description"
                 android:hint="@string/description_of_the_session"

@@ -27,70 +27,69 @@
 
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.9"
-            android:orientation="horizontal"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="-10dp">
-
-            <TextView
-                android:id="@+id/session_title"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:textSize="20pt"
-                android:text="Session"
-                android:layout_marginEnd="10dp"
-                />
-            <TextView
-                android:id="@+id/session_date"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:textSize="11sp"
-                android:gravity="bottom"
-                android:layout_marginEnd="10dp"
-                android:text="date"                />
-
-            <TextView
-                android:id="@+id/session_hour"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:textSize="11sp"
-                android:text="heure"
-                android:gravity="bottom"/>
-
-
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 tools:context=".MainActivity">
 
-                <CheckBox
-                    android:id="@+id/favoriteCheckbox"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginEnd="20dp"
-                    android:button="@drawable/selector_fav"
-                    app:useMaterialThemeColors="false"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/deleteButton"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.542" />
-
-                <Button
-                    android:id="@+id/deleteButton"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:background="@drawable/ic_delete"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                <TextView
+                    android:id="@+id/session_title"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:text="Session"
+                    android:textSize="20pt"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:context=".MainActivity">
+
+                    <TextView
+                        android:id="@+id/session_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="12dp"
+                        android:gravity="bottom"
+                        android:text="date"
+                        android:textSize="11sp"
+                        app:layout_constraintEnd_toStartOf="@+id/deleteButton"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/session_hour"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="bottom"
+                        android:text="heure"
+                        android:textSize="11sp"
+                        app:layout_constraintStart_toStartOf="@+id/session_date"
+                        app:layout_constraintTop_toBottomOf="@+id/session_date" />
+
+                    <CheckBox
+                        android:id="@+id/favoriteCheckbox"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:button="@drawable/selector_fav"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/deleteButton"
+                        app:useMaterialThemeColors="false" />
+
+                    <Button
+                        android:id="@+id/deleteButton"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/ic_delete"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"

@@ -40,7 +40,7 @@
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/fragment_home.xml" value="0.2074074074074074" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/fragment_map.xml" value="0.253125" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/fragment_profile.xml" value="0.3256113256113256" />
-        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/session_list_item.xml" value="0.152" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/session_list_item.xml" value="0.4" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/menu/bottom_menu.xml" value="0.2390625" />
       </map>
     </option>
@@ -50,5 +50,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.6" />
+      </ProjectState>
+    </option>
   </component>
 </project>

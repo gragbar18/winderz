@@ -6,6 +6,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class SessionRepository {
@@ -41,4 +42,8 @@ public class SessionRepository {
     }
 
     public void updateFavoriteSession(String key , boolean isChecked) {myRef.child(key).child("favorite").setValue(isChecked); }
+
+    public void updateSession(String key, Session session){
+        myRef.child(key).setValue(session.toMap());
+    }
 }

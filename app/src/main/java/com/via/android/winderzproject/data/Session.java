@@ -1,33 +1,55 @@
 package com.via.android.winderzproject.data;
 
-public class Session {
+import androidx.annotation.NonNull;
+
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Session implements Serializable {
     String key;
     String title;
     String description;
-    String windSpeed;
+    int windSpeed;
     String windOrientation;
     String waveSize;
-    String waveFrequency;
+    int wavePeriod;
     boolean favorite;
     String date;
-    String time;
+    int hourSession;
+    int minSession;
     String hour;
 
     public Session(){
         //Default constructor required for calls to Datasnapshot.getValue(Session.class)
     }
 
-    public Session(String title, String description, String windSpeed, String windOrientation, String waveSize, String waveFrequency, boolean favorite, String date, String hour, String time) {
+    public Session(String title, String description, int windSpeed, String windOrientation, String waveSize, int wavePeriod, boolean favorite, String date, String hour, int hourSession, int minSession) {
         this.title = title;
         this.description = description;
         this.windSpeed = windSpeed;
         this.windOrientation = windOrientation;
         this.waveSize = waveSize;
-        this.waveFrequency = waveFrequency;
+        this.wavePeriod = wavePeriod;
         this.favorite = favorite;
         this.date=date;
-        this.time=time;
+        this.hourSession=hourSession;
+        this.minSession=minSession;
         this.hour=hour;
+    }
+
+    public Session(Session updatedSession) {
+        this.title = updatedSession.title;
+        this.description = updatedSession.description;
+        this.windSpeed = updatedSession.windSpeed;
+        this.windOrientation = updatedSession.windOrientation;
+        this.waveSize = updatedSession.waveSize;
+        this.wavePeriod = updatedSession.wavePeriod;
+        this.favorite = updatedSession.favorite;
+        this.date= updatedSession.date;
+        this.hour= updatedSession.hour;
+        this.hourSession=hourSession;
+        this.minSession=minSession;
     }
 
     public String getKey() {
@@ -52,11 +74,17 @@ public class Session {
 
     public void setDate(String date) {this.date = date; }
 
-    public String getTime() {
-        return time;
+    public int getHourSession() {
+        return hourSession;
     }
 
-    public void setTime(String time) {this.time = time; }
+    public void setHourSession(int hourSession) {this.hourSession = hourSession; }
+
+    public int getMinSession() {
+        return minSession;
+    }
+
+    public void setMinSession(int minSession) {this.minSession = minSession; }
 
     public boolean getFavorite() {
         return favorite;
@@ -82,11 +110,11 @@ public class Session {
         this.description = description;
     }
 
-    public String getWindSpeed() {
+    public int getWindSpeed() {
         return windSpeed;
     }
 
-    public void setWindSpeed(String windSpeed) {
+    public void setWindSpeed(int windSpeed) {
         this.windSpeed = windSpeed;
     }
 
@@ -106,14 +134,16 @@ public class Session {
         this.waveSize = waveSize;
     }
 
-    public String getWaveFrequency() {
-        return waveFrequency;
+
+    public int getWavePeriod() {
+        return wavePeriod;
     }
 
-    public void setWaveFrequency(String waveFrequency) {
-        this.waveFrequency = waveFrequency;
+    public void setWavePeriod(int wavePeriod) {
+        this.wavePeriod = wavePeriod;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "Session{" +
@@ -123,11 +153,28 @@ public class Session {
                 ", windSpeed='" + windSpeed + '\'' +
                 ", windOrientation='" + windOrientation + '\'' +
                 ", waveSize='" + waveSize + '\'' +
-                ", waveFrequency='" + waveFrequency + '\'' +
+                ", wavePeriod='" + wavePeriod + '\'' +
                 ", favorite=" + favorite +
                 ", date='" + date + '\'' +
-                ", time='" + time + '\'' +
+                ", hour session='" + hourSession + '\'' +
+                ", min session='" + minSession + '\'' +
                 ", hour='" + hour + '\'' +
                 '}';
+    }
+
+    public Map<String, Object> toMap(){
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("title", title);
+        map.put("description", description);
+        map.put("windSpeed", windSpeed);
+        map.put("windOrientation", windOrientation);
+        map.put("waveSize", waveSize);
+        map.put("wavePeriod", wavePeriod);
+        map.put("favorite", favorite);
+        map.put("date", date);
+        map.put("hour", hour);
+        map.put("hourSession", hourSession);
+        map.put("minSession", minSession);
+        return map;
     }
 }

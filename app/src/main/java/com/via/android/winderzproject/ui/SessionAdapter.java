@@ -1,7 +1,7 @@
 package com.via.android.winderzproject.ui;
 
 import android.content.Context;
-import android.util.Log;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -45,26 +45,28 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull SessionAdapter.ViewHolder viewHolder, int position) {
         Session session = mSessions.get(position);
-        viewHolder.title.setText(mSessions.get(position).getTitle());
-        viewHolder.description.setText(mSessions.get(position).getDescription());
-        viewHolder.windOrientation.setText(mSessions.get(position).getWindOrientation());
-        viewHolder.windSpeed.setText(mSessions.get(position).getWindSpeed());
-        viewHolder.date.setText(mSessions.get(position).getDate());
-        viewHolder.hour.setText(mSessions.get(position).getHour());
-        viewHolder.time.setText(mSessions.get(position).getTime());
-        viewHolder.waveSize.setText(mSessions.get(position).getWaveSize());
-        viewHolder.waveFrequency.setText(mSessions.get(position).getWaveFrequency());
-        //Pass the session object to the viewholder
-        viewHolder.session = session;
-        if(viewHolder.session.getFavorite()){
+        viewHolder.title.setText(session.getTitle());
+        viewHolder.description.setText(session.getDescription());
+        viewHolder.windOrientation.setText(session.getWindOrientation());
+        viewHolder.windSpeed.setText(String.valueOf(session.getWindSpeed()) + " knots");
+        viewHolder.date.setText(session.getDate());
+        viewHolder.hour.setText(session.getHour());
+        viewHolder.hourSession.setText(String.valueOf(session.getHourSession()) + " hours");
+        viewHolder.minSession.setText(String.valueOf(session.getMinSession()) + " min");
+        viewHolder.waveSize.setText(session.getWaveSize());
+        viewHolder.wavePeriod.setText(String.valueOf(session.getWavePeriod()) + " sec btw waves");
+        if(session.getFavorite()) {
             viewHolder.favoriteCheckbox.setChecked(true);
         }
+        //Pass the session object to the viewholder
+        viewHolder.session = session;
+
     }
 
     @Override
     public int getItemCount() { return mSessions.size();}
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
 
         TextView title;
         TextView description;
@@ -72,11 +74,12 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
         TextView windSpeed;
         TextView date;
         TextView hour;
-        TextView time;
+        TextView hourSession;
+        TextView minSession;
         TextView waveSize;
-        TextView waveFrequency;
-        Button deleteButton;
+        TextView wavePeriod;
         CheckBox favoriteCheckbox;
+        Button popupButton;
         Session session;
 
         ViewHolder(View itemView){
@@ -87,19 +90,42 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
             windSpeed=itemView.findViewById(R.id.session_windSpeed);
             date=itemView.findViewById(R.id.session_date);
             hour=itemView.findViewById(R.id.session_hour);
-            time=itemView.findViewById(R.id.session_time);
+            hourSession=itemView.findViewById(R.id.hourSession);
+            minSession=itemView.findViewById(R.id.minSession);
             waveSize=itemView.findViewById(R.id.session_waveSize);
-            waveFrequency=itemView.findViewById(R.id.session_waveFrequency);
-            deleteButton = itemView.findViewById(R.id.deleteButton);
-            deleteButton.setOnClickListener(view -> {
-                HomeFragment.deleteSession(session.getKey());
-            });
+            wavePeriod=itemView.findViewById(R.id.session_wavePeriod);
             favoriteCheckbox = itemView.findViewById(R.id.favoriteCheckbox);
+            popupButton = itemView.findViewById(R.id.popupButton);
+            popupButton.setOnClickListener(this::showPopup);
             itemView.setOnClickListener(this);
             favoriteCheckbox.setOnClickListener(view -> {
                 HomeFragment.updateFavoriteSession(session.getKey(), favoriteCheckbox.isChecked());
                 Log.d("test", String.valueOf(favoriteCheckbox.isChecked()));
             });
+        }
+
+        public void showPopup(View view) {
+            PopupMenu popup = new PopupMenu(view.getContext(), view);
+            popup.setOnMenuItemClickListener(this);
+            popup.inflate(R.menu.choice_menu);
+            popup.show();
+        }
+
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+            Context context = title.getContext();
+            switch (item.getItemId()){
+                case R.id.modify :
+                    Intent intent = new Intent(context, UpdateSessionActivity.class);
+                    intent.putExtra("session", session);
+                    context.startActivity(intent);
+                    return true;
+                case R.id.delete :
+                    HomeFragment.deleteSession(session.getKey());
+                    return true;
+                default:
+                    return false;
+            }
         }
 
         @Override

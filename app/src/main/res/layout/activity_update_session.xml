@@ -42,14 +42,8 @@
                 android:layout_marginTop="16dp"
                 android:autofillHints="description"
                 android:hint="@string/description_of_the_session"
-                android:inputType="textMultiLine"
-                android:textSize="16sp"
-                android:breakStrategy="balanced"
-                android:maxLines="3"
-                android:overScrollMode="always"
-                android:scrollbars="vertical"
-                android:scrollbarStyle="insideInset"
-                />
+                android:inputType="textPersonName"
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -347,10 +341,10 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/addButton"
+        android:id="@+id/updateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add"
+        android:text="@string/update"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1"

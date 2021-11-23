@@ -22,12 +22,13 @@ public class LoginActivity extends AppCompatActivity {
     Button signInButton;
 
     ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(), result -> {
-                if(result.getResultCode() == RESULT_OK)
-                    goToMainActivity();
-                else
-                    Toast.makeText(this, "SIGN IN CANCELLED", Toast.LENGTH_SHORT).show();
-            });
+        new ActivityResultContracts.StartActivityForResult(), result -> {
+            if(result.getResultCode() == RESULT_OK)
+                goToMainActivity();
+            else
+                Toast.makeText(this, "SIGN IN CANCELLED", Toast.LENGTH_SHORT).show();
+        }
+    );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -18,17 +18,14 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.via.android.winderzproject.R;
+import com.via.android.winderzproject.data.Session;
 
 
 public class MainActivity extends AppCompatActivity{
     MainActivityViewModel viewModel;
     BottomNavigationView bottomNavigationView;
     FloatingActionButton addSessionButton;
-    Button signOutButton;
-    CheckBox heart;
-
-
-
+    Session session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +45,14 @@ public class MainActivity extends AppCompatActivity{
         addSessionButton.setOnClickListener(v -> {
             navController.navigate(R.id.addSession);
         });
+    }
+
+    private void checkIfSignedIn() {
+        viewModel.getCurrentUser().observe(this, user -> {
+            if (user == null)
+                starLoginActivity();
+            }
+        );
     }
 
         private void checkIfSignedIn () {

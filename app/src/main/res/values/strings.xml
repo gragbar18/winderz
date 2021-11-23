@@ -29,6 +29,9 @@
     <string name="button">Button</string>
     <string name="log_in">Log in</string>
     <string name="change">change</string>
+    <string name="cancel">cancel</string>
+    <string name="update">update</string>
+    <string name="wave_period">Wave period :</string>
 
 
     <string-array name="windOrientation">
@@ -40,5 +43,12 @@
         <item>Southwest</item>
         <item>West</item>
         <item>Northwest</item>
+    </string-array>
+
+    <string-array name="waveSize">
+        <item>Flat</item>
+        <item>Choppy</item>
+        <item>Small waves</item>
+        <item>Big waves</item>
     </string-array>
 </resources>

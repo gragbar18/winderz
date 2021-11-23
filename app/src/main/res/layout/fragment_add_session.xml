@@ -42,8 +42,14 @@
                 android:layout_marginTop="16dp"
                 android:autofillHints="description"
                 android:hint="@string/description_of_the_session"
-                android:inputType="textPersonName"
-                android:textSize="16sp" />
+                android:inputType="textMultiLine"
+                android:textSize="16sp"
+                android:breakStrategy="balanced"
+                android:maxLines="3"
+                android:overScrollMode="always"
+                android:scrollbars="vertical"
+                android:scrollbarStyle="insideInset"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"

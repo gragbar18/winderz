@@ -2,6 +2,7 @@ package com.via.android.winderzproject.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -85,6 +86,19 @@ public class AddSessionFragment extends Fragment{
         addButton = view.findViewById(R.id.addButton);
         titleEdit = view.findViewById(R.id.titleEdit);
         descriptionEdit = view.findViewById(R.id.descriptionEdit);
+        descriptionEdit.setOnTouchListener((v, event) -> {
+            if (descriptionEdit.hasFocus()) {
+                v.getParent().requestDisallowInterceptTouchEvent(true);
+                switch (event.getAction() & MotionEvent.ACTION_MASK){
+                    case MotionEvent.ACTION_SCROLL:
+                        v.getParent().requestDisallowInterceptTouchEvent(false);
+                        return true;
+                }
+            }
+            return false;
+        });
+
+
         favoriteSwitch = view.findViewById(R.id.Favorite_switch);
 
         hourPicker = getView().findViewById(R.id.hourPicker);

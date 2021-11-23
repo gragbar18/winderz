@@ -19,6 +19,7 @@ public class MainActivityViewModel extends AndroidViewModel {
     }
 
     public LiveData<FirebaseUser> getCurrentUser(){return currentUserRepository.getCurrentUser();}
+
     public void signOut(){
         currentUserRepository.signOut();
     }

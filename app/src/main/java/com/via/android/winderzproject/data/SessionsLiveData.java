@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SessionsLiveData extends LiveData<List<Session>> {
-    List<Session> tmp = new ArrayList<>();
+    List<Session> tmp;
 
     /*private final ChildEventListener listener = new ChildEventListener() {
         @Override

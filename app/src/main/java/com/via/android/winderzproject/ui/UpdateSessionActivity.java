@@ -60,7 +60,7 @@ public class UpdateSessionActivity extends AppCompatActivity {
         favoriteSwitch.setChecked(session.getFavorite());
 
         timeEdit = findViewById(R.id.timeEdit);
-        timeEdit.setText(session.getTime());
+        //timeEdit.setText(session.getTime());
 
         windOrientationSpinner = findViewById(R.id.WindOrientationSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.windOrientation, android.R.layout.simple_spinner_item);
@@ -84,7 +84,7 @@ public class UpdateSessionActivity extends AppCompatActivity {
             session.setWaveSize(waveSizeEdit.getText().toString());
             session.setWaveFrequency(waveFrequencyEdit.getText().toString());
             session.setFavorite(favoriteSwitch.isChecked());
-            session.setTime(timeEdit.getText().toString());
+            //session.setTime(timeEdit.getText().toString());
 
             if(session.getTitle() != null){
                 updateSessionViewModel.updateSession(session);

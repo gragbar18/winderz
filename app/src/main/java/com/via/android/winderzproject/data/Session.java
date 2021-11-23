@@ -47,7 +47,8 @@ public class Session implements Serializable {
         this.waveFrequency = updatedSession.waveFrequency;
         this.favorite = updatedSession.favorite;
         this.date= updatedSession.date;
-        this.time = updatedSession.time;
+        this.hourSession = updatedSession.hourSession;
+        this.minSession = updatedSession.minSession;
         this.hour= updatedSession.hour;
     }
 

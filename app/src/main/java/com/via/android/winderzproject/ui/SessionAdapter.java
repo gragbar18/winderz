@@ -44,16 +44,16 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull SessionAdapter.ViewHolder viewHolder, int position) {
         Session session = mSessions.get(position);
-        viewHolder.title.setText(mSessions.get(position).getTitle());
-        viewHolder.description.setText(mSessions.get(position).getDescription());
-        viewHolder.windOrientation.setText(mSessions.get(position).getWindOrientation());
-        viewHolder.windSpeed.setText(mSessions.get(position).getWindSpeed());
-        viewHolder.date.setText(mSessions.get(position).getDate());
-        viewHolder.hour.setText(mSessions.get(position).getHour());
-        viewHolder.hourSession.setText(mSessions.get(position).getHourSession());
-        viewHolder.minSession.setText(mSessions.get(position).getMinSession());
-        viewHolder.waveSize.setText(mSessions.get(position).getWaveSize());
-        viewHolder.waveFrequency.setText(mSessions.get(position).getWaveFrequency());
+        viewHolder.title.setText(session.getTitle());
+        viewHolder.description.setText(session.getDescription());
+        viewHolder.windOrientation.setText(session.getWindOrientation());
+        viewHolder.windSpeed.setText(session.getWindSpeed());
+        viewHolder.date.setText(session.getDate());
+        viewHolder.hour.setText(session.getHour());
+        viewHolder.hourSession.setText(session.getHourSession());
+        viewHolder.minSession.setText(session.getMinSession());
+        viewHolder.waveSize.setText(session.getWaveSize());
+        viewHolder.waveFrequency.setText(session.getWaveFrequency());
         //Pass the session object to the viewholder
         viewHolder.session = session;
         if(viewHolder.session.getFavorite()){
@@ -93,9 +93,7 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
             waveSize=itemView.findViewById(R.id.session_waveSize);
             waveFrequency=itemView.findViewById(R.id.session_waveFrequency);
             deleteButton = itemView.findViewById(R.id.deleteButton);
-            deleteButton.setOnClickListener(view -> {
-                HomeFragment.deleteSession(session.getKey());
-            });
+            deleteButton.setOnClickListener(view -> HomeFragment.deleteSession(session.getKey()));
             favoriteCheckbox = itemView.findViewById(R.id.favoriteCheckbox);
             itemView.setOnClickListener(this);
         }

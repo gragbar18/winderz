@@ -100,7 +100,6 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
             itemView.setOnClickListener(this);
             favoriteCheckbox.setOnClickListener(view -> {
                 HomeFragment.updateFavoriteSession(session.getKey(), favoriteCheckbox.isChecked());
-                Log.d("test", String.valueOf(favoriteCheckbox.isChecked()));
             });
         }
 

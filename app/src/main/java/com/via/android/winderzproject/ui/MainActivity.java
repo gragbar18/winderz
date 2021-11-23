@@ -55,14 +55,6 @@ public class MainActivity extends AppCompatActivity{
         );
     }
 
-        private void checkIfSignedIn () {
-            viewModel.getCurrentUser().observe(this, user -> {
-                if (user != null) {
-                    Toast.makeText(this, "Welcome " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
-                } else
-                    starLoginActivity();
-            });
-        }
 
     private void starLoginActivity() {
         startActivity(new Intent(this, LoginActivity.class));

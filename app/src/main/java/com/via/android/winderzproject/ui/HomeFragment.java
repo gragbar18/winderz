@@ -32,7 +32,7 @@ public class HomeFragment extends Fragment implements SessionAdapter.OnListItemC
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        sessionDataViewModel=new ViewModelProvider(this).get(SessionDataViewModel.class);
+        sessionDataViewModel = new ViewModelProvider(this).get(SessionDataViewModel.class);
         sessionDataViewModel.init();
 
         mSessionAdapter = new SessionAdapter(displayedSessions,this);
@@ -40,7 +40,6 @@ public class HomeFragment extends Fragment implements SessionAdapter.OnListItemC
             //Add all the sessions in our list that is displayed
             displayedSessions.clear();
             displayedSessions.addAll(sessions);
-            Toast.makeText(getContext(), "Bip", Toast.LENGTH_SHORT).show();
             mSessionAdapter.notifyDataSetChanged();
         });
     }

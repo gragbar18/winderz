@@ -21,7 +21,7 @@ import com.via.android.winderzproject.R;
 import com.via.android.winderzproject.data.Session;
 
 
-public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
+public class MainActivity extends AppCompatActivity{
     MainActivityViewModel viewModel;
     BottomNavigationView bottomNavigationView;
     FloatingActionButton addSessionButton;
@@ -58,28 +58,5 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     private void starLoginActivity() {
         startActivity(new Intent(this, LoginActivity.class));
         finish();
-    }
-
-    public void showPopup(View view) {
-        PopupMenu popup = new PopupMenu(this,view);
-        popup.setOnMenuItemClickListener(this);
-        popup.inflate(R.menu.choice_menu);
-        popup.show();
-    }
-
-    @Override
-    public boolean onMenuItemClick(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.modify :
-                Toast.makeText(this,"Modify clicked", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.delete :
-                Toast.makeText(this,"Delete clicked", Toast.LENGTH_SHORT).show();
-
-                    HomeFragment.deleteSession(session.getKey());
-                return  true;
-            default:
-                return false;
-        }
     }
 }

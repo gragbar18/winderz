@@ -52,10 +52,12 @@ public class UpdateSessionActivity extends AppCompatActivity {
         hourPicker = findViewById(R.id.hourPicker);
         hourPicker.setMinValue(0);
         hourPicker.setMaxValue(23);
+        hourPicker.setValue(session.getHourSession());
 
         minPicker = findViewById(R.id.minPicker);
         minPicker.setMinValue(0);
         minPicker.setMaxValue(59);
+        minPicker.setValue(session.getMinSession());
 
         descriptionEdit = findViewById(R.id.descriptionEdit);
         descriptionEdit.setText(session.getDescription());
@@ -63,10 +65,12 @@ public class UpdateSessionActivity extends AppCompatActivity {
         windSpeedPicker = findViewById(R.id.windSpeedPicker);
         windSpeedPicker.setMinValue(0);
         windSpeedPicker.setMaxValue(200);
+        windSpeedPicker.setValue(session.getWindSpeed());
 
         wavePeriodPicker = findViewById(R.id.wavePeriodPicker);
         wavePeriodPicker.setMinValue(0);
         wavePeriodPicker.setMaxValue(50);
+        wavePeriodPicker.setValue(session.getWavePeriod());
 
         windOrientationSpinner = findViewById(R.id.windOrientationSpinner);
         ArrayAdapter<CharSequence> adapterWindOrientation = ArrayAdapter.createFromResource(this, R.array.windOrientation, android.R.layout.simple_spinner_item);
@@ -79,9 +83,14 @@ public class UpdateSessionActivity extends AppCompatActivity {
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                windOrientation = "North";
+                windOrientation = session.getWindOrientation();
             }
         });
+
+        for(int i = 0; i < windOrientationSpinner.getCount(); i++){
+            if (windOrientationSpinner.getItemAtPosition(i).equals(session.getWindOrientation()))
+                windOrientationSpinner.setSelection(i);
+        }
 
         waveSizeSpinner = findViewById(R.id.waveSizeSpinner);
         ArrayAdapter<CharSequence> adapterWaveSize = ArrayAdapter.createFromResource(this, R.array.waveSize, android.R.layout.simple_spinner_item);
@@ -95,18 +104,23 @@ public class UpdateSessionActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                windOrientation = "flat";
+                windOrientation = session.getWaveSize();
             }
         });
+
+        for(int i = 0; i < waveSizeSpinner.getCount(); i++){
+            if (waveSizeSpinner.getItemAtPosition(i).equals(session.getWaveSize()))
+                waveSizeSpinner.setSelection(i);
+        }
 
         updateButton.setOnClickListener(view -> {
             session.setTitle(titleEdit.getText().toString());
             session.setDescription(descriptionEdit.getText().toString());
             session.setFavorite(favoriteSwitch.isChecked());
-            session.setWindSpeed(windSpeedPicker.getValue()+" km/h");
-            session.setWavePeriod(wavePeriodPicker.getValue()+" wave/s");
-            session.setHourSession(hourPicker.getValue()+" hours");
-            session.setMinSession(minPicker.getValue() + " minutes");
+            session.setWindSpeed(windSpeedPicker.getValue());
+            session.setWavePeriod(wavePeriodPicker.getValue());
+            session.setHourSession(hourPicker.getValue());
+            session.setMinSession(minPicker.getValue());
 
             if(session.getTitle() != null){
                 updateSessionViewModel.updateSession(session);

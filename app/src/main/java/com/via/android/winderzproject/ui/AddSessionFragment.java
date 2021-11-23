@@ -48,15 +48,15 @@ public class AddSessionFragment extends Fragment{
 
     String title;
     String description;
-    String windSpeed;
+    int windSpeed;
     String windOrientation;
     String waveSize;
-    String wavePeriod;
+    int wavePeriod;
     Boolean favorite = false;
     String date;
     String hour;
-    String hourSession;
-    String minSession;
+    int hourSession;
+    int minSession;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -121,10 +121,10 @@ public class AddSessionFragment extends Fragment{
         addButton.setOnClickListener(v -> {
             title = titleEdit.getText().toString();
             description = descriptionEdit.getText().toString();
-            windSpeed = windSpeedPicker.getValue()+" km/h";
-            wavePeriod = wavePeriodPicker.getValue()+" wave/s";
-            hourSession = hourPicker.getValue()+" hours";
-            minSession = minPicker.getValue() + " minutes";
+            windSpeed = windSpeedPicker.getValue();
+            wavePeriod = wavePeriodPicker.getValue();
+            hourSession = hourPicker.getValue();
+            minSession = minPicker.getValue();
             favorite = favoriteSwitch.isChecked();
 
             //Date part

@@ -42,6 +42,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -52,12 +53,11 @@
                         android:id="@+id/session_date"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="12dp"
                         android:gravity="bottom"
                         android:text="date"
                         android:textSize="11sp"
-                        app:layout_constraintEnd_toStartOf="@+id/deleteButton"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintStart_toStartOf="@+id/favoriteCheckbox"
+                        app:layout_constraintTop_toBottomOf="@+id/favoriteCheckbox" />
 
                     <TextView
                         android:id="@+id/session_hour"
@@ -74,19 +74,20 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:button="@drawable/selector_fav"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/deleteButton"
+                        app:layout_constraintEnd_toStartOf="@+id/popupButton"
+                        app:layout_constraintTop_toTopOf="parent"
                         app:useMaterialThemeColors="false" />
 
                     <Button
-                        android:id="@+id/deleteButton"
+                        android:id="@+id/popupButton"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:background="@drawable/ic_delete"
+                        android:background="@drawable/ic_more_horiz"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -147,7 +148,7 @@
                         android:layout_weight="1"/>
 
                     <TextView
-                        android:id="@+id/session_waveFrequency"
+                        android:id="@+id/session_wavePeriod"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"/>
@@ -159,6 +160,7 @@
                 android:id="@+id/session_location"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:background="@drawable/ic_map"
                 android:layout_weight="2"
                 android:layout_margin="10dp"/>
             <TextView

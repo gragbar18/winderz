@@ -10,27 +10,27 @@ public class Session implements Serializable {
     String key;
     String title;
     String description;
-    String windSpeed;
+    int windSpeed;
     String windOrientation;
     String waveSize;
-    String waveFrequency;
+    int wavePeriod;
     boolean favorite;
     String date;
-    String hourSession;
-    String minSession;
+    int hourSession;
+    int minSession;
     String hour;
 
     public Session(){
         //Default constructor required for calls to Datasnapshot.getValue(Session.class)
     }
 
-    public Session(String title, String description, String windSpeed, String windOrientation, String waveSize, String waveFrequency, boolean favorite, String date, String hour, String hourSession, String minSession) {
+    public Session(String title, String description, int windSpeed, String windOrientation, String waveSize, int wavePeriod, boolean favorite, String date, String hour, int hourSession, int minSession) {
         this.title = title;
         this.description = description;
         this.windSpeed = windSpeed;
         this.windOrientation = windOrientation;
         this.waveSize = waveSize;
-        this.waveFrequency = waveFrequency;
+        this.wavePeriod = wavePeriod;
         this.favorite = favorite;
         this.date=date;
         this.hourSession=hourSession;
@@ -44,12 +44,12 @@ public class Session implements Serializable {
         this.windSpeed = updatedSession.windSpeed;
         this.windOrientation = updatedSession.windOrientation;
         this.waveSize = updatedSession.waveSize;
-        this.waveFrequency = updatedSession.waveFrequency;
+        this.wavePeriod = updatedSession.wavePeriod;
         this.favorite = updatedSession.favorite;
         this.date= updatedSession.date;
-        this.hourSession = updatedSession.hourSession;
-        this.minSession = updatedSession.minSession;
         this.hour= updatedSession.hour;
+        this.hourSession=hourSession;
+        this.minSession=minSession;
     }
 
     public String getKey() {
@@ -74,17 +74,17 @@ public class Session implements Serializable {
 
     public void setDate(String date) {this.date = date; }
 
-    public String getHourSession() {
+    public int getHourSession() {
         return hourSession;
     }
 
-    public void setHourSession(String hourSession) {this.hourSession = hourSession; }
+    public void setHourSession(int hourSession) {this.hourSession = hourSession; }
 
-    public String getMinSession() {
+    public int getMinSession() {
         return minSession;
     }
 
-    public void setMinSession(String minSession) {this.minSession = minSession; }
+    public void setMinSession(int minSession) {this.minSession = minSession; }
 
     public boolean getFavorite() {
         return favorite;
@@ -110,11 +110,11 @@ public class Session implements Serializable {
         this.description = description;
     }
 
-    public String getWindSpeed() {
+    public int getWindSpeed() {
         return windSpeed;
     }
 
-    public void setWindSpeed(String windSpeed) {
+    public void setWindSpeed(int windSpeed) {
         this.windSpeed = windSpeed;
     }
 
@@ -134,12 +134,13 @@ public class Session implements Serializable {
         this.waveSize = waveSize;
     }
 
-    public String getWaveFrequency() {
-        return waveFrequency;
+
+    public int getWavePeriod() {
+        return wavePeriod;
     }
 
-    public void setWaveFrequency(String waveFrequency) {
-        this.waveFrequency = waveFrequency;
+    public void setWavePeriod(int wavePeriod) {
+        this.wavePeriod = wavePeriod;
     }
 
     @NonNull
@@ -152,7 +153,7 @@ public class Session implements Serializable {
                 ", windSpeed='" + windSpeed + '\'' +
                 ", windOrientation='" + windOrientation + '\'' +
                 ", waveSize='" + waveSize + '\'' +
-                ", waveFrequency='" + waveFrequency + '\'' +
+                ", wavePeriod='" + wavePeriod + '\'' +
                 ", favorite=" + favorite +
                 ", date='" + date + '\'' +
                 ", hour session='" + hourSession + '\'' +
@@ -168,11 +169,12 @@ public class Session implements Serializable {
         map.put("windSpeed", windSpeed);
         map.put("windOrientation", windOrientation);
         map.put("waveSize", waveSize);
-        map.put("waveFrequency", waveFrequency);
+        map.put("wavePeriod", wavePeriod);
         map.put("favorite", favorite);
         map.put("date", date);
-        map.put("time", time);
         map.put("hour", hour);
+        map.put("hourSession", hourSession);
+        map.put("minSession", minSession);
         return map;
     }
 }

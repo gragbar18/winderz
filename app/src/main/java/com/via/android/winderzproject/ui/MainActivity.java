@@ -18,12 +18,14 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.via.android.winderzproject.R;
+import com.via.android.winderzproject.data.Session;
 
 
 public class MainActivity extends AppCompatActivity{
     MainActivityViewModel viewModel;
     BottomNavigationView bottomNavigationView;
     FloatingActionButton addSessionButton;
+    Session session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

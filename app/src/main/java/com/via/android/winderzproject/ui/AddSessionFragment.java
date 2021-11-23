@@ -44,8 +44,6 @@ public class AddSessionFragment extends Fragment{
     NumberPicker windSpeedPicker;
     NumberPicker wavePeriodPicker;
 
-
-
     String title;
     String description;
     int windSpeed;
@@ -86,10 +84,10 @@ public class AddSessionFragment extends Fragment{
         addButton = view.findViewById(R.id.addButton);
         titleEdit = view.findViewById(R.id.titleEdit);
         descriptionEdit = view.findViewById(R.id.descriptionEdit);
-        descriptionEdit.setOnTouchListener((v, event) -> {
+        descriptionEdit.setOnTouchListener((v, motionEvent) -> {
             if (descriptionEdit.hasFocus()) {
                 v.getParent().requestDisallowInterceptTouchEvent(true);
-                switch (event.getAction() & MotionEvent.ACTION_MASK){
+                switch (motionEvent.getAction() & MotionEvent.ACTION_MASK){
                     case MotionEvent.ACTION_SCROLL:
                         v.getParent().requestDisallowInterceptTouchEvent(false);
                         return true;

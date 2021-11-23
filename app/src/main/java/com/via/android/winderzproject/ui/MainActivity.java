@@ -8,12 +8,6 @@ import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.PopupMenu;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -25,7 +19,6 @@ public class MainActivity extends AppCompatActivity{
     MainActivityViewModel viewModel;
     BottomNavigationView bottomNavigationView;
     FloatingActionButton addSessionButton;
-    Session session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,21 +35,18 @@ public class MainActivity extends AppCompatActivity{
 
         //Go to the AddSessionFragment if we click on the plus button
         addSessionButton = findViewById(R.id.addSessionButton);
-        addSessionButton.setOnClickListener(v -> {
-            navController.navigate(R.id.addSession);
-        });
+        addSessionButton.setOnClickListener(v -> navController.navigate(R.id.addSession));
     }
 
     private void checkIfSignedIn() {
         viewModel.getCurrentUser().observe(this, user -> {
-            if (user == null)
-                starLoginActivity();
+                if (user == null)
+                    startLoginActivity();
             }
         );
     }
 
-
-    private void starLoginActivity() {
+    private void startLoginActivity() {
         startActivity(new Intent(this, LoginActivity.class));
         finish();
     }

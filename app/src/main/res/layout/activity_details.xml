@@ -19,11 +19,11 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:background="@drawable/ic_pen"
-        app:layout_constraintEnd_toStartOf="@+id/favoriteCheckbox"
+        app:layout_constraintEnd_toStartOf="@+id/favoriteCheckboxDetails"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/deleteButton"
+        android:id="@+id/deleteFromDetails"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:background="@drawable/ic_delete"
@@ -31,16 +31,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
-        android:id="@+id/favoriteCheckbox"
+        android:id="@+id/favoriteCheckboxDetails"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:button="@drawable/selector_fav"
-        app:layout_constraintEnd_toStartOf="@+id/deleteButton"
+        app:layout_constraintEnd_toStartOf="@+id/deleteFromDetails"
         app:layout_constraintTop_toTopOf="parent"
         app:useMaterialThemeColors="false" />
 
     <TextView
-        android:id="@+id/titreActivity"
+        android:id="@+id/titleDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="50dp"
@@ -48,21 +48,21 @@
         android:gravity="center"
         android:text="Titre temporel"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/favoriteCheckbox"
+        app:layout_constraintEnd_toStartOf="@+id/favoriteCheckboxDetails"
         app:layout_constraintStart_toEndOf="@+id/arrowBackButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/descriptionActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titreActivity"
+        app:layout_constraintTop_toBottomOf="@+id/titleDetails"
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/descriptionDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Petite sortie pour faire du surf sur l'île d'Oléron sous un beau soleil. Dommage que le vent se soit levé à partir du milieu de la scéance"
@@ -71,7 +71,7 @@
             android:layout_marginHorizontal="16dp"/>
 
         <com.google.android.gms.maps.MapView
-            android:id="@+id/localisationActivity"
+            android:id="@+id/localisationDetails"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:background="@drawable/ic_map"
@@ -86,7 +86,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginHorizontal="16dp">
             <TextView
-                android:id="@+id/hourSessionActivity"
+                android:id="@+id/hourSessionDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2"
@@ -98,7 +98,7 @@
                 android:textSize="15sp"
                 android:textStyle="bold"/>
             <TextView
-                android:id="@+id/minSessionActivity"
+                android:id="@+id/minSessionDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="43"
@@ -126,7 +126,7 @@
             android:layout_marginTop="10dp">
 
             <TextView
-                android:id="@+id/windSpeedActivity"
+                android:id="@+id/windSpeedDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="20"
@@ -143,10 +143,10 @@
                 android:text="knts"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/windSpeedActivity" />
+                app:layout_constraintStart_toEndOf="@+id/windSpeedDetails" />
 
             <TextView
-                android:id="@+id/windDirectionActivity"
+                android:id="@+id/windOrientationDetails"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/compass"
@@ -177,7 +177,7 @@
             android:layout_marginTop="10dp">
 
             <TextView
-                android:id="@+id/wavePeriodActivity"
+                android:id="@+id/wavePeriodDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="10"
@@ -193,9 +193,10 @@
                 android:text=" s"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/wavePeriodActivity" />
+                app:layout_constraintStart_toEndOf="@+id/wavePeriodDetails" />
 
             <TextView
+                android:id="@+id/waveSizeDetails"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/ic_waves"

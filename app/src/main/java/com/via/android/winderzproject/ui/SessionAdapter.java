@@ -98,9 +98,7 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
             popupButton = itemView.findViewById(R.id.popupButton);
             popupButton.setOnClickListener(this::showPopup);
             itemView.setOnClickListener(this);
-            favoriteCheckbox.setOnClickListener(view -> {
-                HomeFragment.updateFavoriteSession(session.getKey(), favoriteCheckbox.isChecked());
-            });
+            favoriteCheckbox.setOnClickListener(view -> HomeFragment.updateFavoriteSession(session.getKey(), favoriteCheckbox.isChecked()));
         }
 
         public void showPopup(View view) {
@@ -116,7 +114,7 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
             switch (item.getItemId()){
                 case R.id.modify :
                     Intent intent = new Intent(context, UpdateSessionActivity.class);
-                    intent.putExtra("session", session);
+                    HomeFragment.saveCurrentSession(session);
                     context.startActivity(intent);
                     return true;
                 case R.id.delete :

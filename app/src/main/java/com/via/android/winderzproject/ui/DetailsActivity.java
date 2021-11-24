@@ -75,16 +75,16 @@ public class DetailsActivity extends AppCompatActivity {
 
         switch (session.getWaveSize()){
             case "Flat":
-                waveSizeDetails.setImageResource(R.drawable.ic_waves);
+                waveSizeDetails.setImageResource(R.drawable.wave1);
                 break;
             case "Choppy":
-                waveSizeDetails.setImageResource(R.drawable.ic_waves);
+                waveSizeDetails.setImageResource(R.drawable.wave2);
                 break;
             case "Small":
-                waveSizeDetails.setImageResource(R.drawable.ic_waves);
+                waveSizeDetails.setImageResource(R.drawable.wave3);
                 break;
             case "Big waves":
-                waveSizeDetails.setImageResource(R.drawable.big_wave);
+                waveSizeDetails.setImageResource(R.drawable.wave4);
                 break;
             default:
                 break;

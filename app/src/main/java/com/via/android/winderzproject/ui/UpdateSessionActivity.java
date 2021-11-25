@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import com.via.android.winderzproject.R;
 import com.via.android.winderzproject.data.Session;
@@ -29,6 +31,7 @@ public class UpdateSessionActivity extends AppCompatActivity {
     NumberPicker wavePeriodPicker;
     Switch favoriteSwitch;
     String windOrientation;
+    String waveSize;
     Button cancelButton;
     Button updateButton;
 
@@ -42,7 +45,10 @@ public class UpdateSessionActivity extends AppCompatActivity {
         updateButton = findViewById(R.id.updateButton);
         cancelButton = findViewById(R.id.cancelButton);
 
-        Session session = (Session) getIntent().getSerializableExtra("session");
+        Session session = updateSessionViewModel.getCurrentSession();
+        Log.d("test", "session claimed by update activity " + session.toString());
+
+
         titleEdit = findViewById(R.id.titleEdit);
         titleEdit.setText(session.getTitle());
 
@@ -99,12 +105,12 @@ public class UpdateSessionActivity extends AppCompatActivity {
         waveSizeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
-                windOrientation = parent.getItemAtPosition(position).toString();
+                waveSize = parent.getItemAtPosition(position).toString();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                windOrientation = session.getWaveSize();
+                waveSize = session.getWaveSize();
             }
         });
 
@@ -121,8 +127,12 @@ public class UpdateSessionActivity extends AppCompatActivity {
             session.setWavePeriod(wavePeriodPicker.getValue());
             session.setHourSession(hourPicker.getValue());
             session.setMinSession(minPicker.getValue());
+            session.setWindOrientation(windOrientation);
+            session.setWaveSize(waveSize);
 
             if(session.getTitle() != null){
+                updateSessionViewModel.saveCurrentSession(session);
+                Log.d("test", "session saved from update activity " + session.toString());
                 updateSessionViewModel.updateSession(session);
                 finish();
             }

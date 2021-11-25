@@ -2,6 +2,7 @@ package com.via.android.winderzproject.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -76,10 +77,9 @@ public class HomeFragment extends Fragment implements SessionAdapter.OnListItemC
     @Override
     public void onListItemClick(int clickedItemIndex) {
         Session session = displayedSessions.get(clickedItemIndex);
-        Toast.makeText(getContext(), session.getTitle() , Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(getContext(), UpdateSessionActivity.class);
-        intent.putExtra("session", session);
-        startActivity(intent);
+        saveCurrentSession(session);
+        Intent intent = new Intent(this.getContext(), DetailsActivity.class);
+        this.getContext().startActivity(intent);
     }
 
     public static void deleteSession(String keySession){
@@ -88,5 +88,10 @@ public class HomeFragment extends Fragment implements SessionAdapter.OnListItemC
 
     public static void updateFavoriteSession(String keySession, Boolean isChecked){
         sessionDataViewModel.updateFavoriteSession(keySession, isChecked);
+    }
+
+    public static void saveCurrentSession(Session session) {
+        Log.d("test", "session saved from Home Fragment " + session.toString());
+        sessionDataViewModel.saveCurrentSession(session);
     }
 }

@@ -41,4 +41,8 @@ public class SessionDataViewModel extends AndroidViewModel {
     public void updateFavoriteSession(String key, Boolean isChecked){
         sessionRepository.updateFavoriteSession(key, isChecked);
     }
+
+    public void saveCurrentSession(Session session){
+        sessionRepository.saveCurrentSession(session);
+    }
 }

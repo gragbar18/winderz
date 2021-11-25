@@ -39,6 +39,7 @@ public class Session implements Serializable {
     }
 
     public Session(Session updatedSession) {
+        this.key = updatedSession.key;
         this.title = updatedSession.title;
         this.description = updatedSession.description;
         this.windSpeed = updatedSession.windSpeed;
@@ -48,8 +49,8 @@ public class Session implements Serializable {
         this.favorite = updatedSession.favorite;
         this.date= updatedSession.date;
         this.hour= updatedSession.hour;
-        this.hourSession=hourSession;
-        this.minSession=minSession;
+        this.hourSession = updatedSession.hourSession;
+        this.minSession= updatedSession.minSession;
     }
 
     public String getKey() {

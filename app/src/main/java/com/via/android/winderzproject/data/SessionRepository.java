@@ -7,6 +7,7 @@ public class SessionRepository {
     private static SessionRepository instance;
     private DatabaseReference myRef;
     private SessionsLiveData sessions;
+    private Session currentSession;
 
     private SessionRepository(){
 
@@ -39,5 +40,13 @@ public class SessionRepository {
 
     public void updateSession(String key, Session session){
         myRef.child(key).setValue(session.toMap());
+    }
+
+    public void saveCurrentSession(Session session){
+        currentSession = new Session(session);
+    }
+
+    public Session getCurrentSession(){
+        return currentSession;
     }
 }

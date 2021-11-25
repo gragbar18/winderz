@@ -9,8 +9,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.service.controls.templates.TemperatureControlTemplate;
 import android.util.Log;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.via.android.winderzproject.R;
@@ -30,13 +32,12 @@ public class DetailsActivity extends AppCompatActivity {
     TextView titleDetails;
     TextView descriptionDetails;
     TextView windSpeedDetails;
-    TextView windOrientationDetails;
     TextView wavePeriodDetails;
-    TextView waveSizeDetails;
     TextView hourSessionDetails;
     TextView minSessionDetails;
 
-
+    ImageView windOrientationDetails;
+    ImageView waveSizeDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,12 +69,55 @@ public class DetailsActivity extends AppCompatActivity {
         titleDetails.setText(session.getTitle());
         descriptionDetails.setText(session.getDescription());
         windSpeedDetails.setText(String.valueOf(session.getWindSpeed()));
-        windOrientationDetails.setText(session.getWindOrientation());
         wavePeriodDetails.setText(String.valueOf(session.getWavePeriod()));
-        waveSizeDetails.setText(session.getWaveSize());
         hourSessionDetails.setText(String.valueOf(session.getHourSession()));
         minSessionDetails.setText(String.valueOf(session.getMinSession()));
 
+        switch (session.getWaveSize()){
+            case "Flat":
+                waveSizeDetails.setImageResource(R.drawable.ic_waves);
+                break;
+            case "Choppy":
+                waveSizeDetails.setImageResource(R.drawable.ic_waves);
+                break;
+            case "Small":
+                waveSizeDetails.setImageResource(R.drawable.ic_waves);
+                break;
+            case "Big waves":
+                waveSizeDetails.setImageResource(R.drawable.big_wave);
+                break;
+            default:
+                break;
+        }
+        switch (session.getWindOrientation()){
+            case "North":
+                windOrientationDetails.setRotation(0);
+                break;
+            case "Northeast":
+                windOrientationDetails.setRotation(45);
+                break;
+            case "East":
+                windOrientationDetails.setRotation(90);
+                break;
+            case "Southeast":
+                windOrientationDetails.setRotation(135);
+                break;
+            case "South":
+                windOrientationDetails.setRotation(180);
+                break;
+            case "Southwest":
+                windOrientationDetails.setRotation(225);
+                break;
+            case "West":
+                windOrientationDetails.setRotation(270);
+
+                break;
+            case "Northwest":
+                windOrientationDetails.setRotation(315);
+                break;
+            default:
+                break;
+        }
 
         favoriteCheckboxDetails.setChecked(session.getFavorite());
         favoriteCheckboxDetails.setOnClickListener(view -> {

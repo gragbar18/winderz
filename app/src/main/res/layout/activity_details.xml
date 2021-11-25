@@ -120,7 +120,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:orientation="horizontal"
             android:gravity="center_horizontal"
             android:layout_marginTop="10dp">
@@ -145,15 +145,27 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/windSpeedDetails" />
 
-            <TextView
+            <ImageView
                 android:id="@+id/windOrientationDetails"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:background="@drawable/compass"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.8"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginBottom="10dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="N"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/windOrientationDetails"
+                app:layout_constraintEnd_toEndOf="@+id/windOrientationDetails"
+                app:layout_constraintStart_toStartOf="@+id/windOrientationDetails" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View
@@ -195,11 +207,10 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/wavePeriodDetails" />
 
-            <TextView
+            <ImageView
                 android:id="@+id/waveSizeDetails"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@drawable/ic_waves"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.8"

@@ -3,10 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Documents(D)/VIA UC/AND1/Winderz/winderz/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.13333333333333333" />
         <entry key="..\:/Documents(D)/VIA UC/AND1/Winderz/winderz/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Documents(D)/VIA UC/AND1/Winderz/winderz/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Documents(D)/VIA UC/AND1/Winderz/winderz/app/src/main/res/layout/fragment_home.xml" value="0.13055555555555556" />
         <entry key="..\:/Documents(D)/VIA UC/AND1/Winderz/winderz/app/src/main/res/layout/session_list_item.xml" value="0.13055555555555556" />
+        <entry key="..\:/Documents(D)/VIA UC/AND1/Winderz/winderz/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.10833333333333334" />
+        <entry key="..\:/Documents(D)/VIA UC/AND1/Winderz/winderz/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/benja/OneDrive/Documents/ISEP/A3 ISEP - 2021-2022/International/Cours/Android Development/Project/winderz/app/src/main/res/drawable/add.xml" value="0.3828125" />
         <entry key="..\:/Users/benja/OneDrive/Documents/ISEP/A3 ISEP - 2021-2022/International/Cours/Android Development/Project/winderz/app/src/main/res/drawable/home.xml" value="0.3828125" />
         <entry key="..\:/Users/benja/OneDrive/Documents/ISEP/A3 ISEP - 2021-2022/International/Cours/Android Development/Project/winderz/app/src/main/res/layout/activity_login.xml" value="0.28940217391304346" />

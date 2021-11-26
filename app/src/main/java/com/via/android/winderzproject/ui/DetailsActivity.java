@@ -1,9 +1,11 @@
 package com.via.android.winderzproject.ui;
 
+import androidx.annotation.DrawableRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -56,6 +58,7 @@ public class DetailsActivity extends AppCompatActivity {
         hourSessionDetails = findViewById(R.id.hourSessionDetails);
         minSessionDetails = findViewById(R.id.minSessionDetails);
         imageActivity = findViewById(R.id.ImageActivity);
+
     }
 
     @Override
@@ -90,8 +93,12 @@ public class DetailsActivity extends AppCompatActivity {
                 waveSizeDetails.setImageResource(R.drawable.wave4);
                 break;
             default:
+                waveSizeDetails.setImageResource(R.drawable.photoprofile);
                 break;
         }
+
+        windOrientationDetails.setImageResource(R.drawable.compass);
+
         switch (session.getWindOrientation()) {
             case "North":
                 windOrientationDetails.setRotation(0);
@@ -113,12 +120,12 @@ public class DetailsActivity extends AppCompatActivity {
                 break;
             case "West":
                 windOrientationDetails.setRotation(270);
-
                 break;
             case "Northwest":
                 windOrientationDetails.setRotation(315);
                 break;
             default:
+                windOrientationDetails.setImageResource(R.drawable.ic_explore_off);
                 break;
         }
 

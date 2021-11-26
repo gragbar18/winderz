@@ -3,13 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Documents(D)/VIA UC/AND1/Winderz/winderz/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.13333333333333333" />
         <entry key="..\:/Documents(D)/VIA UC/AND1/Winderz/winderz/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Documents(D)/VIA UC/AND1/Winderz/winderz/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Documents(D)/VIA UC/AND1/Winderz/winderz/app/src/main/res/layout/fragment_home.xml" value="0.13055555555555556" />
         <entry key="..\:/Documents(D)/VIA UC/AND1/Winderz/winderz/app/src/main/res/layout/session_list_item.xml" value="0.13055555555555556" />
-        <entry key="..\:/Documents(D)/VIA UC/AND1/Winderz/winderz/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.10833333333333334" />
-        <entry key="..\:/Documents(D)/VIA UC/AND1/Winderz/winderz/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/benja/OneDrive/Documents/ISEP/A3 ISEP - 2021-2022/International/Cours/Android Development/Project/winderz/app/src/main/res/drawable/add.xml" value="0.3828125" />
         <entry key="..\:/Users/benja/OneDrive/Documents/ISEP/A3 ISEP - 2021-2022/International/Cours/Android Development/Project/winderz/app/src/main/res/drawable/home.xml" value="0.3828125" />
         <entry key="..\:/Users/benja/OneDrive/Documents/ISEP/A3 ISEP - 2021-2022/International/Cours/Android Development/Project/winderz/app/src/main/res/layout/activity_login.xml" value="0.28940217391304346" />
@@ -43,17 +40,17 @@
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/selector_fav.xml" value="0.26510416666666664" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/sign_out_btn.xml" value="0.26510416666666664" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/toggle_selector.xml" value="0.26510416666666664" />
-        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/activity_details.xml" value="0.23132530120481928" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/activity_details.xml" value="0.4346076458752515" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/activity_update_session.xml" value="0.24895833333333334" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/activity_zoom.xml" value="0.4" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/custom_spinner_adapter.xml" value="1.49375" />
-        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/fragment_add_session.xml" value="0.22903689506468616" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/fragment_add_session.xml" value="0.4" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/fragment_favorite.xml" value="0.2074074074074074" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/fragment_home.xml" value="0.2074074074074074" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/fragment_map.xml" value="0.253125" />
-        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/fragment_profile.xml" value="0.3256113256113256" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/fragment_profile.xml" value="0.128" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/session_list_item.xml" value="0.4" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/menu/bottom_menu.xml" value="0.2390625" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/menu/horiz_menu.xml" value="0.12708333333333333" />

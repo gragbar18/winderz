@@ -51,7 +51,6 @@ public class AddSessionFragment extends Fragment {
 
     Button cancelButton;
     Button addButton;
-    Button photoButton;
 
     NumberPicker hourPicker;
     NumberPicker minPicker;
@@ -99,7 +98,6 @@ public class AddSessionFragment extends Fragment {
         cancelButton = view.findViewById(R.id.cancelButton);
         addButton = view.findViewById(R.id.addButton);
         titleEdit = view.findViewById(R.id.titleEdit);
-        photoButton = view.findViewById(R.id.takePhotoButton);
         descriptionEdit = view.findViewById(R.id.descriptionEdit);
 
         //Enable scroll of the description TextView inside a ScrollView
@@ -196,6 +194,8 @@ public class AddSessionFragment extends Fragment {
         });
 
         profileImage = view.findViewById(R.id.activityImage);
+        if(imageUri == null)
+            profileImage.setImageResource(R.drawable.ic_photo);
         profileImage.setOnClickListener(v -> {
             Intent gallery = new Intent();
             gallery.setType("image/*");

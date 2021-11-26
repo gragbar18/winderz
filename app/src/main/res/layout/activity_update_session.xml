@@ -30,11 +30,22 @@
         android:layout_marginTop="76dp"
         android:layout_marginBottom="60dp">
 
+
+
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <ImageView
+                android:layout_marginHorizontal="32dp"
+                android:id="@+id/DetailImage"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                android:background="@drawable/ic_photo"
+                android:layout_gravity="center"
+                />
             <EditText
                 android:id="@+id/descriptionEdit"
                 android:layout_width="match_parent"

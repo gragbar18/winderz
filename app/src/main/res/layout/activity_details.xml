@@ -61,6 +61,14 @@
         app:layout_constraintTop_toBottomOf="@+id/titleDetails"
         android:orientation="vertical">
 
+        <androidx.constraintlayout.utils.widget.ImageFilterButton
+            android:id="@+id/ImageActivity"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            />
+
         <TextView
             android:id="@+id/descriptionDetails"
             android:layout_width="match_parent"

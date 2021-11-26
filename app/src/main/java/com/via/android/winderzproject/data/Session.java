@@ -1,5 +1,7 @@
 package com.via.android.winderzproject.data;
 
+import android.net.Uri;
+
 import androidx.annotation.NonNull;
 
 import java.io.Serializable;
@@ -19,12 +21,15 @@ public class Session implements Serializable {
     int hourSession;
     int minSession;
     String hour;
+    String uri;
+
+
 
     public Session(){
         //Default constructor required for calls to Datasnapshot.getValue(Session.class)
     }
 
-    public Session(String title, String description, int windSpeed, String windOrientation, String waveSize, int wavePeriod, boolean favorite, String date, String hour, int hourSession, int minSession) {
+    public Session(String title, String description, int windSpeed, String windOrientation, String waveSize, int wavePeriod, boolean favorite, String date, String hour, int hourSession, int minSession, String uri) {
         this.title = title;
         this.description = description;
         this.windSpeed = windSpeed;
@@ -36,6 +41,7 @@ public class Session implements Serializable {
         this.hourSession=hourSession;
         this.minSession=minSession;
         this.hour=hour;
+        this.uri = uri;
     }
 
     public Session(Session updatedSession) {
@@ -51,6 +57,15 @@ public class Session implements Serializable {
         this.hour= updatedSession.hour;
         this.hourSession = updatedSession.hourSession;
         this.minSession= updatedSession.minSession;
+        this.uri = updatedSession.uri;
+    }
+
+    public String getUri() {
+        return uri;
+    }
+
+    public void setUri(String uri) {
+        this.uri = uri;
     }
 
     public String getKey() {
@@ -160,6 +175,7 @@ public class Session implements Serializable {
                 ", hour session='" + hourSession + '\'' +
                 ", min session='" + minSession + '\'' +
                 ", hour='" + hour + '\'' +
+                ", uri='" + uri + '\'' +
                 '}';
     }
 
@@ -176,6 +192,7 @@ public class Session implements Serializable {
         map.put("hour", hour);
         map.put("hourSession", hourSession);
         map.put("minSession", minSession);
+        map.put("uri", uri);
         return map;
     }
 }

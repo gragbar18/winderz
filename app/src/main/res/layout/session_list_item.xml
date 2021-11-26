@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="400dp"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="10dp"
+        android:backgroundTint="#FFFFFF"
+        app:cardElevation="10dp"
+        android:layout_margin="20dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginBottom="10dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="0dp">
+
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:context=".MainActivity">
+
+                <TextView
+                    android:id="@+id/session_title"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:text="Session"
+                    android:textSize="20pt"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:context=".MainActivity">
+
+                    <TextView
+                        android:id="@+id/session_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="bottom"
+                        android:text="date"
+                        android:textSize="11sp"
+                        app:layout_constraintStart_toStartOf="@+id/favoriteCheckbox"
+                        app:layout_constraintTop_toBottomOf="@+id/favoriteCheckbox" />
+
+                    <TextView
+                        android:id="@+id/session_hour"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="bottom"
+                        android:text="heure"
+                        android:textSize="11sp"
+                        app:layout_constraintStart_toStartOf="@+id/session_date"
+                        app:layout_constraintTop_toBottomOf="@+id/session_date" />
+
+                    <CheckBox
+                        android:id="@+id/favoriteCheckbox"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+
+                        android:button="@drawable/selector_fav"
+                        app:layout_constraintEnd_toStartOf="@+id/popupButton"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:useMaterialThemeColors="false" />
+
+                    <Button
+                        android:id="@+id/popupButton"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/ic_more_horiz"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.5"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_margin="10dp">
+                <TextView
+                    android:id="@+id/hourSession"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:id="@+id/minSession"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_margin="10dp">
+                    <TextView
+                        android:id="@+id/session_windSpeed"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/session_windOrientation"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_margin="10dp">
+                    <TextView
+                        android:id="@+id/session_waveSize"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/session_wavePeriod"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/session_location"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/ic_map"
+                android:layout_weight="2"
+                android:layout_margin="10dp"/>
+            <TextView
+                android:id="@+id/session_description"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="0dp"/>
+
+        </LinearLayout>
+
+</androidx.cardview.widget.CardView>
+
+</FrameLayout>

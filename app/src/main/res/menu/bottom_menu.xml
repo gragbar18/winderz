@@ -14,7 +14,7 @@
         android:icon="@drawable/map"/>
     <item
         android:id="@+id/addSession"
-        android:title="@string/add_session"
+        android:title=" "
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/favoriteFragment"

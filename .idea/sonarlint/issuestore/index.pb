@@ -7,8 +7,6 @@ u
 Eapp/src/test/java/com/via/android/winderzproject/ExampleUnitTest.java,6\b\6bb52091b44b206e08fe9ab02f38d528414d4ccc
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
-@
-app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 s
 Capp/src/main/java/com/via/android/winderzproject/LoginActivity.java,3\b\3bb78c830a3df962a261562a0193d30e74a042b3
 r

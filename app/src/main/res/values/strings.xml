@@ -19,6 +19,20 @@
     <string name="in_herz">in herz</string>
     <string name="delete">delete</string>
     <string name="add">ADD</string>
+    <string name="user_name">User name</string>
+    <string name="email">email</string>
+    <string name="sign_out">Sign out</string>
+    <string name="first_name">First Name</string>
+    <string name="fav">favorite : </string>
+    <string name="time">Time :</string>
+    <string name="in_minutes">in minutes</string>
+    <string name="button">Button</string>
+    <string name="log_in">Log in</string>
+    <string name="change">change</string>
+    <string name="cancel">cancel</string>
+    <string name="update">update</string>
+    <string name="wave_period">Wave period :</string>
+
 
     <string-array name="windOrientation">
         <item>North</item>
@@ -29,5 +43,12 @@
         <item>Southwest</item>
         <item>West</item>
         <item>Northwest</item>
+    </string-array>
+
+    <string-array name="waveSize">
+        <item>Flat</item>
+        <item>Choppy</item>
+        <item>Small waves</item>
+        <item>Big waves</item>
     </string-array>
 </resources>

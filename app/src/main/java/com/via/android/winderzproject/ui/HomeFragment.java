@@ -1,60 +1,48 @@
 package com.via.android.winderzproject.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupMenu;
+import android.widget.Toast;
+
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.via.android.winderzproject.R;
+import com.via.android.winderzproject.data.Session;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class HomeFragment extends Fragment {
+import java.util.ArrayList;
+import java.util.List;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+public class HomeFragment extends Fragment implements SessionAdapter.OnListItemClickListener {
 
-    public HomeFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static HomeFragment newInstance(String param1, String param2) {
-        HomeFragment fragment = new HomeFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    static SessionDataViewModel sessionDataViewModel;
+    RecyclerView mSessionList;
+    SessionAdapter mSessionAdapter;
+    List<Session> displayedSessions = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        sessionDataViewModel = new ViewModelProvider(this).get(SessionDataViewModel.class);
+        sessionDataViewModel.init();
+
+        mSessionAdapter = new SessionAdapter(displayedSessions,this);
+        sessionDataViewModel.getSessions().observe(this, sessions -> {
+            //Add all the sessions in our list that is displayed
+            displayedSessions.clear();
+            displayedSessions.addAll(sessions);
+            mSessionAdapter.notifyDataSetChanged();
+        });
     }
 
     @Override
@@ -62,5 +50,48 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mSessionList = getView().findViewById(R.id.rv);
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        displayedSessions.clear();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mSessionList.setAdapter(mSessionAdapter);
+
+        mSessionList.hasFixedSize();
+        mSessionList.setLayoutManager(new LinearLayoutManager(getContext()));
+    }
+
+    @Override
+    public void onListItemClick(int clickedItemIndex) {
+        Session session = displayedSessions.get(clickedItemIndex);
+        saveCurrentSession(session);
+        Intent intent = new Intent(this.getContext(), DetailsActivity.class);
+        this.getContext().startActivity(intent);
+    }
+
+    public static void deleteSession(String keySession){
+        sessionDataViewModel.deleteSession(keySession);
+    }
+
+    public static void updateFavoriteSession(String keySession, Boolean isChecked){
+        sessionDataViewModel.updateFavoriteSession(keySession, isChecked);
+    }
+
+    public static void saveCurrentSession(Session session) {
+        Log.d("test", "session saved from Home Fragment " + session.toString());
+        sessionDataViewModel.saveCurrentSession(session);
     }
 }

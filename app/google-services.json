@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "613214854569",
+    "firebase_url": "https://winderz-2021-default-rtdb.firebaseio.com",
+    "project_id": "winderz-2021",
+    "storage_bucket": "winderz-2021.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:613214854569:android:88eee443c2ad0115f7b8b8",
+        "android_client_info": {
+          "package_name": "com.via.android.winderzproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "613214854569-h1g4em369fdlcq5gri7lbbkeq0k4a6ib.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.via.android.winderzproject",
+            "certificate_hash": "abceefaa774af1696a2e8330cb89cac8663abc8f"
+          }
+        },
+        {
+          "client_id": "613214854569-bghnn1e2gc9qmk30sd5kknj4fhuutlln.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6g1GM8VFygB4NtCGo_t_bjd9ZRFzyRe4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "613214854569-bghnn1e2gc9qmk30sd5kknj4fhuutlln.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -18,16 +18,16 @@ import java.util.Arrays;
 import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
-    private LoginViewModel viewModel;
+    LoginViewModel viewModel;
     Button signInButton;
 
     ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
-        new ActivityResultContracts.StartActivityForResult(), result -> {
-            if(result.getResultCode() == RESULT_OK)
-                goToMainActivity();
-            else
-                Toast.makeText(this, "SIGN IN CANCELLED", Toast.LENGTH_SHORT).show();
-        }
+            new ActivityResultContracts.StartActivityForResult(), result -> {
+                if (result.getResultCode() == RESULT_OK)
+                    goToMainActivity();
+                else
+                    Toast.makeText(this, "SIGN IN CANCELLED", Toast.LENGTH_SHORT).show();
+            }
     );
 
     @Override
@@ -38,18 +38,17 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         signInButton = findViewById(R.id.buttonToHomeActivity);
-
         signInButton.setOnClickListener(this::signIn);
     }
 
-    private void checkIfSignedIn(){
+    private void checkIfSignedIn() {
         viewModel.getCurrentUser().observe(this, user -> {
-            if(user != null)
+            if (user != null)
                 goToMainActivity();
         });
     }
 
-    private void goToMainActivity(){
+    private void goToMainActivity() {
         startActivity(new Intent(this, MainActivity.class));
         finish();
     }

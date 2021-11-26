@@ -21,9 +21,11 @@ public class UserRepository {
         user = new UserLiveData(myRef);
     }
 
+    //Save in database user information
     public void saveUser(User user) {
         myRef.setValue(user);
     }
 
+    //Get from database user information
     public UserLiveData getUser(){ return user; }
 }

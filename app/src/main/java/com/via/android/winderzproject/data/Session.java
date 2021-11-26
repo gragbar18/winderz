@@ -1,7 +1,5 @@
 package com.via.android.winderzproject.data;
 
-import android.net.Uri;
-
 import androidx.annotation.NonNull;
 
 import java.io.Serializable;
@@ -24,8 +22,7 @@ public class Session implements Serializable {
     String uri;
 
 
-
-    public Session(){
+    public Session() {
         //Default constructor required for calls to Datasnapshot.getValue(Session.class)
     }
 
@@ -37,10 +34,10 @@ public class Session implements Serializable {
         this.waveSize = waveSize;
         this.wavePeriod = wavePeriod;
         this.favorite = favorite;
-        this.date=date;
-        this.hourSession=hourSession;
-        this.minSession=minSession;
-        this.hour=hour;
+        this.date = date;
+        this.hourSession = hourSession;
+        this.minSession = minSession;
+        this.hour = hour;
         this.uri = uri;
     }
 
@@ -53,10 +50,10 @@ public class Session implements Serializable {
         this.waveSize = updatedSession.waveSize;
         this.wavePeriod = updatedSession.wavePeriod;
         this.favorite = updatedSession.favorite;
-        this.date= updatedSession.date;
-        this.hour= updatedSession.hour;
+        this.date = updatedSession.date;
+        this.hour = updatedSession.hour;
         this.hourSession = updatedSession.hourSession;
-        this.minSession= updatedSession.minSession;
+        this.minSession = updatedSession.minSession;
         this.uri = updatedSession.uri;
     }
 
@@ -88,19 +85,25 @@ public class Session implements Serializable {
         return date;
     }
 
-    public void setDate(String date) {this.date = date; }
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     public int getHourSession() {
         return hourSession;
     }
 
-    public void setHourSession(int hourSession) {this.hourSession = hourSession; }
+    public void setHourSession(int hourSession) {
+        this.hourSession = hourSession;
+    }
 
     public int getMinSession() {
         return minSession;
     }
 
-    public void setMinSession(int minSession) {this.minSession = minSession; }
+    public void setMinSession(int minSession) {
+        this.minSession = minSession;
+    }
 
     public boolean getFavorite() {
         return favorite;
@@ -179,7 +182,7 @@ public class Session implements Serializable {
                 '}';
     }
 
-    public Map<String, Object> toMap(){
+    public Map<String, Object> toMap() {
         HashMap<String, Object> map = new HashMap<>();
         map.put("title", title);
         map.put("description", description);

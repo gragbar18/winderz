@@ -9,44 +9,52 @@ public class SessionRepository {
     private SessionsLiveData sessions;
     private Session currentSession;
 
-    private SessionRepository(){
-
+    private SessionRepository() {
     }
 
-    public static synchronized SessionRepository getInstance(){
-        if(instance == null)
+    public static synchronized SessionRepository getInstance() {
+        if (instance == null)
             instance = new SessionRepository();
         return instance;
     }
 
-    public void init(String userId){
+    public void init(String userId) {
         myRef = FirebaseDatabase.getInstance().getReference().child("users").child(userId);
         sessions = new SessionsLiveData(myRef);
     }
 
+    //Save sessions in database
     public void saveSessions(Session session) {
         myRef.push().setValue(session);
     }
 
-    public SessionsLiveData getSessions(){
+    //Get sessions from database as LiveData
+    public SessionsLiveData getSessions() {
         return sessions;
     }
 
+    //Delete session in database using session's id
     public void deleteSession(String key) {
         myRef.child(key).removeValue();
     }
 
-    public void updateFavoriteSession(String key , boolean isChecked) {myRef.child(key).child("favorite").setValue(isChecked); }
+    //Update favorite attribute of wanted session
+    public void updateFavoriteSession(String key, boolean isChecked) {
+        myRef.child(key).child("favorite").setValue(isChecked);
+    }
 
-    public void updateSession(String key, Session session){
+    //Update wanted sessions with a dictionnary containing the wanted attributes
+    public void updateSession(String key, Session session) {
         myRef.child(key).setValue(session.toMap());
     }
 
-    public void saveCurrentSession(Session session){
+    //Save a session as current session to use it in different activities/fragments
+    public void saveCurrentSession(Session session) {
         currentSession = new Session(session);
     }
 
-    public Session getCurrentSession(){
+    //Return current session
+    public Session getCurrentSession() {
         return currentSession;
     }
 }

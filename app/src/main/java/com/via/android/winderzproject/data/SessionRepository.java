@@ -1,13 +1,7 @@
 package com.via.android.winderzproject.data;
 
-import android.util.Log;
-
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class SessionRepository {
     private static SessionRepository instance;

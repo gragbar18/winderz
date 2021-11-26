@@ -1,6 +1,8 @@
 package com.via.android.winderzproject.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +33,7 @@ public class FavoriteFragment extends Fragment implements SessionAdapter.OnListI
         super.onCreate(savedInstanceState);
         sessionDataViewModel=new ViewModelProvider(this).get(SessionDataViewModel.class);
         sessionDataViewModel.init();
+
         mSessionAdapter = new SessionAdapter(displayedFavoriteSession,this);
         sessionDataViewModel.getSessions().observe(this, sessions -> {
             //Add all the sessions in our list that is displayed
@@ -65,7 +68,9 @@ public class FavoriteFragment extends Fragment implements SessionAdapter.OnListI
     @Override
     public void onListItemClick(int clickedItemIndex) {
         Session session = displayedFavoriteSession.get(clickedItemIndex);
-        Toast.makeText(getContext(), session.toString() , Toast.LENGTH_SHORT).show();
+        saveCurrentSession(session);
+        Intent intent = new Intent(this.getContext(), DetailsActivity.class);
+        this.getContext().startActivity(intent);
     }
 
     public static void deleteSession(String keySession){
@@ -74,6 +79,11 @@ public class FavoriteFragment extends Fragment implements SessionAdapter.OnListI
 
     public static void updateFavoriteSession(String keySession, Boolean isChecked){
         sessionDataViewModel.updateFavoriteSession(keySession, isChecked);
+    }
+
+    public static void saveCurrentSession(Session session) {
+        Log.d("test", "session saved from Favorite Fragment " + session.toString());
+        sessionDataViewModel.saveCurrentSession(session);
     }
 }
 

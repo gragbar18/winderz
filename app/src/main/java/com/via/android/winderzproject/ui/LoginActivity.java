@@ -63,8 +63,8 @@ public class LoginActivity extends AppCompatActivity {
         Intent signInIntent = AuthUI.getInstance()
                 .createSignInIntentBuilder()
                 .setAvailableProviders(providers)
-                .setLogo(R.drawable.fireforce)
-                .setTheme(R.style.Base_Theme_AppCompat)
+                .setLogo(R.drawable.ic_launcher)
+                .setTheme(R.style.Theme_WinderzProject)
                 .build();
         activityResultLauncher.launch(signInIntent);
     }

@@ -1,14 +1,19 @@
 package com.via.android.winderzproject.ui;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.service.controls.templates.TemperatureControlTemplate;
 import android.util.Log;
+import android.view.View;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -17,6 +22,8 @@ import android.widget.TextView;
 
 import com.via.android.winderzproject.R;
 import com.via.android.winderzproject.data.Session;
+
+import java.io.IOException;
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -39,6 +46,8 @@ public class DetailsActivity extends AppCompatActivity {
     ImageView windOrientationDetails;
     ImageView waveSizeDetails;
 
+    ImageView ImageActivity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +67,7 @@ public class DetailsActivity extends AppCompatActivity {
         waveSizeDetails = findViewById(R.id.waveSizeDetails);
         hourSessionDetails = findViewById(R.id.hourSessionDetails);
         minSessionDetails = findViewById(R.id.minSessionDetails);
+        ImageActivity = findViewById(R.id.ImageActivity);
     }
 
     @Override
@@ -73,6 +83,10 @@ public class DetailsActivity extends AppCompatActivity {
         hourSessionDetails.setText(String.valueOf(session.getHourSession()));
         minSessionDetails.setText(String.valueOf(session.getMinSession()));
 
+        if(session.getUri() !=null) {
+            ImageActivity.setImageURI(Uri.parse(session.getUri()));
+        }
+
         switch (session.getWaveSize()){
             case "Flat":
                 waveSizeDetails.setImageResource(R.drawable.wave1);
@@ -80,7 +94,7 @@ public class DetailsActivity extends AppCompatActivity {
             case "Choppy":
                 waveSizeDetails.setImageResource(R.drawable.wave2);
                 break;
-            case "Small":
+            case "Small waves":
                 waveSizeDetails.setImageResource(R.drawable.wave3);
                 break;
             case "Big waves":

@@ -1,6 +1,13 @@
 package com.via.android.winderzproject.ui;
 
+import android.content.ContentResolver;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -9,13 +16,17 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
@@ -24,6 +35,8 @@ import androidx.navigation.Navigation;
 import com.via.android.winderzproject.R;
 import com.via.android.winderzproject.data.Session;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
 
@@ -56,6 +69,15 @@ public class AddSessionFragment extends Fragment{
     int hourSession;
     int minSession;
 
+
+    //image part 1
+    private ImageView ProfileImage;
+    private static final int PICK_IMAGE = 1;
+    Uri imageUri;
+    Button photoButton;
+
+
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +105,9 @@ public class AddSessionFragment extends Fragment{
         cancelButton = view.findViewById(R.id.cancelButton);
         addButton = view.findViewById(R.id.addButton);
         titleEdit = view.findViewById(R.id.titleEdit);
+        photoButton = view.findViewById(R.id.takePhotoButton);
         descriptionEdit = view.findViewById(R.id.descriptionEdit);
+
         descriptionEdit.setOnTouchListener((v, motionEvent) -> {
             if (descriptionEdit.hasFocus()) {
                 v.getParent().requestDisallowInterceptTouchEvent(true);
@@ -132,8 +156,12 @@ public class AddSessionFragment extends Fragment{
             DateFormat timeformatter = DateFormat.getTimeInstance(DateFormat.SHORT);
             hour = timeformatter.format(now);
 
+            String uri = null;
+            if(imageUri != null)
+                uri = imageUri.toString();
+
             if(title != null){
-                addSessionViewModel.addSession(new Session(title, description, windSpeed, windOrientation, waveSize, wavePeriod, favorite,date,hour,hourSession,minSession));
+                addSessionViewModel.addSession(new Session(title, description, windSpeed, windOrientation, waveSize, wavePeriod, favorite,date,hour,hourSession,minSession, uri));
             }
             navController.navigate(R.id.homeFragment);
         });
@@ -173,6 +201,40 @@ public class AddSessionFragment extends Fragment{
                 waveSize = "flat";
             }
         });
+
+
+
+        //image Part
+
+
+
+        ProfileImage= view.findViewById(R.id.activityImage);
+        ProfileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent gallery = new Intent();
+                gallery.setType("image/*");
+                gallery.setAction(Intent.ACTION_OPEN_DOCUMENT);
+
+                startActivityForResult(Intent.createChooser(gallery, "Select Picture"), PICK_IMAGE);
+            }
+        });
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE && resultCode == -1){
+            imageUri = data.getData();
+            if(imageUri != null)
+                getActivity().getContentResolver().takePersistableUriPermission(imageUri,
+                        Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),imageUri);
+                ProfileImage.setImageBitmap(bitmap);
+            }catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

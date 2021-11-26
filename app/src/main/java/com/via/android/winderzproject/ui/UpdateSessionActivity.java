@@ -1,15 +1,21 @@
 package com.via.android.winderzproject.ui;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.Switch;
@@ -17,6 +23,8 @@ import android.widget.Toast;
 
 import com.via.android.winderzproject.R;
 import com.via.android.winderzproject.data.Session;
+
+import java.io.IOException;
 
 public class UpdateSessionActivity extends AppCompatActivity {
     UpdateSessionViewModel updateSessionViewModel;
@@ -34,6 +42,8 @@ public class UpdateSessionActivity extends AppCompatActivity {
     String waveSize;
     Button cancelButton;
     Button updateButton;
+    Uri uri;
+    ImageView DetailImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +52,18 @@ public class UpdateSessionActivity extends AppCompatActivity {
         updateSessionViewModel = new ViewModelProvider(this).get(UpdateSessionViewModel.class);
         updateSessionViewModel.init();
 
+
+
         updateButton = findViewById(R.id.updateButton);
         cancelButton = findViewById(R.id.cancelButton);
 
         Session session = updateSessionViewModel.getCurrentSession();
         Log.d("test", "session claimed by update activity " + session.toString());
 
+
+        DetailImage = findViewById(R.id.DetailImage);
+        if(session.getUri() != null)
+            DetailImage.setImageURI(Uri.parse(session.getUri()));
 
         titleEdit = findViewById(R.id.titleEdit);
         titleEdit.setText(session.getTitle());
@@ -129,6 +145,8 @@ public class UpdateSessionActivity extends AppCompatActivity {
             session.setMinSession(minPicker.getValue());
             session.setWindOrientation(windOrientation);
             session.setWaveSize(waveSize);
+            if(uri != null)
+                session.setUri(uri.toString());
 
             if(session.getTitle() != null){
                 updateSessionViewModel.saveCurrentSession(session);
@@ -139,5 +157,35 @@ public class UpdateSessionActivity extends AppCompatActivity {
         });
 
         cancelButton.setOnClickListener(view -> finish());
+
+        DetailImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent gallery = new Intent();
+                gallery.setType("image/*");
+                gallery.setAction(Intent.ACTION_OPEN_DOCUMENT);
+
+                startActivityForResult(Intent.createChooser(gallery, "Select Picture"), 1);
+            }
+        });
     }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == -1){
+            uri = data.getData();
+            if(uri != null)
+                getContentResolver().takePersistableUriPermission(uri,
+                        Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),uri);
+                DetailImage.setImageBitmap(bitmap);
+            }catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
 }

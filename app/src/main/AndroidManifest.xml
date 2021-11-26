@@ -14,14 +14,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-<<<<<<< HEAD
         android:theme="@style/Theme_WinderzProject">
-=======
-        android:theme="@style/Theme.WinderzProject" >
+
         <activity
             android:name=".ui.DetailsActivity"
             android:exported="false" />
->>>>>>> features-mvvm-architecture
         <activity
             android:name=".ui.UpdateSessionActivity"
             android:exported="false" />

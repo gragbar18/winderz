@@ -32,6 +32,8 @@
     <string name="cancel">cancel</string>
     <string name="update">update</string>
     <string name="wave_period">Wave period :</string>
+    <string name="hours">Hours :</string>
+    <string name="minutes">Minutes :</string>
 
 
     <string-array name="windOrientation">

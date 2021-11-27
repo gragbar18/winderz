@@ -1,5 +1,7 @@
 package com.via.android.winderzproject.data;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 
@@ -18,6 +20,7 @@ public class UserLiveData extends LiveData<User> {
 
         @Override
         public void onCancelled(@NonNull DatabaseError error) {
+            Log.d("error", "ValueEventListener in UserLiveData");
         }
     };
 

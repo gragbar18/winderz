@@ -4,13 +4,10 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
 
 import com.via.android.winderzproject.data.CurrentUserRepository;
 import com.via.android.winderzproject.data.Session;
 import com.via.android.winderzproject.data.SessionRepository;
-
-import java.util.List;
 
 public class DetailViewModel extends AndroidViewModel {
     private final CurrentUserRepository currentUserRepository;
@@ -22,19 +19,27 @@ public class DetailViewModel extends AndroidViewModel {
         sessionRepository = SessionRepository.getInstance();
     }
 
-    public void init(){
+    public void init() {
         String currentUserId = currentUserRepository.getCurrentUser().getValue().getUid();
         sessionRepository.init(currentUserId);
     }
 
+    //Get current session of the application
     public Session getCurrentSession() {
         return sessionRepository.getCurrentSession();
     }
 
-    public void saveCurrentSession(Session session){
+    //Save current session of the application
+    public void saveCurrentSession(Session session) {
         sessionRepository.saveCurrentSession(session);
     }
 
+    //Update favorite attribute of wanted session
+    public void updateFavoriteSession(String key, Boolean isChecked) {
+        sessionRepository.updateFavoriteSession(key, isChecked);
+    }
+
+    //Delete session in the database
     public void deleteSession(String key) {
         sessionRepository.deleteSession(key);
     }

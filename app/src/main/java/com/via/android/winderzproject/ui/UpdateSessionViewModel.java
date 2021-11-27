@@ -11,9 +11,8 @@ import com.via.android.winderzproject.data.SessionRepository;
 public class UpdateSessionViewModel extends AndroidViewModel {
     private final CurrentUserRepository currentUserRepository;
     private final SessionRepository sessionRepository;
-    private Session session;
 
-    public UpdateSessionViewModel(Application application){
+    public UpdateSessionViewModel(Application application) {
         super(application);
         currentUserRepository = CurrentUserRepository.getInstance(application);
         sessionRepository = SessionRepository.getInstance();
@@ -24,16 +23,16 @@ public class UpdateSessionViewModel extends AndroidViewModel {
         sessionRepository.init(userId);
     }
 
-    public void updateSession(Session session){
+    public void updateSession(Session session) {
         String key = session.getKey();
         sessionRepository.updateSession(key, session);
     }
 
-    public void saveCurrentSession(Session session){
+    public void saveCurrentSession(Session session) {
         sessionRepository.saveCurrentSession(session);
     }
 
-    public Session getCurrentSession(){
+    public Session getCurrentSession() {
         return sessionRepository.getCurrentSession();
     }
 }

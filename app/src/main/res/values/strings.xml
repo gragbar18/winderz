@@ -37,6 +37,7 @@
 
 
     <string-array name="windOrientation">
+        <item>Not specified</item>
         <item>North</item>
         <item>Northeast</item>
         <item>East</item>
@@ -48,6 +49,7 @@
     </string-array>
 
     <string-array name="waveSize">
+        <item>Not specified</item>
         <item>Flat</item>
         <item>Choppy</item>
         <item>Small waves</item>

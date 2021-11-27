@@ -1,20 +1,14 @@
 package com.via.android.winderzproject.ui;
 
-import androidx.annotation.Nullable;
+import androidx.annotation.DrawableRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.service.controls.templates.TemperatureControlTemplate;
 import android.util.Log;
-import android.view.View;
-import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -22,8 +16,6 @@ import android.widget.TextView;
 
 import com.via.android.winderzproject.R;
 import com.via.android.winderzproject.data.Session;
-
-import java.io.IOException;
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -33,8 +25,8 @@ public class DetailsActivity extends AppCompatActivity {
     Button updateFromDetails;
     Button deleteFromDetails;
     Button arrowBackButton;
-    CheckBox favoriteCheckboxDetails;
 
+    CheckBox favoriteCheckboxDetails;
 
     TextView titleDetails;
     TextView descriptionDetails;
@@ -45,8 +37,7 @@ public class DetailsActivity extends AppCompatActivity {
 
     ImageView windOrientationDetails;
     ImageView waveSizeDetails;
-
-    ImageView ImageActivity;
+    ImageView imageActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +49,6 @@ public class DetailsActivity extends AppCompatActivity {
         deleteFromDetails = findViewById(R.id.deleteFromDetails);
         arrowBackButton = findViewById(R.id.arrowBackButton);
         favoriteCheckboxDetails = findViewById(R.id.favoriteCheckboxDetails);
-
         titleDetails = findViewById(R.id.titleDetails);
         descriptionDetails = findViewById(R.id.descriptionDetails);
         windSpeedDetails = findViewById(R.id.windSpeedDetails);
@@ -67,13 +57,15 @@ public class DetailsActivity extends AppCompatActivity {
         waveSizeDetails = findViewById(R.id.waveSizeDetails);
         hourSessionDetails = findViewById(R.id.hourSessionDetails);
         minSessionDetails = findViewById(R.id.minSessionDetails);
-        ImageActivity = findViewById(R.id.ImageActivity);
+        imageActivity = findViewById(R.id.ImageActivity);
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         session = detailViewModel.getCurrentSession();
+
         Log.d("test", "session claimed by details activity " + session.toString());
 
         titleDetails.setText(session.getTitle());
@@ -83,11 +75,11 @@ public class DetailsActivity extends AppCompatActivity {
         hourSessionDetails.setText(String.valueOf(session.getHourSession()));
         minSessionDetails.setText(String.valueOf(session.getMinSession()));
 
-        if(session.getUri() !=null) {
-            ImageActivity.setImageURI(Uri.parse(session.getUri()));
+        if (session.getUri() != null) {
+            imageActivity.setImageURI(Uri.parse(session.getUri()));
         }
 
-        switch (session.getWaveSize()){
+        switch (session.getWaveSize()) {
             case "Flat":
                 waveSizeDetails.setImageResource(R.drawable.wave1);
                 break;
@@ -101,9 +93,13 @@ public class DetailsActivity extends AppCompatActivity {
                 waveSizeDetails.setImageResource(R.drawable.wave4);
                 break;
             default:
+                waveSizeDetails.setImageResource(R.drawable.photoprofile);
                 break;
         }
-        switch (session.getWindOrientation()){
+
+        windOrientationDetails.setImageResource(R.drawable.compass);
+
+        switch (session.getWindOrientation()) {
             case "North":
                 windOrientationDetails.setRotation(0);
                 break;
@@ -124,19 +120,20 @@ public class DetailsActivity extends AppCompatActivity {
                 break;
             case "West":
                 windOrientationDetails.setRotation(270);
-
                 break;
             case "Northwest":
                 windOrientationDetails.setRotation(315);
                 break;
             default:
+                windOrientationDetails.setImageResource(R.drawable.ic_explore_off);
                 break;
         }
 
         favoriteCheckboxDetails.setChecked(session.getFavorite());
         favoriteCheckboxDetails.setOnClickListener(view -> {
-            session.setFavorite(favoriteCheckboxDetails.isChecked());
-            HomeFragment.updateFavoriteSession(session.getKey(), favoriteCheckboxDetails.isChecked());
+            boolean favorite = favoriteCheckboxDetails.isChecked();
+            session.setFavorite(favorite);
+            detailViewModel.updateFavoriteSession(session.getKey(), favorite);
         });
 
         updateFromDetails.setOnClickListener(view -> {
@@ -150,8 +147,6 @@ public class DetailsActivity extends AppCompatActivity {
             finish();
         });
 
-        arrowBackButton.setOnClickListener(view -> {
-            finish();
-        });
+        arrowBackButton.setOnClickListener(view -> finish());
     }
 }

@@ -11,11 +11,12 @@ import com.via.android.winderzproject.data.CurrentUserRepository;
 public class LoginViewModel extends AndroidViewModel {
     private final CurrentUserRepository currentUserRepository;
 
-    public LoginViewModel(Application app){
+    public LoginViewModel(Application app) {
         super(app);
         currentUserRepository = CurrentUserRepository.getInstance(app);
     }
 
-    public LiveData<FirebaseUser> getCurrentUser(){ return currentUserRepository.getCurrentUser();}
-
+    public LiveData<FirebaseUser> getCurrentUser() {
+        return currentUserRepository.getCurrentUser();
+    }
 }

@@ -158,12 +158,17 @@
             </LinearLayout>
 
             <com.google.android.gms.maps.MapView
-                android:id="@+id/session_location"
+                xmlns:map="http://schemas.android.com/apk/res-auto"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:id="@+id/embedded_map"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:background="@drawable/ic_map"
                 android:layout_weight="2"
-                android:layout_margin="10dp"/>
+                android:layout_margin="10dp"
+                map:uiZoomControls="true"
+                map:uiRotateGestures="true"
+                map:cameraTilt="30"/>
+
             <TextView
                 android:id="@+id/session_description"
                 android:layout_width="match_parent"

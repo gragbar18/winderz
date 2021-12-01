@@ -8,11 +8,13 @@
         <entry key="..\:/Documents(D)/VIA UC/AND1/Winderz/winderz/app/src/main/res/drawable/ic_favorite.xml" value="0.2449074074074074" />
         <entry key="..\:/Documents(D)/VIA UC/AND1/Winderz/winderz/app/src/main/res/drawable/ic_more_horiz.xml" value="0.2449074074074074" />
         <entry key="..\:/Documents(D)/VIA UC/AND1/Winderz/winderz/app/src/main/res/drawable/selector_fav.xml" value="0.2449074074074074" />
+
         <entry key="..\:/Documents(D)/VIA UC/AND1/Winderz/winderz/app/src/main/res/layout/activity_details.xml" value="0.19246861924686193" />
         <entry key="..\:/Documents(D)/VIA UC/AND1/Winderz/winderz/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Documents(D)/VIA UC/AND1/Winderz/winderz/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Documents(D)/VIA UC/AND1/Winderz/winderz/app/src/main/res/layout/fragment_home.xml" value="0.13055555555555556" />
         <entry key="..\:/Documents(D)/VIA UC/AND1/Winderz/winderz/app/src/main/res/layout/fragment_map.xml" value="0.23055555555555557" />
+   
         <entry key="..\:/Documents(D)/VIA UC/AND1/Winderz/winderz/app/src/main/res/layout/fragment_profile.xml" value="0.4" />
         <entry key="..\:/Documents(D)/VIA UC/AND1/Winderz/winderz/app/src/main/res/layout/session_list_item.xml" value="0.264" />
         <entry key="..\:/Documents(D)/VIA UC/AND1/Winderz/winderz/app/src/main/res/menu/choice_menu.xml" value="0.23055555555555557" />
@@ -51,12 +53,13 @@
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/selector_fav.xml" value="0.26510416666666664" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/sign_out_btn.xml" value="0.26510416666666664" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/toggle_selector.xml" value="0.26510416666666664" />
-        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/activity_details.xml" value="0.24895833333333334" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/activity_details.xml" value="0.536" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/activity_update_session.xml" value="0.24895833333333334" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/activity_zoom.xml" value="0.4" />
-        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/fragment_add_session.xml" value="0.22903689506468616" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/custom_spinner_adapter.xml" value="1.49375" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/fragment_add_session.xml" value="0.3904" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/fragment_favorite.xml" value="0.2074074074074074" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/fragment_home.xml" value="0.2074074074074074" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/fragment_map.xml" value="0.253125" />

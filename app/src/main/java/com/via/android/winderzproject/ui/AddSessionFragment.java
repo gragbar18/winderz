@@ -123,12 +123,12 @@ public class AddSessionFragment extends Fragment {
         minPicker.setMaxValue(59);
 
         windSpeedPicker = view.findViewById(R.id.windSpeedPicker);
-        windSpeedPicker.setMinValue(0);
-        windSpeedPicker.setMaxValue(200);
+        windSpeedPicker.setMinValue(5);
+        windSpeedPicker.setMaxValue(60);
 
         wavePeriodPicker = view.findViewById(R.id.wavePeriodPicker);
         wavePeriodPicker.setMinValue(0);
-        wavePeriodPicker.setMaxValue(50);
+        wavePeriodPicker.setMaxValue(30);
 
         addButton.setOnClickListener(v -> {
             title = titleEdit.getText().toString();
@@ -141,7 +141,7 @@ public class AddSessionFragment extends Fragment {
 
             //definition date of the session's creation
             Date now = new Date();
-            DateFormat dateFormatter = DateFormat.getDateInstance(DateFormat.SHORT);
+            DateFormat dateFormatter = DateFormat.getDateInstance(DateFormat.DEFAULT);
             date = dateFormatter.format(now);
             DateFormat timeFormatter = DateFormat.getTimeInstance(DateFormat.SHORT);
             hour = timeFormatter.format(now);

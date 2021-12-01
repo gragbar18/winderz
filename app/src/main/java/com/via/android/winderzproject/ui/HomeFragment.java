@@ -32,8 +32,10 @@ public class HomeFragment extends Fragment implements SessionAdapter.OnListItemC
         super.onCreate(savedInstanceState);
         sessionDataViewModel = new ViewModelProvider(this).get(SessionDataViewModel.class);
         sessionDataViewModel.init();
+
         mSessionAdapter = new SessionAdapter(displayedSessions, this, sessionDataViewModel);
         sessionDataViewModel.getSessions().observe(this, this::onDataChanged);
+
     }
 
     @Override

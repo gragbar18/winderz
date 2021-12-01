@@ -24,11 +24,14 @@ public class SessionDataViewModel extends AndroidViewModel {
         sessionRepository = SessionRepository.getInstance();
     }
 
-    public void init(){
+    public void init() {
         String currentUserId = currentUserRepository.getCurrentUser().getValue().getUid();
         sessionRepository.init(currentUserId);
     }
-    public LiveData<FirebaseUser> getCurrentUser() {return currentUserRepository.getCurrentUser();}
+
+    public LiveData<FirebaseUser> getCurrentUser() {
+        return currentUserRepository.getCurrentUser();
+    }
 
     public LiveData<List<Session>> getSessions() {
         return sessionRepository.getSessions();
@@ -38,11 +41,11 @@ public class SessionDataViewModel extends AndroidViewModel {
         sessionRepository.deleteSession(key);
     }
 
-    public void updateFavoriteSession(String key, Boolean isChecked){
+    public void updateFavoriteSession(String key, Boolean isChecked) {
         sessionRepository.updateFavoriteSession(key, isChecked);
     }
 
-    public void saveCurrentSession(Session session){
+    public void saveCurrentSession(Session session) {
         sessionRepository.saveCurrentSession(session);
     }
 }

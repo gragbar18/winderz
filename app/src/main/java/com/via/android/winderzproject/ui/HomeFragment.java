@@ -4,13 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.PopupMenu;
-import android.widget.Toast;
 
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,7 +22,7 @@ import java.util.List;
 
 public class HomeFragment extends Fragment implements SessionAdapter.OnListItemClickListener {
 
-    static SessionDataViewModel sessionDataViewModel;
+    SessionDataViewModel sessionDataViewModel;
     RecyclerView mSessionList;
     SessionAdapter mSessionAdapter;
     List<Session> displayedSessions = new ArrayList<>();
@@ -37,14 +33,9 @@ public class HomeFragment extends Fragment implements SessionAdapter.OnListItemC
         sessionDataViewModel = new ViewModelProvider(this).get(SessionDataViewModel.class);
         sessionDataViewModel.init();
 
-        mSessionAdapter = new SessionAdapter(displayedSessions,this);
-        sessionDataViewModel.getSessions().observe(this, sessions -> {
-            //Add all the sessions in our list that is displayed
-            displayedSessions.clear();
-            displayedSessions.addAll(sessions);
-            Collections.reverse(displayedSessions);
-            mSessionAdapter.notifyDataSetChanged();
-        });
+        mSessionAdapter = new SessionAdapter(displayedSessions, this, sessionDataViewModel);
+        sessionDataViewModel.getSessions().observe(this, this::onDataChanged);
+
     }
 
     @Override
@@ -58,22 +49,16 @@ public class HomeFragment extends Fragment implements SessionAdapter.OnListItemC
     public void onStart() {
         super.onStart();
         mSessionList = getView().findViewById(R.id.rv);
-
+        mSessionList.setAdapter(mSessionAdapter);
+        mSessionList.hasFixedSize();
+        mSessionList.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
     @Override
     public void onPause() {
         super.onPause();
         displayedSessions.clear();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        mSessionList.setAdapter(mSessionAdapter);
-
-        mSessionList.hasFixedSize();
-        mSessionList.setLayoutManager(new LinearLayoutManager(getContext()));
+        Log.d("test", "data cleared");
     }
 
     @Override
@@ -84,16 +69,15 @@ public class HomeFragment extends Fragment implements SessionAdapter.OnListItemC
         this.getContext().startActivity(intent);
     }
 
-    public static void deleteSession(String keySession){
-        sessionDataViewModel.deleteSession(keySession);
-    }
-
-    public static void updateFavoriteSession(String keySession, Boolean isChecked){
-        sessionDataViewModel.updateFavoriteSession(keySession, isChecked);
-    }
-
-    public static void saveCurrentSession(Session session) {
+    public void saveCurrentSession(Session session) {
         Log.d("test", "session saved from Home Fragment " + session.toString());
         sessionDataViewModel.saveCurrentSession(session);
+    }
+
+    private void onDataChanged(List<Session> sessions) {
+        Log.d("test", "data changed");
+        displayedSessions.clear();
+        displayedSessions.addAll(sessions);
+        mSessionAdapter.notifyDataSetChanged();
     }
 }

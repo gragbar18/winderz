@@ -18,9 +18,11 @@ public class MainActivityViewModel extends AndroidViewModel {
         currentUserRepository = CurrentUserRepository.getInstance(application);
     }
 
-    public LiveData<FirebaseUser> getCurrentUser(){return currentUserRepository.getCurrentUser();}
+    public LiveData<FirebaseUser> getCurrentUser() {
+        return currentUserRepository.getCurrentUser();
+    }
 
-    public void signOut(){
+    public void signOut() {
         currentUserRepository.signOut();
     }
 

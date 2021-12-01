@@ -37,15 +37,15 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="vertical">
-            <ImageView
-                android:layout_marginHorizontal="32dp"
-                android:id="@+id/activityImage"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:scaleType="centerCrop"
-                android:background="@drawable/ic_photo"
-                />
 
+            <ImageView
+                android:id="@+id/activityImage"
+                android:layout_width="400dp"
+                android:layout_height="200dp"
+                android:adjustViewBounds="false"
+                android:cropToPadding="false"
+                android:scaleType="centerCrop"
+                />
             <EditText
                 android:id="@+id/descriptionEdit"
                 android:layout_width="match_parent"

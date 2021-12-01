@@ -19,7 +19,6 @@ import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.Switch;
-import android.widget.Toast;
 
 import com.via.android.winderzproject.R;
 import com.via.android.winderzproject.data.Session;
@@ -31,19 +30,25 @@ public class UpdateSessionActivity extends AppCompatActivity {
 
     Spinner windOrientationSpinner;
     Spinner waveSizeSpinner;
+
     EditText titleEdit;
     EditText descriptionEdit;
+
     NumberPicker hourPicker;
     NumberPicker minPicker;
     NumberPicker windSpeedPicker;
     NumberPicker wavePeriodPicker;
-    Switch favoriteSwitch;
+
+
     String windOrientation;
     String waveSize;
+
     Button cancelButton;
     Button updateButton;
+
+    Switch favoriteSwitch;
     Uri uri;
-    ImageView DetailImage;
+    ImageView detailImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,24 +57,21 @@ public class UpdateSessionActivity extends AppCompatActivity {
         updateSessionViewModel = new ViewModelProvider(this).get(UpdateSessionViewModel.class);
         updateSessionViewModel.init();
 
-
-
         updateButton = findViewById(R.id.updateButton);
         cancelButton = findViewById(R.id.cancelButton);
 
         Session session = updateSessionViewModel.getCurrentSession();
         Log.d("test", "session claimed by update activity " + session.toString());
 
-
-        DetailImage = findViewById(R.id.DetailImage);
-        if(session.getUri() != null)
-            DetailImage.setImageURI(Uri.parse(session.getUri()));
+        detailImage = findViewById(R.id.DetailImage);
+        if (session.getUri() != null)
+            detailImage.setImageURI(Uri.parse(session.getUri()));
 
         titleEdit = findViewById(R.id.titleEdit);
         titleEdit.setText(session.getTitle());
 
         favoriteSwitch = findViewById(R.id.Favorite_switch);
-        favoriteSwitch.setChecked(session.getFavorite());
+        favoriteSwitch.setChecked(session.isFavorite());
 
         hourPicker = findViewById(R.id.hourPicker);
         hourPicker.setMinValue(0);
@@ -103,13 +105,14 @@ public class UpdateSessionActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
                 windOrientation = parent.getItemAtPosition(position).toString();
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
                 windOrientation = session.getWindOrientation();
             }
         });
 
-        for(int i = 0; i < windOrientationSpinner.getCount(); i++){
+        for (int i = 0; i < windOrientationSpinner.getCount(); i++) {
             if (windOrientationSpinner.getItemAtPosition(i).equals(session.getWindOrientation()))
                 windOrientationSpinner.setSelection(i);
         }
@@ -130,7 +133,7 @@ public class UpdateSessionActivity extends AppCompatActivity {
             }
         });
 
-        for(int i = 0; i < waveSizeSpinner.getCount(); i++){
+        for (int i = 0; i < waveSizeSpinner.getCount(); i++) {
             if (waveSizeSpinner.getItemAtPosition(i).equals(session.getWaveSize()))
                 waveSizeSpinner.setSelection(i);
         }
@@ -145,10 +148,10 @@ public class UpdateSessionActivity extends AppCompatActivity {
             session.setMinSession(minPicker.getValue());
             session.setWindOrientation(windOrientation);
             session.setWaveSize(waveSize);
-            if(uri != null)
+            if (uri != null)
                 session.setUri(uri.toString());
 
-            if(session.getTitle() != null){
+            if (session.getTitle() != null) {
                 updateSessionViewModel.saveCurrentSession(session);
                 Log.d("test", "session saved from update activity " + session.toString());
                 updateSessionViewModel.updateSession(session);
@@ -158,34 +161,29 @@ public class UpdateSessionActivity extends AppCompatActivity {
 
         cancelButton.setOnClickListener(view -> finish());
 
-        DetailImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent gallery = new Intent();
-                gallery.setType("image/*");
-                gallery.setAction(Intent.ACTION_OPEN_DOCUMENT);
+        detailImage.setOnClickListener(v -> {
+            Intent gallery = new Intent();
+            gallery.setType("image/*");
+            gallery.setAction(Intent.ACTION_OPEN_DOCUMENT);
 
-                startActivityForResult(Intent.createChooser(gallery, "Select Picture"), 1);
-            }
+            startActivityForResult(Intent.createChooser(gallery, "Select Picture"), 1);
         });
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == -1){
-            uri = data.getData();
-            if(uri != null)
+        if (requestCode == 1 && resultCode == -1) {
+            uri = data != null ? data.getData() : null;
+            if (uri != null)
                 getContentResolver().takePersistableUriPermission(uri,
                         Intent.FLAG_GRANT_READ_URI_PERMISSION);
             try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),uri);
-                DetailImage.setImageBitmap(bitmap);
-            }catch (IOException e) {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                detailImage.setImageBitmap(bitmap);
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
-
-
 }

@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -18,11 +17,10 @@ import com.via.android.winderzproject.data.Session;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class FavoriteFragment extends Fragment implements SessionAdapter.OnListItemClickListener {
 
-    static SessionDataViewModel sessionDataViewModel;
+    SessionDataViewModel sessionDataViewModel;
     RecyclerView mSessionList;
     SessionAdapter mSessionAdapter;
     List<Session> displayedFavoriteSession = new ArrayList<>();
@@ -31,20 +29,10 @@ public class FavoriteFragment extends Fragment implements SessionAdapter.OnListI
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        sessionDataViewModel=new ViewModelProvider(this).get(SessionDataViewModel.class);
+        sessionDataViewModel = new ViewModelProvider(this).get(SessionDataViewModel.class);
         sessionDataViewModel.init();
-
-        mSessionAdapter = new SessionAdapter(displayedFavoriteSession,this);
-        sessionDataViewModel.getSessions().observe(this, sessions -> {
-            //Add all the sessions in our list that is displayed
-            displayedFavoriteSession.clear();
-            for(Session session : sessions){
-                if (session.getFavorite()){
-                    displayedFavoriteSession.add(session);
-                }
-            }
-            mSessionAdapter.notifyDataSetChanged();
-        });
+        mSessionAdapter = new SessionAdapter(displayedFavoriteSession, this, sessionDataViewModel);
+        sessionDataViewModel.getSessions().observe(this, this::onDataChanged);
     }
 
     @Override
@@ -59,10 +47,16 @@ public class FavoriteFragment extends Fragment implements SessionAdapter.OnListI
         super.onStart();
         mSessionList = getView().findViewById(R.id.rv);
         mSessionList.setAdapter(mSessionAdapter);
-
         mSessionList.hasFixedSize();
         mSessionList.setLayoutManager(new LinearLayoutManager(getContext()));
 
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        displayedFavoriteSession.clear();
+        Log.d("test", "data cleared");
     }
 
     @Override
@@ -73,17 +67,20 @@ public class FavoriteFragment extends Fragment implements SessionAdapter.OnListI
         this.getContext().startActivity(intent);
     }
 
-    public static void deleteSession(String keySession){
-        sessionDataViewModel.deleteSession(keySession);
-    }
-
-    public static void updateFavoriteSession(String keySession, Boolean isChecked){
-        sessionDataViewModel.updateFavoriteSession(keySession, isChecked);
-    }
-
-    public static void saveCurrentSession(Session session) {
+    public void saveCurrentSession(Session session) {
         Log.d("test", "session saved from Favorite Fragment " + session.toString());
         sessionDataViewModel.saveCurrentSession(session);
+    }
+
+    private void onDataChanged(List<Session> sessions) {
+        //Add all the sessions in our list that is displayed
+        displayedFavoriteSession.clear();
+        for (Session session : sessions) {
+            if (session.isFavorite()) {
+                displayedFavoriteSession.add(session);
+            }
+        }
+        mSessionAdapter.notifyDataSetChanged();
     }
 }
 

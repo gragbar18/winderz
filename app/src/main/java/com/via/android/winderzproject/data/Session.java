@@ -1,7 +1,5 @@
 package com.via.android.winderzproject.data;
 
-import android.net.Uri;
-
 import androidx.annotation.NonNull;
 
 import java.io.Serializable;
@@ -22,14 +20,15 @@ public class Session implements Serializable {
     int minSession;
     String hour;
     String uri;
+    Double lat;
+    Double lng;
 
 
-
-    public Session(){
+    public Session() {
         //Default constructor required for calls to Datasnapshot.getValue(Session.class)
     }
 
-    public Session(String title, String description, int windSpeed, String windOrientation, String waveSize, int wavePeriod, boolean favorite, String date, String hour, int hourSession, int minSession, String uri) {
+    public Session(String title, String description, int windSpeed, String windOrientation, String waveSize, int wavePeriod, boolean favorite, String date, String hour, int hourSession, int minSession, String uri, Double lat, Double lng) {
         this.title = title;
         this.description = description;
         this.windSpeed = windSpeed;
@@ -37,11 +36,13 @@ public class Session implements Serializable {
         this.waveSize = waveSize;
         this.wavePeriod = wavePeriod;
         this.favorite = favorite;
-        this.date=date;
-        this.hourSession=hourSession;
-        this.minSession=minSession;
-        this.hour=hour;
+        this.date = date;
+        this.hourSession = hourSession;
+        this.minSession = minSession;
+        this.hour = hour;
         this.uri = uri;
+        this.lat = lat;
+        this.lng = lng;
     }
 
     public Session(Session updatedSession) {
@@ -53,11 +54,33 @@ public class Session implements Serializable {
         this.waveSize = updatedSession.waveSize;
         this.wavePeriod = updatedSession.wavePeriod;
         this.favorite = updatedSession.favorite;
-        this.date= updatedSession.date;
-        this.hour= updatedSession.hour;
+        this.date = updatedSession.date;
+        this.hour = updatedSession.hour;
         this.hourSession = updatedSession.hourSession;
-        this.minSession= updatedSession.minSession;
+        this.minSession = updatedSession.minSession;
         this.uri = updatedSession.uri;
+        this.lat = updatedSession.lat;
+        this.lng = updatedSession.lng;
+    }
+
+    public boolean isFavorite() {
+        return favorite;
+    }
+
+    public Double getLat() {
+        return lat;
+    }
+
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+
+    public Double getLng() {
+        return lng;
+    }
+
+    public void setLng(Double lng) {
+        this.lng = lng;
     }
 
     public String getUri() {
@@ -88,22 +111,24 @@ public class Session implements Serializable {
         return date;
     }
 
-    public void setDate(String date) {this.date = date; }
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     public int getHourSession() {
         return hourSession;
     }
 
-    public void setHourSession(int hourSession) {this.hourSession = hourSession; }
+    public void setHourSession(int hourSession) {
+        this.hourSession = hourSession;
+    }
 
     public int getMinSession() {
         return minSession;
     }
 
-    public void setMinSession(int minSession) {this.minSession = minSession; }
-
-    public boolean getFavorite() {
-        return favorite;
+    public void setMinSession(int minSession) {
+        this.minSession = minSession;
     }
 
     public void setFavorite(boolean favorite) {
@@ -176,10 +201,12 @@ public class Session implements Serializable {
                 ", min session='" + minSession + '\'' +
                 ", hour='" + hour + '\'' +
                 ", uri='" + uri + '\'' +
+                ", lat='" + lat + '\'' +
+                ", lng='" + lng + '\'' +
                 '}';
     }
 
-    public Map<String, Object> toMap(){
+    public Map<String, Object> toMap() {
         HashMap<String, Object> map = new HashMap<>();
         map.put("title", title);
         map.put("description", description);
@@ -193,6 +220,8 @@ public class Session implements Serializable {
         map.put("hourSession", hourSession);
         map.put("minSession", minSession);
         map.put("uri", uri);
+        map.put("lat", lat);
+        map.put("lng", lng);
         return map;
     }
 }

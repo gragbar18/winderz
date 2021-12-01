@@ -71,7 +71,7 @@ public class UpdateSessionActivity extends AppCompatActivity {
         titleEdit.setText(session.getTitle());
 
         favoriteSwitch = findViewById(R.id.Favorite_switch);
-        favoriteSwitch.setChecked(session.getFavorite());
+        favoriteSwitch.setChecked(session.isFavorite());
 
         hourPicker = findViewById(R.id.hourPicker);
         hourPicker.setMinValue(0);

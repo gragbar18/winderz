@@ -152,7 +152,7 @@ public class AddSessionFragment extends Fragment {
                 uri = imageUri.toString();
 
             if (!title.equals("")) {
-                addSessionViewModel.addSession(new Session(title, description, windSpeed, windOrientation, waveSize, wavePeriod, favorite, date, hour, hourSession, minSession, uri));
+                addSessionViewModel.addSession(new Session(title, description, windSpeed, windOrientation, waveSize, wavePeriod, favorite, date, hour, hourSession, minSession, uri, 55.86417448725362, 9.837639596048952));
                 navController.navigate(R.id.homeFragment);
             } else {
                 Toast.makeText(getContext(), "Please enter a title", Toast.LENGTH_LONG).show();

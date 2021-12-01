@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -58,7 +59,7 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
         viewHolder.minSession.setText(session.getMinSession() + " min");
         viewHolder.waveSize.setText(session.getWaveSize());
         viewHolder.wavePeriod.setText(session.getWavePeriod() + " sec btw waves");
-        if (session.getFavorite()) {
+        if (session.isFavorite()) {
             viewHolder.favoriteCheckbox.setChecked(true);
         }
         //Pass the session object to the viewholder
@@ -115,9 +116,13 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
         // Get a handle to the GoogleMap object and display marker.
         @Override
         public void onMapReady(GoogleMap googleMap) {
-            googleMap.addMarker(new MarkerOptions()
-                    .position(new LatLng(150, 0))
-                    .title("Marker"));
+            if(session.getLat() != null && session.getLng() != null){
+                LatLng location = new LatLng(session.getLat(), session.getLng());
+                googleMap.addMarker(new MarkerOptions()
+                        .position(location)
+                        .title(session.getTitle()));
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 10));
+            }
         }
 
         public void showPopup(View view) {

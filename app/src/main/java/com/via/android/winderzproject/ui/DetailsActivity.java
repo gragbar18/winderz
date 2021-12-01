@@ -129,7 +129,7 @@ public class DetailsActivity extends AppCompatActivity {
                 break;
         }
 
-        favoriteCheckboxDetails.setChecked(session.getFavorite());
+        favoriteCheckboxDetails.setChecked(session.isFavorite());
         favoriteCheckboxDetails.setOnClickListener(view -> {
             boolean favorite = favoriteCheckboxDetails.isChecked();
             session.setFavorite(favorite);

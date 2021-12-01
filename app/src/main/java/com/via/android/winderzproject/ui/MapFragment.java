@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -25,6 +26,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.via.android.winderzproject.R;
+import com.via.android.winderzproject.data.Session;
 import com.via.android.winderzproject.utils.PermissionUtils;
 
 public class MapFragment extends Fragment implements GoogleMap.OnMyLocationButtonClickListener,
@@ -32,6 +34,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMyLocationButto
         OnMapReadyCallback,
         ActivityCompat.OnRequestPermissionsResultCallback{
 
+    MapViewModel mapViewModel;
 
     /**
      * Request code for location permission request.
@@ -48,12 +51,42 @@ public class MapFragment extends Fragment implements GoogleMap.OnMyLocationButto
 
     private GoogleMap map;
 
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_map, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mapViewModel = new ViewModelProvider(this).get(MapViewModel.class);
+        mapViewModel.init();
+        SupportMapFragment mapFragment =
+                (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
+        if (mapFragment != null) {
+            mapFragment.getMapAsync(this);
+        }
+    }
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
         map.setOnMyLocationButtonClickListener(this);
         map.setOnMyLocationClickListener(this);
         enableMyLocation();
+        mapViewModel.getSessions().observe(this, sessions -> {
+            for(Session session: sessions){
+                if(session.getLng() != null && session.getLat() != null){
+                    map.addMarker(new MarkerOptions()
+                        .position(new LatLng(session.getLat(), session.getLng()))
+                        .title(session.getTitle()));
+                }
+            }
+        });
     }
 
     /**
@@ -119,24 +152,5 @@ public class MapFragment extends Fragment implements GoogleMap.OnMyLocationButto
     private void showMissingPermissionError() {
         PermissionUtils.PermissionDeniedDialog
                 .newInstance(true).show(getActivity().getSupportFragmentManager(), "dialog");
-    }
-
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_map, container, false);
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        SupportMapFragment mapFragment =
-                (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
-        if (mapFragment != null) {
-            mapFragment.getMapAsync(this);
-        }
     }
 }

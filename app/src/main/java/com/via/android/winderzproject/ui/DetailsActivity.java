@@ -17,6 +17,8 @@ import android.widget.TextView;
 import com.via.android.winderzproject.R;
 import com.via.android.winderzproject.data.Session;
 
+import java.text.DateFormat;
+
 public class DetailsActivity extends AppCompatActivity {
 
     DetailViewModel detailViewModel;
@@ -154,7 +156,7 @@ public class DetailsActivity extends AppCompatActivity {
         shareActivity.setOnClickListener(v -> {
             session = detailViewModel.getCurrentSession();
 
-            String message = "Hi ! \nHere is some info about my session on the "+session.getDate()+".\nI spent "+ session.getHourSession()+"h and " +session.getMinSession()+ "min on the water with " + session.getWaveSize() + " sea conditions and " +session.getWindSpeed()+" knots of wind coming from the " + session.getWindOrientation()+".\nSee you soon on the water ;)";
+            String message = "Hi ! \nHere is some info about my session on the "+ session.getDate() +".\nI spent "+ session.getHourSession()+"h and " +session.getMinSession()+ "min on the water with " + session.getWaveSize() + " sea conditions and " +session.getWindSpeed()+" knots of wind coming from the " + session.getWindOrientation()+".\nSee you soon on the water ;)";
 
 
             Intent intent = new Intent(Intent.ACTION_SEND);

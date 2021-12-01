@@ -20,6 +20,7 @@ import com.via.android.winderzproject.R;
 import com.via.android.winderzproject.data.Session;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -41,6 +42,7 @@ public class HomeFragment extends Fragment implements SessionAdapter.OnListItemC
             //Add all the sessions in our list that is displayed
             displayedSessions.clear();
             displayedSessions.addAll(sessions);
+            Collections.reverse(displayedSessions);
             mSessionAdapter.notifyDataSetChanged();
         });
     }

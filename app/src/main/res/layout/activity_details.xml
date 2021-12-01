@@ -86,11 +86,17 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <com.google.android.gms.maps.MapView
-                android:id="@+id/localisationDetails"
+                xmlns:map="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/detail_map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/ic_map" />
+                map:uiZoomControls="true"
+                map:uiRotateGestures="false"
+                map:mapType="hybrid"
+                map:cameraZoom="10"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"

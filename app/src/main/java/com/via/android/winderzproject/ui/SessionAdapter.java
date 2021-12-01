@@ -50,7 +50,6 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
         Session session = mSessions.get(position);
 
         viewHolder.title.setText(session.getTitle());
-        viewHolder.description.setText(session.getDescription());
         viewHolder.windOrientation.setText(session.getWindOrientation());
         viewHolder.windSpeed.setText(session.getWindSpeed() + " knots");
         viewHolder.date.setText(session.getDate());
@@ -58,7 +57,7 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
         viewHolder.hourSession.setText(session.getHourSession() + " hours");
         viewHolder.minSession.setText(session.getMinSession() + " min");
         viewHolder.waveSize.setText(session.getWaveSize());
-        viewHolder.wavePeriod.setText(session.getWavePeriod() + " sec btw waves");
+        viewHolder.wavePeriod.setText(session.getWavePeriod() + " sec");
         if (session.isFavorite()) {
             viewHolder.favoriteCheckbox.setChecked(true);
         }
@@ -91,7 +90,6 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
         ViewHolder(View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.session_title);
-            description = itemView.findViewById(R.id.session_description);
             windOrientation = itemView.findViewById(R.id.session_windOrientation);
             windSpeed = itemView.findViewById(R.id.session_windSpeed);
             date = itemView.findViewById(R.id.session_date);

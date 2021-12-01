@@ -1,6 +1,7 @@
 package com.via.android.winderzproject.ui;
 
 import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -14,12 +15,16 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.via.android.winderzproject.R;
 import com.via.android.winderzproject.data.Session;
 
+
 import java.text.DateFormat;
 
-public class DetailsActivity extends AppCompatActivity {
+public class DetailsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     DetailViewModel detailViewModel;
     Session session;
@@ -42,6 +47,8 @@ public class DetailsActivity extends AppCompatActivity {
     ImageView waveSizeDetails;
     ImageView imageActivity;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +69,11 @@ public class DetailsActivity extends AppCompatActivity {
         minSessionDetails = findViewById(R.id.minSessionDetails);
         imageActivity = findViewById(R.id.ImageActivity);
         shareActivity = findViewById(R.id.shareButton);
+
+        MapView map = (MapView) findViewById(R.id.detail_map);
+        map.onCreate(null);
+        map.onResume();
+        map.getMapAsync(this);
 
     }
 
@@ -133,7 +145,7 @@ public class DetailsActivity extends AppCompatActivity {
                 break;
         }
 
-        favoriteCheckboxDetails.setChecked(session.getFavorite());
+        favoriteCheckboxDetails.setChecked(session.isFavorite());
         favoriteCheckboxDetails.setOnClickListener(view -> {
             boolean favorite = favoriteCheckboxDetails.isChecked();
             session.setFavorite(favorite);
@@ -165,5 +177,10 @@ public class DetailsActivity extends AppCompatActivity {
             intent.putExtra(Intent.EXTRA_TEXT, message );
             startActivity(intent);
         });
+    }
+
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+
     }
 }

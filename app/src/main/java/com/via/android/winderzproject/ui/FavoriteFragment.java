@@ -76,7 +76,7 @@ public class FavoriteFragment extends Fragment implements SessionAdapter.OnListI
         //Add all the sessions in our list that is displayed
         displayedFavoriteSession.clear();
         for (Session session : sessions) {
-            if (session.getFavorite()) {
+            if (session.isFavorite()) {
                 displayedFavoriteSession.add(session);
             }
         }

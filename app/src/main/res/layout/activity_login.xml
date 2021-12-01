@@ -4,42 +4,31 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.LoginActivity">
+    tools:context=".ui.LoginActivity"
+    android:background="@drawable/backgroundsea"
+    android:backgroundTintMode="src_over"
+    android:backgroundTint="#FFFFFF">
 
 
     <ImageView
-        android:id="@+id/imageBackground"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/backgroundsea"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-80dp" />
+        android:id="@+id/imageView2"
+        android:layout_width="500dp"
+        android:layout_height="500dp"
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Winderz"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="25pt"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/ic_launcher"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageBackground"
-        app:layout_constraintVertical_bias="0.152" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonToHomeActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/log_in"
         android:background="@drawable/button"
-        app:layout_constraintBottom_toBottomOf="@+id/imageBackground"
+        android:text="@string/log_in"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/imageBackground"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

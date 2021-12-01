@@ -14,6 +14,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.via.android.winderzproject.R;
 import com.via.android.winderzproject.data.Session;
 
@@ -52,7 +59,7 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
         viewHolder.minSession.setText(session.getMinSession() + " min");
         viewHolder.waveSize.setText(session.getWaveSize());
         viewHolder.wavePeriod.setText(session.getWavePeriod() + " sec btw waves");
-        if (session.getFavorite()) {
+        if (session.isFavorite()) {
             viewHolder.favoriteCheckbox.setChecked(true);
         }
         //Pass the session object to the viewholder
@@ -65,7 +72,7 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
         return mSessions.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, PopupMenu.OnMenuItemClickListener, OnMapReadyCallback {
 
         TextView title;
         TextView description;
@@ -98,6 +105,24 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
             popupButton.setOnClickListener(this::showPopup);
             itemView.setOnClickListener(this);
             favoriteCheckbox.setOnClickListener(view -> sessionDataViewModel.updateFavoriteSession(session.getKey(), favoriteCheckbox.isChecked()));
+
+            MapView map = (MapView) itemView.findViewById(R.id.embedded_map);
+            map.onCreate(null);
+            map.onResume();
+            map.getMapAsync(this);
+
+        }
+
+        // Get a handle to the GoogleMap object and display marker.
+        @Override
+        public void onMapReady(GoogleMap googleMap) {
+            if(session.getLat() != null && session.getLng() != null){
+                LatLng location = new LatLng(session.getLat(), session.getLng());
+                googleMap.addMarker(new MarkerOptions()
+                        .position(location)
+                        .title(session.getTitle()));
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 10));
+            }
         }
 
         public void showPopup(View view) {

@@ -24,6 +24,7 @@ public class Session implements Serializable {
     Double lng;
 
 
+
     public Session() {
         //Default constructor required for calls to Datasnapshot.getValue(Session.class)
     }

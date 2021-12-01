@@ -25,7 +25,9 @@ public class SessionDataViewModel extends AndroidViewModel {
     }
 
     public void init() {
-        String currentUserId = currentUserRepository.getCurrentUser().getValue().getUid();
+        FirebaseUser firebaseUser = currentUserRepository.getCurrentUser().getValue();
+        assert firebaseUser != null;
+        String currentUserId = firebaseUser.getUid();
         sessionRepository.init(currentUserId);
     }
 

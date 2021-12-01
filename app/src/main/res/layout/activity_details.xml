@@ -15,6 +15,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:id="@+id/shareButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/ic_share"
+        app:layout_constraintEnd_toStartOf="@+id/updateFromDetails"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
         android:id="@+id/updateFromDetails"
         android:layout_width="30dp"
         android:layout_height="30dp"

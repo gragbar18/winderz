@@ -25,6 +25,7 @@ public class DetailsActivity extends AppCompatActivity {
     Button updateFromDetails;
     Button deleteFromDetails;
     Button arrowBackButton;
+    Button shareActivity;
 
     CheckBox favoriteCheckboxDetails;
 
@@ -58,6 +59,7 @@ public class DetailsActivity extends AppCompatActivity {
         hourSessionDetails = findViewById(R.id.hourSessionDetails);
         minSessionDetails = findViewById(R.id.minSessionDetails);
         imageActivity = findViewById(R.id.ImageActivity);
+        shareActivity = findViewById(R.id.shareButton);
 
     }
 
@@ -148,5 +150,18 @@ public class DetailsActivity extends AppCompatActivity {
         });
 
         arrowBackButton.setOnClickListener(view -> finish());
+
+        shareActivity.setOnClickListener(v -> {
+            session = detailViewModel.getCurrentSession();
+
+            String message = "Hi ! \nHere is some info about my session on the "+session.getDate()+".\nI spent "+ session.getHourSession()+"h and " +session.getMinSession()+ "min on the water with " + session.getWaveSize() + " sea conditions and " +session.getWindSpeed()+" knots of wind coming from the " + session.getWindOrientation()+".\nSee you soon on the water ;)";
+
+
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Hi this is my WP Activity!");
+            intent.putExtra(Intent.EXTRA_TEXT, message );
+            startActivity(intent);
+        });
     }
 }

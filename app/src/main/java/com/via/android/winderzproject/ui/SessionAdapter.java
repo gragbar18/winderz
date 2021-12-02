@@ -2,6 +2,7 @@ package com.via.android.winderzproject.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -70,6 +71,7 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
     public int getItemCount() {
         return mSessions.size();
     }
+
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, PopupMenu.OnMenuItemClickListener, OnMapReadyCallback {
 

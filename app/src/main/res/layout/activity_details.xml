@@ -76,8 +76,12 @@
 
                 <ImageView
                     android:id="@+id/ImageActivity"
-                    android:layout_width="400dp"
-                    android:layout_height="200dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="10dp"
+                    android:minHeight="10dp"
+                    android:maxWidth="10dp"
+                    android:maxHeight="10dp"
                     android:layout_gravity="center"
                     android:contentDescription="Image of activity"
                     android:scaleType="centerCrop" />

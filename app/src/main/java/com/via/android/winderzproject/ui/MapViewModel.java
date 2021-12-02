@@ -5,7 +5,7 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-
+import com.via.android.winderzproject.data.CurrentUserRepository;
 import com.google.firebase.auth.FirebaseUser;
 import com.via.android.winderzproject.data.CurrentUserRepository;
 import com.via.android.winderzproject.data.Session;
@@ -34,4 +34,8 @@ public class MapViewModel extends AndroidViewModel {
         return sessionRepository.getSessions();
     }
 
+
+    public void saveCurrentSession(Session session) {
+        sessionRepository.saveCurrentSession(session);
+    }
 }

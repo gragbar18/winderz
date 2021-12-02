@@ -2,11 +2,16 @@ package com.via.android.winderzproject.ui;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Looper;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -31,6 +36,14 @@ import androidx.navigation.Navigation;
 import com.via.android.winderzproject.R;
 import com.via.android.winderzproject.data.Session;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+
 import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
@@ -39,6 +52,10 @@ public class AddSessionFragment extends Fragment {
     AddSessionViewModel addSessionViewModel;
     NavController navController;
     static final int PICK_IMAGE = 1;
+
+    //allows to get the last known position of the device
+    FusedLocationProviderClient fusedLocationClient;
+
 
     Spinner windOrientationSpinner;
     Spinner waveSizeSpinner;
@@ -69,12 +86,46 @@ public class AddSessionFragment extends Fragment {
     int hourSession;
     int minSession;
     Uri imageUri;
+    double lattitude;
+    double longitude;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addSessionViewModel = new ViewModelProvider(this).get(AddSessionViewModel.class);
         addSessionViewModel.init();
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(getContext());
+
+        // method to get the location
+        getLastLocation();
+
+    }
+
+    @SuppressLint("MissingPermission")
+    private void getLastLocation() {
+
+        // check if location is enabled
+        if (isLocationEnabled()) {
+
+            fusedLocationClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
+                @Override
+                public void onComplete(@NonNull Task<Location> task) {
+                    Location location = task.getResult();
+                    if (location == null) {
+                        requestNewLocationData();
+                    } else {
+                        longitude = location.getLongitude();
+                        lattitude = location.getLatitude();
+                        Toast.makeText(getContext(), lattitude + " "+ longitude,Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        } else {
+            Toast.makeText(getContext(), "Please turn on" + " your location...", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -89,6 +140,8 @@ public class AddSessionFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         this.navController = Navigation.findNavController(view);
     }
+
+
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -123,12 +176,14 @@ public class AddSessionFragment extends Fragment {
         minPicker.setMaxValue(59);
 
         windSpeedPicker = view.findViewById(R.id.windSpeedPicker);
-        windSpeedPicker.setMinValue(0);
-        windSpeedPicker.setMaxValue(200);
+        windSpeedPicker.setMinValue(5);
+        windSpeedPicker.setMaxValue(60);
 
         wavePeriodPicker = view.findViewById(R.id.wavePeriodPicker);
         wavePeriodPicker.setMinValue(0);
-        wavePeriodPicker.setMaxValue(50);
+        wavePeriodPicker.setMaxValue(30);
+
+
 
         addButton.setOnClickListener(v -> {
             title = titleEdit.getText().toString();
@@ -139,9 +194,10 @@ public class AddSessionFragment extends Fragment {
             minSession = minPicker.getValue();
             favorite = favoriteSwitch.isChecked();
 
+
             //definition date of the session's creation
             Date now = new Date();
-            DateFormat dateFormatter = DateFormat.getDateInstance(DateFormat.SHORT);
+            DateFormat dateFormatter = DateFormat.getDateInstance(DateFormat.DEFAULT);
             date = dateFormatter.format(now);
             DateFormat timeFormatter = DateFormat.getTimeInstance(DateFormat.SHORT);
             hour = timeFormatter.format(now);
@@ -152,11 +208,16 @@ public class AddSessionFragment extends Fragment {
                 uri = imageUri.toString();
 
             if (!title.equals("")) {
-                addSessionViewModel.addSession(new Session(title, description, windSpeed, windOrientation, waveSize, wavePeriod, favorite, date, hour, hourSession, minSession, uri));
+                addSessionViewModel.addSession(new Session(title, description, windSpeed, windOrientation, waveSize, wavePeriod, favorite, date, hour, hourSession, minSession, uri, lattitude, longitude));
                 navController.navigate(R.id.homeFragment);
             } else {
                 Toast.makeText(getContext(), "Please enter a title", Toast.LENGTH_LONG).show();
             }
+
+            //adding lng & lat when add button clicked
+
+
+
         });
 
         cancelButton.setOnClickListener(v -> navController.navigate(R.id.homeFragment));
@@ -221,4 +282,39 @@ public class AddSessionFragment extends Fragment {
             }
         }
     }
+
+    private boolean isLocationEnabled() {
+        LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+    }
+
+    @SuppressLint("MissingPermission")
+    private void requestNewLocationData() {
+
+        // Initializing LocationRequest
+        // object with appropriate methods
+        LocationRequest mLocationRequest = new LocationRequest();
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        mLocationRequest.setInterval(5);
+        mLocationRequest.setFastestInterval(0);
+        mLocationRequest.setNumUpdates(1);
+
+        // setting LocationRequest
+        // on FusedLocationClient
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(getContext());
+        fusedLocationClient.requestLocationUpdates(mLocationRequest, locationCallback, Looper.myLooper());
+    }
+
+    private LocationCallback locationCallback = new LocationCallback() {
+
+        @Override
+        public void onLocationResult(LocationResult locationResult) {
+            Location lastLocation = locationResult.getLastLocation();
+            longitude = lastLocation.getLongitude();
+            lattitude = lastLocation.getLatitude();
+            Toast.makeText(getContext(), lattitude + ""+ longitude,Toast.LENGTH_SHORT).show();
+
+        }
+    };
+
 }

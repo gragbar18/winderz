@@ -20,13 +20,16 @@ public class Session implements Serializable {
     int minSession;
     String hour;
     String uri;
+    Double lat;
+    Double lng;
+
 
 
     public Session() {
         //Default constructor required for calls to Datasnapshot.getValue(Session.class)
     }
 
-    public Session(String title, String description, int windSpeed, String windOrientation, String waveSize, int wavePeriod, boolean favorite, String date, String hour, int hourSession, int minSession, String uri) {
+    public Session(String title, String description, int windSpeed, String windOrientation, String waveSize, int wavePeriod, boolean favorite, String date, String hour, int hourSession, int minSession, String uri, Double lat, Double lng) {
         this.title = title;
         this.description = description;
         this.windSpeed = windSpeed;
@@ -39,6 +42,8 @@ public class Session implements Serializable {
         this.minSession = minSession;
         this.hour = hour;
         this.uri = uri;
+        this.lat = lat;
+        this.lng = lng;
     }
 
     public Session(Session updatedSession) {
@@ -55,6 +60,28 @@ public class Session implements Serializable {
         this.hourSession = updatedSession.hourSession;
         this.minSession = updatedSession.minSession;
         this.uri = updatedSession.uri;
+        this.lat = updatedSession.lat;
+        this.lng = updatedSession.lng;
+    }
+
+    public boolean isFavorite() {
+        return favorite;
+    }
+
+    public Double getLat() {
+        return lat;
+    }
+
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+
+    public Double getLng() {
+        return lng;
+    }
+
+    public void setLng(Double lng) {
+        this.lng = lng;
     }
 
     public String getUri() {
@@ -103,10 +130,6 @@ public class Session implements Serializable {
 
     public void setMinSession(int minSession) {
         this.minSession = minSession;
-    }
-
-    public boolean getFavorite() {
-        return favorite;
     }
 
     public void setFavorite(boolean favorite) {
@@ -179,6 +202,8 @@ public class Session implements Serializable {
                 ", min session='" + minSession + '\'' +
                 ", hour='" + hour + '\'' +
                 ", uri='" + uri + '\'' +
+                ", lat='" + lat + '\'' +
+                ", lng='" + lng + '\'' +
                 '}';
     }
 
@@ -196,6 +221,8 @@ public class Session implements Serializable {
         map.put("hourSession", hourSession);
         map.put("minSession", minSession);
         map.put("uri", uri);
+        map.put("lat", lat);
+        map.put("lng", lng);
         return map;
     }
 }

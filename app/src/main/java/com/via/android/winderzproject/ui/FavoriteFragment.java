@@ -16,6 +16,7 @@ import com.via.android.winderzproject.R;
 import com.via.android.winderzproject.data.Session;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class FavoriteFragment extends Fragment implements SessionAdapter.OnListItemClickListener {
@@ -76,10 +77,11 @@ public class FavoriteFragment extends Fragment implements SessionAdapter.OnListI
         //Add all the sessions in our list that is displayed
         displayedFavoriteSession.clear();
         for (Session session : sessions) {
-            if (session.getFavorite()) {
+            if (session.isFavorite()) {
                 displayedFavoriteSession.add(session);
             }
         }
+        Collections.reverse(displayedFavoriteSession);
         mSessionAdapter.notifyDataSetChanged();
     }
 }

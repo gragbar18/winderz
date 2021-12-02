@@ -16,6 +16,7 @@ import com.via.android.winderzproject.R;
 import com.via.android.winderzproject.data.Session;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -31,8 +32,10 @@ public class HomeFragment extends Fragment implements SessionAdapter.OnListItemC
         super.onCreate(savedInstanceState);
         sessionDataViewModel = new ViewModelProvider(this).get(SessionDataViewModel.class);
         sessionDataViewModel.init();
+
         mSessionAdapter = new SessionAdapter(displayedSessions, this, sessionDataViewModel);
         sessionDataViewModel.getSessions().observe(this, this::onDataChanged);
+
     }
 
     @Override
@@ -75,6 +78,7 @@ public class HomeFragment extends Fragment implements SessionAdapter.OnListItemC
         Log.d("test", "data changed");
         displayedSessions.clear();
         displayedSessions.addAll(sessions);
+        Collections.reverse(displayedSessions);
         mSessionAdapter.notifyDataSetChanged();
     }
 }

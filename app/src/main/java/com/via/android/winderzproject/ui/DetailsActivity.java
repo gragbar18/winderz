@@ -1,6 +1,7 @@
 package com.via.android.winderzproject.ui;
 
 import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -14,10 +15,19 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.via.android.winderzproject.R;
 import com.via.android.winderzproject.data.Session;
 
-public class DetailsActivity extends AppCompatActivity {
+
+import java.text.DateFormat;
+
+public class DetailsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     DetailViewModel detailViewModel;
     Session session;
@@ -25,6 +35,7 @@ public class DetailsActivity extends AppCompatActivity {
     Button updateFromDetails;
     Button deleteFromDetails;
     Button arrowBackButton;
+    Button shareActivity;
 
     CheckBox favoriteCheckboxDetails;
 
@@ -38,6 +49,8 @@ public class DetailsActivity extends AppCompatActivity {
     ImageView windOrientationDetails;
     ImageView waveSizeDetails;
     ImageView imageActivity;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +71,12 @@ public class DetailsActivity extends AppCompatActivity {
         hourSessionDetails = findViewById(R.id.hourSessionDetails);
         minSessionDetails = findViewById(R.id.minSessionDetails);
         imageActivity = findViewById(R.id.ImageActivity);
+        shareActivity = findViewById(R.id.shareButton);
+
+        MapView map = (MapView) findViewById(R.id.detail_map);
+        map.onCreate(null);
+        map.onResume();
+        map.getMapAsync(this);
 
     }
 
@@ -72,8 +91,14 @@ public class DetailsActivity extends AppCompatActivity {
         descriptionDetails.setText(session.getDescription());
         windSpeedDetails.setText(String.valueOf(session.getWindSpeed()));
         wavePeriodDetails.setText(String.valueOf(session.getWavePeriod()));
+
         hourSessionDetails.setText(String.valueOf(session.getHourSession()));
-        minSessionDetails.setText(String.valueOf(session.getMinSession()));
+
+        if (session.getMinSession()<10) {
+            minSessionDetails.setText("0" + String.valueOf(session.getMinSession()));
+        }else{
+            minSessionDetails.setText(String.valueOf(session.getMinSession()));
+        }
 
         if (session.getUri() != null) {
             imageActivity.setImageURI(Uri.parse(session.getUri()));
@@ -129,7 +154,7 @@ public class DetailsActivity extends AppCompatActivity {
                 break;
         }
 
-        favoriteCheckboxDetails.setChecked(session.getFavorite());
+        favoriteCheckboxDetails.setChecked(session.isFavorite());
         favoriteCheckboxDetails.setOnClickListener(view -> {
             boolean favorite = favoriteCheckboxDetails.isChecked();
             session.setFavorite(favorite);
@@ -148,5 +173,30 @@ public class DetailsActivity extends AppCompatActivity {
         });
 
         arrowBackButton.setOnClickListener(view -> finish());
+
+        shareActivity.setOnClickListener(v -> {
+            session = detailViewModel.getCurrentSession();
+
+            String message = "Hi ! \nHere is some info about my session on the "+ session.getDate() + " in this location : "+"\nLatitude : "+session.getLat()+" and Longitude : "+session.getLng()+"\nI spent "+ session.getHourSession()+"h and " +session.getMinSession()+ "min on the water with " + session.getWaveSize() + " sea conditions and " +session.getWindSpeed()+" knots of wind coming from the " + session.getWindOrientation()+".\nSee you soon on the water ;)";
+
+
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Hi this is my WP Activity!");
+            intent.putExtra(Intent.EXTRA_TEXT, message );
+            startActivity(intent);
+        });
     }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        if(session.getLat() != null && session.getLng() != null){
+            LatLng location = new LatLng(session.getLat(), session.getLng());
+            googleMap.addMarker(new MarkerOptions()
+                    .position(location)
+                    .title(session.getTitle()));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 10));
+        }
+    }
+
 }

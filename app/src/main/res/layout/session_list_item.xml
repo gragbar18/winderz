@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
+    android:layout_height="350dp"
     >
 
     <androidx.cardview.widget.CardView
@@ -14,7 +14,8 @@
         app:cardCornerRadius="10dp"
         android:backgroundTint="#FFFFFF"
         app:cardElevation="10dp"
-        android:layout_margin="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="5dp"
         >
 
         <LinearLayout
@@ -79,14 +80,13 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:useMaterialThemeColors="false" />
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/popupButton"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:background="@drawable/ic_more_horiz"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -102,7 +102,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical"
-                    android:layout_margin="10dp">
+                    android:layout_margin="5dp">
                 <TextView
                     android:id="@+id/hourSession"
                     android:layout_width="match_parent"
@@ -120,7 +120,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical"
-                    android:layout_margin="10dp">
+                    android:layout_margin="5dp">
                     <TextView
                         android:id="@+id/session_windSpeed"
                         android:layout_width="match_parent"
@@ -141,7 +141,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical"
-                    android:layout_margin="10dp">
+                    android:layout_margin="5dp">
                     <TextView
                         android:id="@+id/session_waveSize"
                         android:layout_width="match_parent"
@@ -158,19 +158,16 @@
             </LinearLayout>
 
             <com.google.android.gms.maps.MapView
-                android:id="@+id/session_location"
+                xmlns:map="http://schemas.android.com/apk/res-auto"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:id="@+id/embedded_map"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:background="@drawable/ic_map"
-                android:layout_weight="2"
-                android:layout_margin="10dp"/>
-            <TextView
-                android:id="@+id/session_description"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="0dp"/>
+                android:layout_weight="2.5"
+                android:layout_margin="10dp"
+                map:liteMode="true"
+                map:mapType="hybrid"
+                />
 
         </LinearLayout>
 

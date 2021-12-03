@@ -3,18 +3,39 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.14114583333333333" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/add.xml" value="0.26510416666666664" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/button.xml" value="0.26145833333333335" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/email.xml" value="0.26510416666666664" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/favorite.xml" value="0.26510416666666664" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/ic_arrow_back.xml" value="0.26510416666666664" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.26510416666666664" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/ic_delete.xml" value="0.26510416666666664" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/ic_explore_off.xml" value="0.26510416666666664" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/ic_favorite.xml" value="0.26145833333333335" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/ic_favorite_border.xml" value="0.26510416666666664" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/ic_map.xml" value="0.26510416666666664" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/ic_more_horiz.xml" value="0.26510416666666664" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/ic_pen.xml" value="0.26510416666666664" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/ic_photo.xml" value="0.26510416666666664" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/ic_share.xml" value="0.26510416666666664" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/ic_watch.xml" value="0.26510416666666664" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/map.xml" value="0.26510416666666664" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/rectangle_rounded_corners.xml" value="0.2604166666666667" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/roundedview.xml" value="0.2604166666666667" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/drawable/selector_fav.xml" value="0.26510416666666664" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/activity_details.xml" value="0.2453125" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/activity_login.xml" value="0.2453125" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/activity_main.xml" value="0.2453125" />
-        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/activity_update_session.xml" value="0.2453125" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/activity_update_session.xml" value="0.264" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/fragment_add_session.xml" value="0.2453125" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/fragment_favorite.xml" value="0.2453125" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/fragment_home.xml" value="0.2453125" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/fragment_map.xml" value="0.2453125" />
         <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/fragment_profile.xml" value="0.2453125" />
-        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/session_list_item.xml" value="0.2" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/layout/session_list_item.xml" value="0.152" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/menu/bottom_menu.xml" value="0.2453125" />
+        <entry key="..\:/Users/pouli/OneDrive/Documents/Cours VIA/Android Development/projet/winderz/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.26510416666666664" />
       </map>
     </option>
   </component>

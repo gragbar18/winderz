@@ -32,9 +32,18 @@
     <string name="cancel">cancel</string>
     <string name="update">update</string>
     <string name="wave_period">Wave period :</string>
+    <string name="knots">knots</string>
+    <string name="session_time">Session Time</string>
+    <string name="knts">knts</string>
+    <string name="n">N</string>
+    <string name="wind">Wind</string>
+    <string name="houle">Houle</string>
     <string name="hours">Hours :</string>
     <string name="minutes">Minutes :</string>
-    <string name="knots">knots</string>
+    <string name="sec">sec</string>
+    <string name="last_name">Last Name</string>
+    <string name="s">s</string>
+    <string name="two_point">:</string>
 
 
     <string-array name="windOrientation">

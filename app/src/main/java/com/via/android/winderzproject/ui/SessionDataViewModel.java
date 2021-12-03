@@ -2,7 +2,7 @@ package com.via.android.winderzproject.ui;
 
 import android.app.Application;
 
-    import androidx.annotation.NonNull;
+import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 

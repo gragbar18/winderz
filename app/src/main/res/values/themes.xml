@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme_WinderzProject" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#D330AA</item>
-        <item name="colorPrimaryVariant">#D330AA</item>
+        <item name="colorPrimary">@color/pink</item>
+        <item name="colorPrimaryVariant">@color/pink</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">#D330AA</item>

@@ -20,6 +20,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.via.android.winderzproject.R;
@@ -52,13 +53,56 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
 
         viewHolder.title.setText(session.getTitle());
         viewHolder.windOrientation.setText(session.getWindOrientation());
-        viewHolder.windSpeed.setText(session.getWindSpeed() + " knots");
+        viewHolder.windSpeed.setText(String.valueOf(session.getWindSpeed()));
         viewHolder.date.setText(session.getDate());
         viewHolder.hour.setText(session.getHour());
-        viewHolder.hourSession.setText(session.getHourSession() + " hours");
-        viewHolder.minSession.setText(session.getMinSession() + " min");
         viewHolder.waveSize.setText(session.getWaveSize());
-        viewHolder.wavePeriod.setText(session.getWavePeriod() + " sec");
+        viewHolder.wavePeriod.setText(String.valueOf(session.getWavePeriod()));
+
+        if (session.getMinSession() < 10) {
+            viewHolder.minSession.setText("0" + String.valueOf(session.getMinSession()));
+        } else {
+            viewHolder.minSession.setText(String.valueOf(session.getMinSession()));
+        }
+        if (session.getMinSession() < 10) {
+            viewHolder.hourSession.setText("0" + String.valueOf(session.getHourSession()));
+        } else {
+            viewHolder.hourSession.setText(String.valueOf(session.getHourSession()));
+        }
+
+
+        switch (session.getWindOrientation()) {
+            case "North":
+                viewHolder.windOrientation.setText("N");
+                break;
+            case "Northeast":
+                viewHolder.windOrientation.setText("NE");
+                break;
+            case "East":
+                viewHolder.windOrientation.setText("E");
+                break;
+            case "Southeast":
+                viewHolder.windOrientation.setText("SE");
+                break;
+            case "South":
+                viewHolder.windOrientation.setText("S");
+                break;
+            case "Southwest":
+                viewHolder.windOrientation.setText("SW");
+                break;
+            case "West":
+                viewHolder.windOrientation.setText("W");
+                break;
+            case "Northwest":
+                viewHolder.windOrientation.setText("NW");
+                break;
+            default:
+                viewHolder.windOrientation.setText("Not Specified");
+                viewHolder.windOrientation.setTextSize(2, 15);
+                break;
+        }
+
+
         if (session.isFavorite()) {
             viewHolder.favoriteCheckbox.setChecked(true);
         }
@@ -116,10 +160,11 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
         // Get a handle to the GoogleMap object and display marker.
         @Override
         public void onMapReady(GoogleMap googleMap) {
-            if(session.getLat() != null && session.getLng() != null){
+            if (session.getLat() != null && session.getLng() != null) {
                 LatLng location = new LatLng(session.getLat(), session.getLng());
                 googleMap.addMarker(new MarkerOptions()
                         .position(location)
+                        .icon(BitmapDescriptorFactory.defaultMarker(329.9f))
                         .title(session.getTitle()));
                 googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 10));
             }

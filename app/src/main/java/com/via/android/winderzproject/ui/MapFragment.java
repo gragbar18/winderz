@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -25,7 +26,7 @@ import com.via.android.winderzproject.data.Session;
 
 public class MapFragment extends Fragment implements GoogleMap.OnMyLocationButtonClickListener,
         GoogleMap.OnMyLocationClickListener,
-        OnMapReadyCallback,GoogleMap.OnInfoWindowLongClickListener{
+        OnMapReadyCallback, GoogleMap.OnInfoWindowLongClickListener {
 
     MapViewModel mapViewModel;
     private GoogleMap map;
@@ -61,12 +62,13 @@ public class MapFragment extends Fragment implements GoogleMap.OnMyLocationButto
         map.setOnInfoWindowLongClickListener(this);
         map.getUiSettings().setMyLocationButtonEnabled(true);
         mapViewModel.getSessions().observe(this, sessions -> {
-            for(Session session: sessions){
-                if(session.getLng() != null && session.getLat() != null){
+            for (Session session : sessions) {
+                if (session.getLng() != null && session.getLat() != null) {
                     map.addMarker(new MarkerOptions()
-                        .position(new LatLng(session.getLat(), session.getLng()))
-                        .title(session.getTitle()))
-                    .setTag(session);
+                            .position(new LatLng(session.getLat(), session.getLng()))
+                            .icon(BitmapDescriptorFactory.defaultMarker(329.9f))
+                            .title(session.getTitle()))
+                            .setTag(session);
                 }
             }
         });
@@ -75,7 +77,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMyLocationButto
 
     @Override
     public boolean onMyLocationButtonClick() {
-        Toast.makeText(getContext(), "MyLocation button clicked", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(), "MyLocation button clicked", Toast.LENGTH_SHORT).show();
         // Return false so that we don't consume the event and the default behavior still occurs
         // (the camera animates to the user's current position).
         return false;
@@ -83,7 +85,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMyLocationButto
 
     @Override
     public void onMyLocationClick(@NonNull Location location) {
-        Toast.makeText(getContext(), "Current location:\n" + location, Toast.LENGTH_LONG).show();
+        //Toast.makeText(getContext(), "Current location:\n" + location, Toast.LENGTH_LONG).show();
     }
 
     /*@Override

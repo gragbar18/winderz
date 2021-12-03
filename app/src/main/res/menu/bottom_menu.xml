@@ -4,26 +4,26 @@
 
     <item
         android:id="@+id/homeFragment"
+        android:icon="@drawable/home"
         android:title="@string/home"
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/home"/>
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/mapFragment"
+        android:icon="@drawable/map"
         android:title="@string/map"
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/map"/>
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/addSession"
         android:title=" "
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/favoriteFragment"
+        android:icon="@drawable/favorite"
         android:title="@string/favorite"
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/favorite"/>
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/profileFragment"
+        android:icon="@drawable/profile"
         android:title="@string/profile"
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/profile"/>
+        app:showAsAction="ifRoom" />
 </menu>

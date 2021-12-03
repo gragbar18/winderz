@@ -24,7 +24,6 @@ import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.Switch;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -64,7 +63,7 @@ public class AddSessionFragment extends Fragment {
     EditText descriptionEdit;
 
     Switch favoriteSwitch;
-    ImageView profileImage;
+    ImageView addImage;
 
     Button cancelButton;
     Button addButton;
@@ -117,12 +116,12 @@ public class AddSessionFragment extends Fragment {
                     } else {
                         longitude = location.getLongitude();
                         lattitude = location.getLatitude();
-                        Toast.makeText(getContext(), lattitude + " "+ longitude,Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getContext(), lattitude + " "+ longitude,Toast.LENGTH_SHORT).show();
                     }
                 }
             });
         } else {
-            Toast.makeText(getContext(), "Please turn on" + " your location...", Toast.LENGTH_LONG).show();
+            //Toast.makeText(getContext(), "Please turn on" + " your location...", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
             startActivity(intent);
         }
@@ -140,7 +139,6 @@ public class AddSessionFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         this.navController = Navigation.findNavController(view);
     }
-
 
 
     @SuppressLint("ClickableViewAccessibility")
@@ -184,7 +182,6 @@ public class AddSessionFragment extends Fragment {
         wavePeriodPicker.setMaxValue(30);
 
 
-
         addButton.setOnClickListener(v -> {
             title = titleEdit.getText().toString();
             description = descriptionEdit.getText().toString();
@@ -211,11 +208,10 @@ public class AddSessionFragment extends Fragment {
                 addSessionViewModel.addSession(new Session(title, description, windSpeed, windOrientation, waveSize, wavePeriod, favorite, date, hour, hourSession, minSession, uri, lattitude, longitude));
                 navController.navigate(R.id.homeFragment);
             } else {
-                Toast.makeText(getContext(), "Please enter a title", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getContext(), "Please enter a title", Toast.LENGTH_LONG).show();
             }
 
             //adding lng & lat when add button clicked
-
 
 
         });
@@ -254,10 +250,10 @@ public class AddSessionFragment extends Fragment {
             }
         });
 
-        profileImage = view.findViewById(R.id.activityImage);
-        if(imageUri == null)
-            profileImage.setImageResource(R.drawable.ic_photo);
-        profileImage.setOnClickListener(v -> {
+        addImage = view.findViewById(R.id.activityImage);
+        if (imageUri == null)
+            addImage.setImageResource(R.drawable.nophoto);
+        addImage.setOnClickListener(v -> {
             Intent gallery = new Intent();
             gallery.setType("image/*");
             gallery.setAction(Intent.ACTION_OPEN_DOCUMENT);
@@ -276,7 +272,7 @@ public class AddSessionFragment extends Fragment {
                         Intent.FLAG_GRANT_READ_URI_PERMISSION);
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(activity.getContentResolver(), imageUri);
-                profileImage.setImageBitmap(bitmap);
+                addImage.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -312,7 +308,7 @@ public class AddSessionFragment extends Fragment {
             Location lastLocation = locationResult.getLastLocation();
             longitude = lastLocation.getLongitude();
             lattitude = lastLocation.getLatitude();
-            Toast.makeText(getContext(), lattitude + ""+ longitude,Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(), lattitude + ""+ longitude,Toast.LENGTH_SHORT).show();
 
         }
     };

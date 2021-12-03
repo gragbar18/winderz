@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
         addSessionButton.setOnClickListener(v -> navController.navigate(R.id.addSession));
 
 
-
         //Here call for permission
 
         enableMyLocation();

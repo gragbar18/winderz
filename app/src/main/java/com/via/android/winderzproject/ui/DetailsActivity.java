@@ -51,7 +51,6 @@ public class DetailsActivity extends AppCompatActivity implements OnMapReadyCall
     ImageView imageActivity;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,9 +93,9 @@ public class DetailsActivity extends AppCompatActivity implements OnMapReadyCall
 
         hourSessionDetails.setText(String.valueOf(session.getHourSession()));
 
-        if (session.getMinSession()<10) {
+        if (session.getMinSession() < 10) {
             minSessionDetails.setText("0" + String.valueOf(session.getMinSession()));
-        }else{
+        } else {
             minSessionDetails.setText(String.valueOf(session.getMinSession()));
         }
 
@@ -118,7 +117,7 @@ public class DetailsActivity extends AppCompatActivity implements OnMapReadyCall
                 waveSizeDetails.setImageResource(R.drawable.wave4);
                 break;
             default:
-                waveSizeDetails.setImageResource(R.drawable.photoprofile);
+                waveSizeDetails.setImageResource(R.drawable.nowave);
                 break;
         }
 
@@ -177,20 +176,20 @@ public class DetailsActivity extends AppCompatActivity implements OnMapReadyCall
         shareActivity.setOnClickListener(v -> {
             session = detailViewModel.getCurrentSession();
 
-            String message = "Hi ! \nHere is some info about my session on the "+ session.getDate() + " in this location : "+"\nLatitude : "+session.getLat()+" and Longitude : "+session.getLng()+"\nI spent "+ session.getHourSession()+"h and " +session.getMinSession()+ "min on the water with " + session.getWaveSize() + " sea conditions and " +session.getWindSpeed()+" knots of wind coming from the " + session.getWindOrientation()+".\nSee you soon on the water ;)";
+            String message = "Hi ! \nHere is some info about my session on the " + session.getDate() + " in this location : " + "\nLatitude : " + session.getLat() + " and Longitude : " + session.getLng() + "\nI spent " + session.getHourSession() + "h and " + session.getMinSession() + "min on the water with " + session.getWaveSize() + " sea conditions and " + session.getWindSpeed() + " knots of wind coming from the " + session.getWindOrientation() + ".\nSee you soon on the water ;)";
 
 
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/plain");
             intent.putExtra(Intent.EXTRA_SUBJECT, "Hi this is my WP Activity!");
-            intent.putExtra(Intent.EXTRA_TEXT, message );
+            intent.putExtra(Intent.EXTRA_TEXT, message);
             startActivity(intent);
         });
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        if(session.getLat() != null && session.getLng() != null){
+        if (session.getLat() != null && session.getLng() != null) {
             LatLng location = new LatLng(session.getLat(), session.getLng());
             googleMap.addMarker(new MarkerOptions()
                     .position(location)

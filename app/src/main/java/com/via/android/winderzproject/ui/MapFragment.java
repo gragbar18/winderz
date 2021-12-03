@@ -95,8 +95,6 @@ public class MapFragment extends Fragment implements GoogleMap.OnMyLocationButto
     @Override
     public void onInfoWindowLongClick(@NonNull Marker marker) {
         LatLng position = marker.getPosition();
-        double latitude = position.latitude;
-        double longitude = position.longitude;
         Session session = (Session) marker.getTag();
         mapViewModel.saveCurrentSession(session);
         Intent intent = new Intent(this.getContext(), DetailsActivity.class);

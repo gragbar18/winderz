@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="350dp"
+    android:layout_height="300dp"
     >
 
     <androidx.cardview.widget.CardView
@@ -14,16 +14,15 @@
         app:cardCornerRadius="10dp"
         android:backgroundTint="#FFFFFF"
         app:cardElevation="10dp"
-        android:layout_marginBottom="10dp"
         android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
         >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginBottom="10dp"
-            android:layout_marginHorizontal="10dp"
+            android:layout_marginBottom="0dp"
             android:layout_marginTop="0dp">
 
 
@@ -31,7 +30,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:context=".MainActivity">
+                tools:context=".MainActivity"
+                android:layout_marginHorizontal="10dp">
 
                 <TextView
                     android:id="@+id/session_title"
@@ -40,7 +40,8 @@
                     android:text="Session"
                     android:textSize="20pt"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout"
@@ -96,13 +97,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1.5"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="10dp"
+                >
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical"
-                    android:layout_margin="5dp">
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginTop="5dp">
                 <TextView
                     android:id="@+id/hourSession"
                     android:layout_width="match_parent"
@@ -120,7 +124,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical"
-                    android:layout_margin="5dp">
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginTop="5dp">
                     <TextView
                         android:id="@+id/session_windSpeed"
                         android:layout_width="match_parent"
@@ -141,7 +146,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical"
-                    android:layout_margin="5dp">
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginTop="5dp">
                     <TextView
                         android:id="@+id/session_waveSize"
                         android:layout_width="match_parent"
@@ -157,17 +163,24 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <com.google.android.gms.maps.MapView
-                xmlns:map="http://schemas.android.com/apk/res-auto"
-                android:name="com.google.android.gms.maps.SupportMapFragment"
-                android:id="@+id/embedded_map"
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2.5"
-                android:layout_margin="10dp"
-                map:liteMode="true"
-                map:mapType="hybrid"
-                />
+                app:cardCornerRadius="10dp"
+                android:elevation="100dp"
+                android:outlineAmbientShadowColor="@color/black"
+                >
+
+                <com.google.android.gms.maps.MapView
+                    xmlns:map="http://schemas.android.com/apk/res-auto"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:id="@+id/embedded_map"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    map:liteMode="true"
+                    map:mapType="hybrid"/>
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 

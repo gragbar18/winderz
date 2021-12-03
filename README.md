@@ -15,7 +15,7 @@ The second feature is to be able to register spots on a private and a public map
 - [ ] As a user I want to rate a spot according to some criterias (accessibility, navigation feasability, access to the water and on-the-wather traffic) so that I can share my review.
 - [x] As a user I want to manage my favorits sessions so that I can easily find them.
 - [x] As a user I want to save my session activity with the localisation, the weather conditions (Winds speeds and orientations, waves sizes and frequencies), session time and commentary (Title, pictures, summary) so that I can keep a track on my progression and session.
-- [ ] As a user I want to be able to share my sessions on social media so that my network can see my content.
+- [x] As a user I want to be able to share my sessions on social media so that my network can see my content.
 - [x] As a user I want to be able to retrieve my sessions and to see them in details so that I can see what has been done.
 - [x] As a user I want to be able to see the Details and Modify my profile so that I can personnalize my profile. (no personnalization)
 - [ ] As a user I want to be able to manage the emergency security (Emergency contact, ...) so that I can practice my sport safely.
@@ -24,3 +24,7 @@ The second feature is to be able to register spots on a private and a public map
 
 - [ ] Think about advertisings/subscriptions methods
 - [x] Application theme personnalization
+
+
+Here is the youtube link of the video presenting our app: 
+https://www.youtube.com/watch?v=EktP24f0XyM

@@ -23,7 +23,7 @@ The second feature is to be able to register spots on a private and a public map
 ### Additionnals tasks
 
 - [ ] Think about advertisings/subscriptions methods
-- [x] Application theme personnalization
+- [ ] Application theme personnalization
 
 
 Here is the youtube link of the video presenting our app: 
